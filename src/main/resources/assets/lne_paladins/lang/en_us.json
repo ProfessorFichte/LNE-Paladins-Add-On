@@ -1,3 +1,8 @@
 {
-  "item.lne_paladins.elder_guardian_claymore": "Sea King's Blade"
+  "item.lne_paladins.elder_guardian_claymore": "Sea King's Blade",
+
+  "item.lne_paladins.sirens_holy_staff": "Siren's Holy Staff",
+  "passive.loot_n_explore.sirens_holy_staff": "",
+  "passive.loot_n_explore.sirens_holy_staff_1": "",
+  "passive.loot_n_explore.sirens_holy_staff_2": ""
 }

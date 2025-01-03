@@ -1,9 +1,6 @@
 package com.lne_paladins.item;
 
-import com.lne_paladins.item.weapons.DragonClaymore;
-import com.lne_paladins.item.weapons.ElderGuardianClaymore;
-import com.lne_paladins.item.weapons.GlacialClaymore;
-import com.lne_paladins.item.weapons.WitherClaymore;
+import com.lne_paladins.item.weapons.*;
 import more_rpg_loot.item.Group;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.Item;
@@ -57,7 +54,20 @@ public class WeaponRegister {
     private static final float paladins_claymoreAttackSpeed = -3F;
     private static final float paladins_greatHammerAttackSpeed = -3.2F;
     private static final float paladins_maceAttackSpeed = -2.8F;
+    private static final float paladins_staffAttackSpeed = -3F;
     private static final float weaponSpellPower = 3.0F;
+
+    //HOLY STAFF
+    private static final float staffAttackDamage = 4;
+    private static final float staffSpellPower = 6.0F;
+    private static Weapon.Entry elderGuardianStaff(String name, Weapon.CustomMaterial material) {
+        return elderGuardianStaff(null, name, material);
+    }
+    private static Weapon.Entry elderGuardianStaff(String requiredMod, String name, Weapon.CustomMaterial material) {
+        var settings = new Item.Settings();
+        var item = new SirensStaff(material, settings);
+        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(staffAttackDamage, paladins_staffAttackSpeed));
+    }
 
     //CLAYMORES
     private static final float claymoreAttackDamage = 11.5F;
@@ -107,6 +117,10 @@ public class WeaponRegister {
                     FabricLoader.getInstance().isModLoaded("loot_n_explore"), Items.NETHERITE_INGOT);
             var witherRepair = ingredient("minecraft:nether_star",
                     FabricLoader.getInstance().isModLoaded("loot_n_explore"), Items.NETHERITE_INGOT);
+            //HOLY STAFF
+            elderGuardianStaff("sirens_holy_staff",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, elderGuardianRepair))
+                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.HEALING.id, staffSpellPower));
             //CLAYMORES
             claymoreDragon("ender_dragon_claymore",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, dragonRepair))
@@ -122,7 +136,6 @@ public class WeaponRegister {
                     .attribute(ItemConfig.Attribute.bonus(SpellSchools.FROST.id, weaponSpellPower));
             //MACE
             //HAMMER
-            //PRIEST STAVES
         }
 
         Weapon.register(configs, entries, Group.RPG_LOOT_KEY);
