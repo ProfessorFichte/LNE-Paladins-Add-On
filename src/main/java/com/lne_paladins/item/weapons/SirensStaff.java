@@ -19,10 +19,10 @@ public class SirensStaff extends StaffItem {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
         tooltip.add(Text.translatable("lore.loot_n_explore.elder_guardian_weapon").formatted(Formatting.GOLD));
-        tooltip.add(Text.translatable("passive.loot_n_explore.sirens_holy_staff_ally").formatted(Formatting.AQUA));
-        tooltip.add(Text.translatable("passive.loot_n_explore.sirens_holy_staff_ally_1").formatted(Formatting.AQUA));
-        tooltip.add(Text.translatable("passive.loot_n_explore.sirens_holy_staff_enemy").formatted(Formatting.AQUA));
-        tooltip.add(Text.translatable("passive.loot_n_explore.sirens_holy_staff_enemy_1").formatted(Formatting.AQUA));
+        tooltip.add(Text.translatable("passive.lne_paladins.sirens_holy_staff_ally").formatted(Formatting.AQUA));
+        tooltip.add(Text.translatable("passive.lne_paladins.sirens_holy_staff_ally_1").formatted(Formatting.AQUA));
+        tooltip.add(Text.translatable("passive.lne_paladins.sirens_holy_staff_enemy").formatted(Formatting.AQUA));
+        tooltip.add(Text.translatable("passive.lne_paladins.sirens_holy_staff_enemy_1").formatted(Formatting.AQUA));
 
     }
 }

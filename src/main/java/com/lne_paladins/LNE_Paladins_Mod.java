@@ -1,6 +1,7 @@
 package com.lne_paladins;
 
 import com.lne_paladins.config.Default;
+import com.lne_paladins.effect.Effects;
 import com.lne_paladins.item.WeaponRegister;
 import net.fabricmc.api.ModInitializer;
 import com.lne_paladins.config.TweaksConfig;
@@ -31,6 +32,7 @@ public class LNE_Paladins_Mod implements ModInitializer {
 	public void onInitialize() {
 		tweaksConfig.refresh();
 		if(FabricLoader.getInstance().isModLoaded("loot_n_explore")) {
+			Effects.register();
 			itemConfig.refresh();
 			WeaponRegister.register(itemConfig.value.weapons);
 			itemConfig.save();

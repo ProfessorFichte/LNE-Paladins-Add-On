@@ -51,13 +51,11 @@ public class SpellHelperMixin {
                     Entity entity = target.get();
                     if(entity instanceof LivingEntity livingEntity){
                         float random = new Random().nextFloat(1.0F);
-                        if (random > tweaksConfig.value.sirens_staff_tears_regeneration_chance ) {
-                            HelperMethods.applyStatusEffect(livingEntity,0,10, StatusEffects.REGENERATION,2,false,true,false,0);
+                        if (random < tweaksConfig.value.sirens_staff_tears_debuff_chance ) {
+                            HelperMethods.clearNegativeEffects(livingEntity,true);
                         }
-
                     }
                 }
-
             }
         }
     }
