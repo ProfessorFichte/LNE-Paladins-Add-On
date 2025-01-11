@@ -7,17 +7,6 @@
         {
           "type": "item",
           "name": "paladins:priest_spell_book",
-          "weight": 3,
-          "functions": [
-            {
-              "function": "set_nbt",
-              "tag": "{spell_container:{pool:\"paladins:priest\",spell_ids:[\"paladins:holy_shock\"],spell_container:\"MAGIC\"}}"
-            }
-          ]
-        },
-        {
-          "type": "item",
-          "name": "paladins:priest_spell_book",
           "weight": 2,
           "functions": [
             {
