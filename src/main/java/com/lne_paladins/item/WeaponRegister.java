@@ -9,6 +9,7 @@ import net.minecraft.item.ToolMaterials;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.more_rpg_classes.custom.MoreSpellSchools;
 import net.spell_engine.api.item.ItemConfig;
 import net.spell_engine.api.item.weapon.Weapon;
@@ -65,6 +66,7 @@ public class WeaponRegister {
     }
     private static Weapon.Entry elderGuardianStaff(String requiredMod, String name, Weapon.CustomMaterial material) {
         var settings = new Item.Settings();
+        settings = settings.rarity(Rarity.EPIC).fireproof();
         var item = new SirensStaff(material, settings);
         return entry(requiredMod, name, material, item, new ItemConfig.Weapon(staffAttackDamage, paladins_staffAttackSpeed));
     }
@@ -76,6 +78,7 @@ public class WeaponRegister {
     }
     private static Weapon.Entry claymoreDragon(String requiredMod, String name, Weapon.CustomMaterial material) {
         var settings = new Item.Settings();
+        settings = settings.rarity(Rarity.EPIC).fireproof();
         var item = new DragonClaymore(material, settings);
         return entry(requiredMod, name, material, item, new ItemConfig.Weapon(claymoreAttackDamage, paladins_claymoreAttackSpeed));
     }
@@ -84,6 +87,7 @@ public class WeaponRegister {
     }
     private static Weapon.Entry claymoreElderGuardian(String requiredMod, String name, Weapon.CustomMaterial material) {
         var settings = new Item.Settings();
+        settings = settings.rarity(Rarity.EPIC).fireproof();
         var item = new ElderGuardianClaymore(material, settings);
         return entry(requiredMod, name, material, item, new ItemConfig.Weapon(claymoreAttackDamage, paladins_claymoreAttackSpeed));
     }
@@ -92,6 +96,7 @@ public class WeaponRegister {
     }
     private static Weapon.Entry claymoreWither(String requiredMod, String name, Weapon.CustomMaterial material) {
         var settings = new Item.Settings();
+        settings = settings.rarity(Rarity.EPIC).fireproof();
         var item = new WitherClaymore(material, settings);
         return entry(requiredMod, name, material, item, new ItemConfig.Weapon(claymoreAttackDamage, paladins_claymoreAttackSpeed));
     }
@@ -100,6 +105,7 @@ public class WeaponRegister {
     }
     private static Weapon.Entry claymoreGlacial(String requiredMod, String name, Weapon.CustomMaterial material) {
         var settings = new Item.Settings();
+        settings = settings.rarity(Rarity.EPIC).fireproof();
         var item = new GlacialClaymore(material, settings);
         return entry(requiredMod, name, material, item, new ItemConfig.Weapon(claymoreAttackDamage, paladins_claymoreAttackSpeed));
     }
