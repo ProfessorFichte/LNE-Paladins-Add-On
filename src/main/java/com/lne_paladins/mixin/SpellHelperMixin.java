@@ -38,15 +38,13 @@ public class SpellHelperMixin {
 
             Spell spell = getSpell(spellId);
             SpellSchool school = getSpell(spellId).school;
-
-
-            float spell_power_coefficient = spell.impact[0].action.heal.spell_power_coefficient;
-            float healing_power = (float)(player.getAttributeValue(SpellSchools.HEALING.attribute));
             Spell.Impact.Action.Type type = spell.impact[0].action.type;
 
             var target = targets.stream().findFirst();
 
             if(item instanceof SirensStaff && type.equals(Spell.Impact.Action.Type.HEAL) && school == SpellSchools.HEALING){
+                float spell_power_coefficient = spell.impact[0].action.heal.spell_power_coefficient;
+                float healing_power = (float)(player.getAttributeValue(SpellSchools.HEALING.attribute));
                 if(target.isPresent()){
                     Entity entity = target.get();
                     if(entity instanceof LivingEntity livingEntity){

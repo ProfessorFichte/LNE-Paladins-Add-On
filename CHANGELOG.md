@@ -1,3 +1,6 @@
+# 0.1.1 - 1.20.1
+- fix Error executing task on Server - SpellHelperMixin
+
 # 0.1.0 - 1.20.1 BETA
 ## First Beta of the LNE x Paladins (RPG Series Add On)
 ### **Structures**
