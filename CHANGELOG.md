@@ -1,5 +1,9 @@
 # 0.1.1 - 1.20.1
 - fix Error executing task on Server - SpellHelperMixin
+- buffed Sirens Staff Healing Power
+- buffed Claymore´s Attack Damage
+- update for LNE API Changes
+- fix crash with Loot & Explore 0.1.6
 
 # 0.1.0 - 1.20.1 BETA
 ## First Beta of the LNE x Paladins (RPG Series Add On)

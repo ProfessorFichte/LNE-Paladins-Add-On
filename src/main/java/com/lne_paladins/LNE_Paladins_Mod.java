@@ -16,7 +16,7 @@ public class LNE_Paladins_Mod implements ModInitializer {
 	public static final String MOD_ID = "lne_paladins";
 	public static final Logger LOGGER = LoggerFactory.getLogger("lne_paladins");
 	public static ConfigManager<ItemConfig> itemConfig = new ConfigManager<>
-			("items", Default.itemConfig)
+			("items_v0", Default.itemConfig)
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)
