@@ -1,3 +1,7 @@
+# 0.1.2 - 1.20.1
+- LivingEntityMixin: fix LNE HelperMethod if LNE is not installed
+- SpellHelperMixin: fix LNE HelperMethod if LNE is not installed
+
 # 0.1.1 - 1.20.1
 - fix Error executing task on Server - SpellHelperMixin
 - buffed Sirens Staff Healing Power
