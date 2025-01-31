@@ -1,0 +1,71 @@
+{
+  "school": "HEALING",
+  "range": 0,
+  "learn": {
+    "tier": 3
+  },
+  "cast": {
+    "animation": "lne_paladins:holy_weapon_charge",
+    "duration": 1.0,
+    "particles": [
+      {
+        "particle_id": "spell_engine:holy_ascend",
+        "shape": "PIPE",
+        "origin": "FEET",
+        "count": 4.0,
+        "min_speed": 0.01,
+        "max_speed": 0.1,
+        "extent": 1.5
+      }
+    ]
+  },
+  "release": {
+    "target": {
+      "type": "SELF"
+    },
+    "animation": "spell_engine:one_handed_area_release",
+    "sound": {
+      "id": "paladins:divine_protection_release"
+    },
+    "particles": [
+      {
+        "particle_id": "spell_engine:electric_arc_a",
+        "shape": "PILLAR",
+        "origin": "FEET",
+        "count": 6.0,
+        "min_speed": 0.01,
+        "max_speed": 0.05,
+        "extent": 1
+      },
+      {
+        "particle_id": "spell_engine:electric_arc_b",
+        "shape": "PILLAR",
+        "origin": "FEET",
+        "count": 8.0,
+        "min_speed": 0.01,
+        "max_speed": 0.05,
+        "extent": 3
+      }
+    ]
+  },
+  "impact": [
+    {
+      "action": {
+        "type": "STATUS_EFFECT",
+        "status_effect": {
+          "effect_id": "lne_paladins:holy_weapon",
+          "duration": 10,
+          "apply_mode": "SET",
+          "amplifier_power_multiplier": 0.25,
+          "amplifier": 0,
+          "show_particles": false
+        }
+      }
+    }
+  ],
+  "cost": {
+    "exhaust": 0.3,
+    "item_id": "runes:healing_stone",
+    "cooldown_duration": 30
+  }
+}

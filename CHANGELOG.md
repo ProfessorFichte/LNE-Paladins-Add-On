@@ -1,3 +1,9 @@
+# 0.1.3 - 1.20.1
+- fix Crash with Simply Skills
+- added 2 new simple spells: Paladin: Holy Weapon Priest: Prevention
+- these additional spells can be found in paladin and priest related loot chests
+- they will be bound to the spell books as an additional spell
+
 # 0.1.2 - 1.20.1
 - LivingEntityMixin: fix LNE HelperMethod if LNE is not installed
 - SpellHelperMixin: fix LNE HelperMethod if LNE is not installed

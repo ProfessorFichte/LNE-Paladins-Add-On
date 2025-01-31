@@ -10,5 +10,10 @@
   "passive.lne_paladins.sirens_holy_staff_enemy": "Passive on Enemies: Siren´s Song",
   "passive.lne_paladins.sirens_holy_staff_enemy_1": "10% Chance to play the Siren´s Song, the affected target is in a hypnotic stasis.",
   "effect.lne_paladins.sirens_song": "Siren´s Song",
-  "effect.lne_paladins.sirens_song.description": "The affected target is in a hypnotic stasis unable to move or perform attacks."
+  "effect.lne_paladins.sirens_song.description": "The affected target is in a hypnotic stasis unable to move or perform attacks.",
+
+  "spell.lne_paladins.holy_weapon.name": "Holy Weapon",
+  "spell.lne_paladins.holy_weapon.description": "Self Buff that enhances your melee hits, deals additional damage according to your healing power.",
+  "spell.lne_paladins.holy_prevention.name": "Prevention",
+  "spell.lne_paladins.holy_prevention.description": ""
 }

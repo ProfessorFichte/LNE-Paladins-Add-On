@@ -36,8 +36,8 @@ public class LnePaladinPassives {
             var target = targets.stream().findFirst();
 
             if (item instanceof SirensStaff && type.equals(Spell.Impact.Action.Type.HEAL) && school == SpellSchools.HEALING) {
-                float spell_power_coefficient = spell.impact[0].action.heal.spell_power_coefficient;
-                float healing_power = (float) (healer.getAttributeValue(SpellSchools.HEALING.attribute));
+                //float spell_power_coefficient = spell.impact[0].action.heal.spell_power_coefficient;
+                //float healing_power = (float) (healer.getAttributeValue(SpellSchools.HEALING.attribute));
                 if (target.isPresent()) {
                     Entity entity = target.get();
                     if (entity instanceof LivingEntity livingEntity) {

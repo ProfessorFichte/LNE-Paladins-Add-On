@@ -11,7 +11,7 @@
           "functions": [
             {
               "function": "set_nbt",
-              "tag": "{spell_container:{pool:\"paladins:paladin\",spell_ids:[\"paladins:flash_heal\",\"paladins:divine_protection\"],spell_container:\"MAGIC\"}}"
+              "tag": "{spell_container:{pool:\"paladins:paladin\",spell_ids:[\"paladins:flash_heal\",\"paladins:divine_protection\",\"paladins:judgement\"],spell_container:\"MAGIC\"}}"
             }
           ]
         },
@@ -22,7 +22,7 @@
           "functions": [
             {
               "function": "set_nbt",
-              "tag": "{spell_container:{pool:\"paladins:paladin\",spell_ids:[\"paladins:flash_heal\",\"paladins:divine_protection\",\"paladins:judgement\"],spell_container:\"MAGIC\"}}"
+              "tag": "{spell_container:{pool:\"paladins:paladin\",spell_ids:[\"paladins:flash_heal\",\"paladins:divine_protection\",\"paladins:judgement\",\"lne_paladins:holy_weapon\"],spell_container:\"MAGIC\"}}"
             }
           ]
         }

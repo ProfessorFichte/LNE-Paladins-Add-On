@@ -13,12 +13,19 @@ import static com.lne_paladins.LNE_Paladins_Mod.MOD_ID;
 
 public class Effects {
     public static StatusEffect SIRENS_SONG = new CustomStatusEffect(StatusEffectCategory.HARMFUL, 0x01d9cf);
+    public static StatusEffect HOLY_WEAPON = new CustomStatusEffect(StatusEffectCategory.BENEFICIAL, 0xffffcc);
+    public static StatusEffect PREVENTION = new PreventionStatusEffect(StatusEffectCategory.BENEFICIAL, 0xffffcc);
 
     public static void register() {
         Synchronized.configure(SIRENS_SONG, true);
+        Synchronized.configure(HOLY_WEAPON, true);
+        Synchronized.configure(PREVENTION, true);
+
         ActionImpairing.configure(SIRENS_SONG, EntityActionsAllowed.STUN);
 
         int ID = 20200;
         Registry.register(Registries.STATUS_EFFECT, ID++, new Identifier(MOD_ID, "sirens_song").toString(), SIRENS_SONG);
+        Registry.register(Registries.STATUS_EFFECT, ID++, new Identifier(MOD_ID, "holy_weapon").toString(), HOLY_WEAPON);
+        Registry.register(Registries.STATUS_EFFECT, ID++, new Identifier(MOD_ID, "holy_prevention").toString(), PREVENTION);
     }
 }
