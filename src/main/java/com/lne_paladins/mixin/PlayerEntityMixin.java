@@ -1,6 +1,5 @@
 package com.lne_paladins.mixin;
 
-import com.lne_paladins.LNE_Paladins_Mod;
 import com.lne_paladins.effect.Effects;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -26,11 +25,11 @@ public class PlayerEntityMixin {
     private static final ParticleBatch particles1 = new ParticleBatch(
             "spell_engine:electric_arc_a",
             ParticleBatch.Shape.PILLAR, ParticleBatch.Origin.CENTER, null,
-            6, 0.01F, 0.05F, 0, 3);
+            6, 0.01F, 0.05F, 0, 1.5F);
     private static final ParticleBatch particles2 = new ParticleBatch(
             "spell_engine:healing_ascend",
             ParticleBatch.Shape.PILLAR, ParticleBatch.Origin.FEET, null,
-            20, 0.02F, 0.15F, 0, 1);
+            5, 0.02F, 0.15F, 0, 0.5F);
 
     @Inject(at = @At("TAIL"), method = "attack")
     public void lnePaladins_holyWeapon$attack(Entity target, CallbackInfo ci) {
