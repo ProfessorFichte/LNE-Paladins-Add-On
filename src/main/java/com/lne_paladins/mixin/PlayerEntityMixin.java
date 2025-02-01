@@ -1,5 +1,6 @@
 package com.lne_paladins.mixin;
 
+import com.lne_paladins.LNE_Paladins_Mod;
 import com.lne_paladins.effect.Effects;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -20,38 +21,35 @@ public class PlayerEntityMixin {
 
     private static final ParticleBatch particles = new ParticleBatch(
             "spell_engine:holy_hit",
-            ParticleBatch.Shape.SPHERE,
-            ParticleBatch.Origin.CENTER,
-            null,
-            20,
-            0.2F,
-            0.5F,
-            0);
+            ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER, null,
+            20, 0.2F, 0.5F, 0);
     private static final ParticleBatch particles1 = new ParticleBatch(
             "spell_engine:electric_arc_a",
-            ParticleBatch.Shape.PILLAR,
-            ParticleBatch.Origin.CENTER,
-            null,
-            6,
-            0.01F,
-            0.05F,
-            3);
+            ParticleBatch.Shape.PILLAR, ParticleBatch.Origin.CENTER, null,
+            6, 0.01F, 0.05F, 0, 3);
+    private static final ParticleBatch particles2 = new ParticleBatch(
+            "spell_engine:healing_ascend",
+            ParticleBatch.Shape.PILLAR, ParticleBatch.Origin.FEET, null,
+            20, 0.02F, 0.15F, 0, 1);
 
     @Inject(at = @At("TAIL"), method = "attack")
     public void lnePaladins_holyWeapon$attack(Entity target, CallbackInfo ci) {
         PlayerEntity player = (PlayerEntity)(Object)this;
-        if (player instanceof ServerPlayerEntity && target instanceof LivingEntity livingTarget) {
-            if (player.hasStatusEffect(Effects.HOLY_WEAPON)) {
+        if (player instanceof ServerPlayerEntity && target instanceof LivingEntity livingTarget && player.hasStatusEffect(Effects.HOLY_WEAPON)) {
+            int effect_amp = Objects.requireNonNull(player.getStatusEffect(Effects.HOLY_WEAPON)).getAmplifier() + 1;
+            if(livingTarget.isUndead()) {
                 float healing_power = (float) Objects.requireNonNull(player.getAttributeInstance(SpellSchools.HEALING.attribute)).getValue();
-                int effect_amp = player.getStatusEffect(Effects.HOLY_WEAPON).getAmplifier();
-                float damage_multiplier = 0.5F;
-                if(livingTarget.isUndead()) {
-                    damage_multiplier = 1.0F;
-                }
-                livingTarget.damage(livingTarget.getDamageSources().magic(), (healing_power+effect_amp)*damage_multiplier);
-                ParticleHelper.sendBatches(livingTarget, new ParticleBatch[]{particles});
-                ParticleHelper.sendBatches(livingTarget, new ParticleBatch[]{particles1});
+                float damage_multiplier = 1.0F;
+                float damage_calc = (healing_power*damage_multiplier);
+                livingTarget.damage(livingTarget.getDamageSources().magic(), damage_calc);
             }
+            player.heal(effect_amp);
+
+            ParticleHelper.sendBatches(livingTarget, new ParticleBatch[]{particles});
+            ParticleHelper.sendBatches(livingTarget, new ParticleBatch[]{particles1});
+            ParticleHelper.sendBatches(player, new ParticleBatch[]{particles2});
+
         }
     }
+
 }

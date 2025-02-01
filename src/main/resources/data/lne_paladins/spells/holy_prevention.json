@@ -40,7 +40,7 @@
         "type": "STATUS_EFFECT",
         "status_effect": {
           "effect_id": "lne_paladins:holy_prevention",
-          "amplifier_power_multiplier": 0.25,
+          "amplifier_power_multiplier": 0.2,
           "duration": 8,
           "apply_mode": "SET",
           "amplifier": 0,
@@ -54,7 +54,8 @@
           "origin": "FEET",
           "count": 15,
           "min_speed": 0.02,
-          "max_speed": 0.15
+          "max_speed": 0.15,
+          "extend": 1
         },
         {
           "particle_id": "spell_engine:holy_ascend",
@@ -62,7 +63,8 @@
           "origin": "FEET",
           "count": 15,
           "min_speed": 0.02,
-          "max_speed": 0.15
+          "max_speed": 0.15,
+          "extend": 1
         }
       ],
       "sound": {

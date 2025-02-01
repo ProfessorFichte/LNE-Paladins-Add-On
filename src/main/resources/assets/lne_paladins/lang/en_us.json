@@ -13,7 +13,11 @@
   "effect.lne_paladins.sirens_song.description": "The affected target is in a hypnotic stasis unable to move or perform attacks.",
 
   "spell.lne_paladins.holy_weapon.name": "Holy Weapon",
-  "spell.lne_paladins.holy_weapon.description": "Self Buff that enhances your melee hits, deals additional damage according to your healing power.",
+  "spell.lne_paladins.holy_weapon.description": "Enhances your physical damage and your melee hits heal you for {effect_duration} seconds.",
+  "effect.lne_paladins.holy_weapon": "Holy Weapon",
+  "effect.lne_paladins.holy_weapon.description": "Enhances your physical damage and your melee hits heal you, you deal extra magic damage to undead.",
   "spell.lne_paladins.holy_prevention.name": "Prevention",
-  "spell.lne_paladins.holy_prevention.description": ""
+  "spell.lne_paladins.holy_prevention.description": "Invisible healing shield that activates when you fall below 20% of your max health.",
+  "effect.lne_paladins.holy_prevention": "Prevention",
+  "effect.lne_paladins.holy_prevention.description": "Heals you when you fall below 20% max health, the heal amount enhances with effect amplifier. If you´re already under 20% when the effect is applied, the healing is reduced. "
 }

@@ -30,7 +30,8 @@ public class PreventionStatusEffect extends StatusEffect {
             20,
             0.02F,
             0.15F,
-            0);
+            0,
+            1);
 
     @Override
     public void onApplied(LivingEntity livingEntity, AttributeContainer attributes, int amplifier) {

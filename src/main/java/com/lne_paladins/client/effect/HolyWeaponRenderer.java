@@ -2,20 +2,19 @@ package com.lne_paladins.client.effect;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.RotationAxis;
 import net.spell_engine.api.effect.CustomModelStatusEffect;
-import net.spell_engine.api.render.CustomLayers;
 import net.spell_engine.api.render.CustomModels;
-import net.spell_engine.api.render.LightEmission;
 
 import static com.lne_paladins.LNE_Paladins_Mod.MOD_ID;
 
 public class HolyWeaponRenderer implements CustomModelStatusEffect.Renderer{
-    private static final RenderLayer RENDER_LAYER = CustomLayers.spellEffect(LightEmission.NONE, false);
+    private static final RenderLayer RENDER_LAYER = TexturedRenderLayers.getEntityCutout();
     public static final Identifier modelId = Identifier.of(MOD_ID, "effect/holy_weapon");
 
     @Override
