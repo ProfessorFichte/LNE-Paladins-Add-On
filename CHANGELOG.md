@@ -1,3 +1,7 @@
+# 0.1.4 - 1.20.1
+- tweaked holy_weapon texture a bit
+- the treasure spells names are now displayed in dark purple color
+
 # 0.1.3 - 1.20.1
 - fix Crash with Simply Skills
 - added 2 new simple spells: Paladin: Holy Weapon Priest: Prevention
