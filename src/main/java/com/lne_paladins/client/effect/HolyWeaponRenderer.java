@@ -23,7 +23,7 @@ public class HolyWeaponRenderer implements CustomModelStatusEffect.Renderer{
         var camera =  MinecraftClient.getInstance().gameRenderer.getCamera();
         var direction = camera.getPos().subtract(livingEntity.getPos()).normalize().multiply(livingEntity.getWidth() * 0.5F);
         matrixStack.push();
-        matrixStack.translate(direction.x, direction.y + livingEntity.getHeight() * 1.4F, direction.z );
+        matrixStack.translate(direction.x, direction.y + livingEntity.getHeight() * 1.3F, direction.z );
         matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180F + (float)Math.toDegrees(Math.atan2(direction.x, direction.z)) ));
         matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(camera.getPitch()));
         CustomModels.render(RENDER_LAYER, itemRenderer, modelId, matrixStack, vertexConsumers, light, livingEntity.getId());

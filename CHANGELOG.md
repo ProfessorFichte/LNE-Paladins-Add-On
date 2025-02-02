@@ -1,3 +1,7 @@
+# 0.1.5 - 1.20.1
+- tweaked holy weapon texture again (Thanks Random for the help!)
+- adjusted the height of the status effect render
+
 # 0.1.4 - 1.20.1
 - tweaked holy_weapon texture a bit
 - the treasure spells names are now displayed in dark purple color
