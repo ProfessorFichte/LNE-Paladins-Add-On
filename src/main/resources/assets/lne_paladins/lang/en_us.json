@@ -18,7 +18,7 @@
   "effect.lne_paladins.holy_weapon.description": "Enhances your physical damage and your melee hits heal you, you deal extra magic damage to undead.",
 
   "spell.lne_paladins.holy_prevention.name": "§5Prevention",
-  "spell.lne_paladins.holy_prevention.description": "Invisible healing shield that activates when you fall below 20% of your max health.",
+  "spell.lne_paladins.holy_prevention.description": "Invisible healing shield that activates when you fall below 20%% of your max health.",
   "effect.lne_paladins.holy_prevention": "Prevention",
-  "effect.lne_paladins.holy_prevention.description": "Heals you when you fall below 20% max health, the heal amount enhances with effect amplifier. If you´re already under 20% when the effect is applied, the healing is reduced. "
+  "effect.lne_paladins.holy_prevention.description": "Heals you when you fall below 20%  max health, the heal amount enhances with effect amplifier. If you´re already under 20% when the effect is applied, the healing is reduced. "
 }
