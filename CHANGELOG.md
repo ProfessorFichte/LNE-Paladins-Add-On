@@ -1,3 +1,7 @@
+# 0.1.6 - 1.20.1
+- fixed crash while casting Prevention, when Loot & Explore is not installed (registered the effects only when LNE is installed lol)
+- fixed format error in spell description
+
 # 0.1.5 - 1.20.1
 - tweaked holy weapon texture again (Thanks Random for the help!)
 - adjusted the height of the status effect render
