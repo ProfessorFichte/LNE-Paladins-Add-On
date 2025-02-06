@@ -33,8 +33,8 @@ public class LNE_Paladins_Mod implements ModInitializer {
 	public void onInitialize() {
 		tweaksConfig.refresh();
 		LNEP_Particles.register();
+		Effects.register();
 		if(FabricLoader.getInstance().isModLoaded("loot_n_explore")) {
-			Effects.register();
 			itemConfig.refresh();
 			WeaponRegister.register(itemConfig.value.weapons);
 			itemConfig.save();
