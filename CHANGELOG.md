@@ -1,3 +1,6 @@
+# 0.1.7 - 1.20.1
+- Add Mace & Great Hammer Variants
+
 # 0.1.6 - 1.20.1
 - fixed crash while casting Prevention, when Loot & Explore is not installed (registered the effects only when LNE is installed lol)
 - fixed format error in spell description

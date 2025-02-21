@@ -109,6 +109,82 @@ public class WeaponRegister {
         var item = new GlacialWeapon(material, settings);
         return entry(requiredMod, name, material, item, new ItemConfig.Weapon(claymoreAttackDamage, paladins_claymoreAttackSpeed));
     }
+    //MACES
+    private static final float maceAttackDamage = 10.4F;
+    private static Weapon.Entry maceDragon(String name, Weapon.CustomMaterial material) {
+        return maceDragon(null, name, material);
+    }
+    private static Weapon.Entry maceDragon(String requiredMod, String name, Weapon.CustomMaterial material) {
+        var settings = new Item.Settings();
+        settings = settings.rarity(Rarity.EPIC).fireproof();
+        var item = new DragonWeapon(material, settings);
+        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(maceAttackDamage, paladins_claymoreAttackSpeed));
+    }
+    private static Weapon.Entry maceElderGuardian(String name, Weapon.CustomMaterial material) {
+        return maceElderGuardian(null, name, material);
+    }
+    private static Weapon.Entry maceElderGuardian(String requiredMod, String name, Weapon.CustomMaterial material) {
+        var settings = new Item.Settings();
+        settings = settings.rarity(Rarity.EPIC).fireproof();
+        var item = new ElderGuardianWeapon(material, settings);
+        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(maceAttackDamage, paladins_claymoreAttackSpeed));
+    }
+    private static Weapon.Entry maceWither(String name, Weapon.CustomMaterial material) {
+        return maceWither(null, name, material);
+    }
+    private static Weapon.Entry maceWither(String requiredMod, String name, Weapon.CustomMaterial material) {
+        var settings = new Item.Settings();
+        settings = settings.rarity(Rarity.EPIC).fireproof();
+        var item = new WitherWeapon(material, settings);
+        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(maceAttackDamage, paladins_claymoreAttackSpeed));
+    }
+    private static Weapon.Entry maceGlacial(String name, Weapon.CustomMaterial material) {
+        return maceGlacial(null, name, material);
+    }
+    private static Weapon.Entry maceGlacial(String requiredMod, String name, Weapon.CustomMaterial material) {
+        var settings = new Item.Settings();
+        settings = settings.rarity(Rarity.EPIC).fireproof();
+        var item = new GlacialWeapon(material, settings);
+        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(maceAttackDamage, paladins_maceAttackSpeed));
+    }
+    //HAMMER
+    private static final float hammerAttackDamage = 15.0F;
+    private static Weapon.Entry hammerDragon(String name, Weapon.CustomMaterial material) {
+        return hammerDragon(null, name, material);
+    }
+    private static Weapon.Entry hammerDragon(String requiredMod, String name, Weapon.CustomMaterial material) {
+        var settings = new Item.Settings();
+        settings = settings.rarity(Rarity.EPIC).fireproof();
+        var item = new DragonWeapon(material, settings);
+        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(hammerAttackDamage, paladins_greatHammerAttackSpeed));
+    }
+    private static Weapon.Entry hammerElderGuardian(String name, Weapon.CustomMaterial material) {
+        return hammerElderGuardian(null, name, material);
+    }
+    private static Weapon.Entry hammerElderGuardian(String requiredMod, String name, Weapon.CustomMaterial material) {
+        var settings = new Item.Settings();
+        settings = settings.rarity(Rarity.EPIC).fireproof();
+        var item = new ElderGuardianWeapon(material, settings);
+        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(hammerAttackDamage, paladins_greatHammerAttackSpeed));
+    }
+    private static Weapon.Entry hammerWither(String name, Weapon.CustomMaterial material) {
+        return hammerWither(null, name, material);
+    }
+    private static Weapon.Entry hammerWither(String requiredMod, String name, Weapon.CustomMaterial material) {
+        var settings = new Item.Settings();
+        settings = settings.rarity(Rarity.EPIC).fireproof();
+        var item = new WitherWeapon(material, settings);
+        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(hammerAttackDamage, paladins_greatHammerAttackSpeed));
+    }
+    private static Weapon.Entry hammerGlacial(String name, Weapon.CustomMaterial material) {
+        return hammerGlacial(null, name, material);
+    }
+    private static Weapon.Entry hammerGlacial(String requiredMod, String name, Weapon.CustomMaterial material) {
+        var settings = new Item.Settings();
+        settings = settings.rarity(Rarity.EPIC).fireproof();
+        var item = new GlacialWeapon(material, settings);
+        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(hammerAttackDamage, paladins_greatHammerAttackSpeed));
+    }
 
 
 
@@ -141,7 +217,31 @@ public class WeaponRegister {
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, frostMonarchRepair))
                     .attribute(ItemConfig.Attribute.bonus(SpellSchools.FROST.id, weaponSpellPower));
             //MACE
+            maceDragon("ender_dragon_mace",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, dragonRepair))
+                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, weaponSpellPower));
+            maceElderGuardian("elder_guardian_mace",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, elderGuardianRepair))
+                    .attribute(ItemConfig.Attribute.bonus(MoreSpellSchools.WATER.id, weaponSpellPower));
+            maceGlacial("glacial_mace",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, frostMonarchRepair))
+                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.FROST.id, weaponSpellPower));
+            maceWither("wither_mace",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, witherRepair))
+                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.SOUL.id, weaponSpellPower));
             //HAMMER
+            hammerDragon("ender_dragon_great_hammer",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, dragonRepair))
+                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, weaponSpellPower));
+            hammerElderGuardian("elder_guardian_great_hammer",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, elderGuardianRepair))
+                    .attribute(ItemConfig.Attribute.bonus(MoreSpellSchools.WATER.id, weaponSpellPower));
+            hammerGlacial("glacial_great_hammer",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, frostMonarchRepair))
+                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.FROST.id, weaponSpellPower));
+            hammerWither("wither_great_hammer",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, witherRepair))
+                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.SOUL.id, weaponSpellPower));
         }
 
         Weapon.register(configs, entries, Group.RPG_LOOT_KEY);

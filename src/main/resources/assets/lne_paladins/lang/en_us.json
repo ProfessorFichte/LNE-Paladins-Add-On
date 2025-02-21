@@ -4,6 +4,16 @@
   "item.lne_paladins.ender_dragon_claymore": "Ender Blade",
   "item.lne_paladins.elder_guardian_claymore": "Sea King's Blade",
 
+  "item.lne_paladins.glacial_mace": "Icicle Crusher",
+  "item.lne_paladins.wither_mace": "Withered Mace",
+  "item.lne_paladins.ender_dragon_mace": "Dragon´s Nails",
+  "item.lne_paladins.elder_guardian_mace": "Sea Star",
+
+  "item.lne_paladins.glacial_great_hammer": "Frozen Mallet",
+  "item.lne_paladins.wither_great_hammer": "Withered Great Hammer",
+  "item.lne_paladins.ender_dragon_great_hammer": "Dragon Slam",
+  "item.lne_paladins.elder_guardian_great_hammer": "Tsunami",
+
   "item.lne_paladins.sirens_holy_staff": "Siren's Holy Staff",
   "passive.lne_paladins.sirens_holy_staff_ally": "Passive on Allies: Siren´s Tears",
   "passive.lne_paladins.sirens_holy_staff_ally_1": "15% Chance to clear a negative effect on healing.",
@@ -20,5 +30,5 @@
   "spell.lne_paladins.holy_prevention.name": "§5Prevention",
   "spell.lne_paladins.holy_prevention.description": "Invisible healing shield that activates when you fall below 20%% of your max health.",
   "effect.lne_paladins.holy_prevention": "Prevention",
-  "effect.lne_paladins.holy_prevention.description": "Heals you when you fall below 20%  max health, the heal amount enhances with effect amplifier. If you´re already under 20% when the effect is applied, the healing is reduced. "
+  "effect.lne_paladins.holy_prevention.description": "Heals you when you fall below 20% max health, the heal amount enhances with effect amplifier. If you´re already under 20% when the effect is applied, the healing is reduced. "
 }
