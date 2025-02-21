@@ -1,0 +1,6 @@
+{
+  "parent": "paladins:item/base/great_hammer",
+  "textures": {
+    "1": "lne_paladins:item/glacial_great_hammer"
+  }
+}
