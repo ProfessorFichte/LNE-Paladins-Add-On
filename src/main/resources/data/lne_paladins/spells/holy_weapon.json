@@ -5,7 +5,7 @@
     "tier": 3
   },
   "cast": {
-    "animation": "lne_paladins:holy_weapon_charge",
+    "animation": "more_rpg_classes:kneeing_uprising_charge",
     "duration": 0.75,
     "particles": [
       {
@@ -25,7 +25,7 @@
     },
     "animation": "spell_engine:one_handed_area_release",
     "sound": {
-      "id": "paladins:divine_protection_release"
+      "id": "more_rpg_classes:holy_release"
     },
     "particles": [
       {

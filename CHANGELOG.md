@@ -1,3 +1,8 @@
+# 0.1.8 - 1.20.1
+- Forgot Recipes
+- Add More RPG Library as dependency for animations, particles & sounds
+- Change release sound of the Spell Holy Weapon
+
 # 0.1.7 - 1.20.1
 - Add Mace & Great Hammer Variants
 
