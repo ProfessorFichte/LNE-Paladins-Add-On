@@ -1,3 +1,6 @@
+# 0.1.9 - 1.20.1
+- add missing paladin weapon tags
+
 # 0.1.8 - 1.20.1
 - Forgot Recipes
 - Add More RPG Library as dependency for animations, particles & sounds
