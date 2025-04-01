@@ -1,3 +1,6 @@
+# 0.1.10 - 1.20.1
+- Update Textures
+
 # 0.1.9 - 1.20.1
 - add missing paladin weapon tags
 
