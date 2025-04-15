@@ -1,3 +1,6 @@
+# 0.1.11 - 1.20.1
+- fix Siren Staff Passive GitHub Issue #1 NullReferenceException
+
 # 0.1.10 - 1.20.1
 - Update Textures
 

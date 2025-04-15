@@ -33,21 +33,23 @@ public class LnePaladinPassives {
             Spell spell = getSpell(spellId);
             SpellSchool school = getSpell(spellId).school;
             Spell.Impact.Action.Type type = spell.impact[0].action.type;
-            var target = targets.stream().findFirst();
-
-            if (item instanceof SirensStaff && type.equals(Spell.Impact.Action.Type.HEAL) && school == SpellSchools.HEALING) {
-                //float spell_power_coefficient = spell.impact[0].action.heal.spell_power_coefficient;
-                //float healing_power = (float) (healer.getAttributeValue(SpellSchools.HEALING.attribute));
-                if (target.isPresent()) {
-                    Entity entity = target.get();
-                    if (entity instanceof LivingEntity livingEntity) {
-                        float random = new Random().nextFloat(1.0F);
-                        if (random < tweaksConfig.value.sirens_staff_tears_debuff_chance) {
-                            HelperMethods.clearNegativeEffects(livingEntity, true);
+            if(type != null){
+                var target = targets.stream().findFirst();
+                if (item instanceof SirensStaff && type.equals(Spell.Impact.Action.Type.HEAL) && school == SpellSchools.HEALING) {
+                    //float spell_power_coefficient = spell.impact[0].action.heal.spell_power_coefficient;
+                    //float healing_power = (float) (healer.getAttributeValue(SpellSchools.HEALING.attribute));
+                    if (target.isPresent()) {
+                        Entity entity = target.get();
+                        if (entity instanceof LivingEntity livingEntity) {
+                            float random = new Random().nextFloat(1.0F);
+                            if (random < tweaksConfig.value.sirens_staff_tears_debuff_chance) {
+                                HelperMethods.clearNegativeEffects(livingEntity, true);
+                            }
                         }
                     }
                 }
             }
+
         }
     }
     public static void sirenStaffAttackPassive(LivingEntity target, Entity attacker, DamageSource source){
