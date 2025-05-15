@@ -9,13 +9,13 @@
   ],
   "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "minecraft:nether_star"
+    "item": "loot_n_explore:wither_spine"
   },
   "base": {
-    "item": "paladins:netherite_mace"
+    "item": "paladins:netherite_great_hammer"
   },
   "result": {
-    "item": "lne_paladins:wither_mace"
+    "id": "lne_paladins:wither_great_hammer"
   },
   "template": {
     "item": "loot_n_explore:wither_upgrade_smithing_template"

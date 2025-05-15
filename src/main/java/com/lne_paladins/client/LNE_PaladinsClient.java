@@ -22,6 +22,6 @@ public class LNE_PaladinsClient implements ClientModInitializer {
                 HolyWeaponRenderer.modelId
         ));
         ParticleFactoryRegistry.getInstance().register(LNEP_Particles.PREVENTION_SIGN, PreventionParticle.PreventionSignFactory::new);
-        CustomModelStatusEffect.register(Effects.HOLY_WEAPON, new HolyWeaponRenderer());
+        CustomModelStatusEffect.register(Effects.HOLY_WEAPON.effect, new HolyWeaponRenderer());
     }
 }

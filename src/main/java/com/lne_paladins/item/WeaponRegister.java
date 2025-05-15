@@ -1,6 +1,6 @@
 package com.lne_paladins.item;
 
-import com.lne_paladins.item.weapons.*;
+import more_rpg_loot.RPGLoot;
 import more_rpg_loot.item.Group;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.Item;
@@ -11,9 +11,14 @@ import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.more_rpg_classes.custom.MoreSpellSchools;
-import net.spell_engine.api.item.ItemConfig;
+import net.spell_engine.api.config.AttributeModifier;
+import net.spell_engine.api.config.WeaponConfig;
+import net.spell_engine.api.item.Equipment;
 import net.spell_engine.api.item.weapon.Weapon;
 import net.spell_power.api.SpellSchools;
+import net.spell_engine.api.item.weapon.SpellSwordItem;
+import net.spell_engine.api.item.weapon.SpellWeaponItem;
+import net.spell_engine.api.item.weapon.StaffItem;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -24,21 +29,15 @@ import static com.lne_paladins.LNE_Paladins_Mod.tweaksConfig;
 
 public class WeaponRegister {
     public static final ArrayList<Weapon.Entry> entries = new ArrayList<>();
-
-    private static Weapon.Entry entry(String name, Weapon.CustomMaterial material, Item item, ItemConfig.Weapon defaults) {
-        return entry(null, name, material, item, defaults);
-    }
-
-    private static Weapon.Entry entry(String requiredMod, String name, Weapon.CustomMaterial material, Item item, ItemConfig.Weapon defaults) {
-        var entry = new Weapon.Entry(MOD_ID, name, material, item, defaults, null);
-        if (entry.isRequiredModInstalled()) {
-            entries.add(entry);
-        }
+    private static Weapon.Entry entry(String name, Weapon.CustomMaterial material, Weapon.Factory factory, WeaponConfig defaults, Equipment.WeaponType weaponType) {
+        var entry = new Weapon.Entry(MOD_ID, name, material, factory, defaults, weaponType);
+        entry.castSpell();
+        entries.add(entry);
         return entry;
     }
 
     private static Supplier<Ingredient> ingredient(String idString, boolean requirement, Item fallback) {
-        var id = new Identifier(idString);
+        var id = Identifier.of(idString);
         if (requirement) {
             return () -> {
                 return Ingredient.ofItems(fallback);
@@ -51,145 +50,45 @@ public class WeaponRegister {
             };
         }
     }
-    ///ATTACKSPEED_VALUES
+    ///ATTRIBUTE VALUES
     private static final float paladins_claymoreAttackSpeed = -3F;
+    private static final float claymoreAttackDamage = 13F;
     private static final float paladins_greatHammerAttackSpeed = -3.2F;
+    private static final float hammerAttackDamage = 16.0F;
     private static final float paladins_maceAttackSpeed = -2.8F;
+    private static final float maceAttackDamage = 11F;
     private static final float paladins_staffAttackSpeed = -3F;
-    private static final float weaponSpellPower = 3.0F;
-
-    //HOLY STAFF
     private static final float staffAttackDamage = 4;
     private static final float staffSpellPower = 7.0F;
-    private static Weapon.Entry elderGuardianStaff(String name, Weapon.CustomMaterial material) {
-        return elderGuardianStaff(null, name, material);
+    private static final float weaponSpellPower = 2.0F;
+    ///SPELL IDS
+    public static Identifier dragonclaw = Identifier.of(RPGLoot.MOD_ID, "dragonclaw");
+    public static Identifier avalanche = Identifier.of(RPGLoot.MOD_ID, "avalanche");
+    public static Identifier waterbomb = Identifier.of(RPGLoot.MOD_ID, "waterbomb");
+    public static Identifier wither_pulse = Identifier.of(RPGLoot.MOD_ID, "wither_pulse");
+
+    private static Weapon.Entry healing_staff(String name, Weapon.CustomMaterial material) {
+        var entry = entry(name, material, StaffItem::new, new WeaponConfig(staffAttackDamage, paladins_staffAttackSpeed), Equipment.WeaponType.HEALING_STAFF);
+        entry.weaponAttributesPreset = "staff";
+        return entry;
     }
-    private static Weapon.Entry elderGuardianStaff(String requiredMod, String name, Weapon.CustomMaterial material) {
-        var settings = new Item.Settings();
-        settings = settings.rarity(Rarity.EPIC).fireproof();
-        var item = new SirensStaff(material, settings);
-        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(staffAttackDamage, paladins_staffAttackSpeed));
+    private static Weapon.Entry claymore(String name, Weapon.CustomMaterial material, float damage) {
+        var entry = entry(name, material, SpellSwordItem::new, new WeaponConfig(damage, paladins_claymoreAttackSpeed), Equipment.WeaponType.CLAYMORE);
+        entry.weaponAttributesPreset = "claymore";
+        return entry;
+    }
+    private static Weapon.Entry hammer(String name, Weapon.CustomMaterial material, float damage) {
+        var entry = entry(name, material, SpellWeaponItem::new, new WeaponConfig(damage, paladins_greatHammerAttackSpeed), Equipment.WeaponType.HAMMER);
+        entry.weaponAttributesPreset = "hammer";
+        return entry;
+    }
+    private static Weapon.Entry mace(String name, Weapon.CustomMaterial material, float damage) {
+        var entry = entry(name, material, SpellWeaponItem::new, new WeaponConfig(damage, paladins_maceAttackSpeed), Equipment.WeaponType.MACE);
+        entry.weaponAttributesPreset = "mace";
+        return entry;
     }
 
-    //CLAYMORES
-    private static final float claymoreAttackDamage = 12.25F;
-    private static Weapon.Entry claymoreDragon(String name, Weapon.CustomMaterial material) {
-        return claymoreDragon(null, name, material);
-    }
-    private static Weapon.Entry claymoreDragon(String requiredMod, String name, Weapon.CustomMaterial material) {
-        var settings = new Item.Settings();
-        settings = settings.rarity(Rarity.EPIC).fireproof();
-        var item = new DragonWeapon(material, settings);
-        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(claymoreAttackDamage, paladins_claymoreAttackSpeed));
-    }
-    private static Weapon.Entry claymoreElderGuardian(String name, Weapon.CustomMaterial material) {
-        return claymoreElderGuardian(null, name, material);
-    }
-    private static Weapon.Entry claymoreElderGuardian(String requiredMod, String name, Weapon.CustomMaterial material) {
-        var settings = new Item.Settings();
-        settings = settings.rarity(Rarity.EPIC).fireproof();
-        var item = new ElderGuardianWeapon(material, settings);
-        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(claymoreAttackDamage, paladins_claymoreAttackSpeed));
-    }
-    private static Weapon.Entry claymoreWither(String name, Weapon.CustomMaterial material) {
-        return claymoreWither(null, name, material);
-    }
-    private static Weapon.Entry claymoreWither(String requiredMod, String name, Weapon.CustomMaterial material) {
-        var settings = new Item.Settings();
-        settings = settings.rarity(Rarity.EPIC).fireproof();
-        var item = new WitherWeapon(material, settings);
-        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(claymoreAttackDamage, paladins_claymoreAttackSpeed));
-    }
-    private static Weapon.Entry claymoreGlacial(String name, Weapon.CustomMaterial material) {
-        return claymoreGlacial(null, name, material);
-    }
-    private static Weapon.Entry claymoreGlacial(String requiredMod, String name, Weapon.CustomMaterial material) {
-        var settings = new Item.Settings();
-        settings = settings.rarity(Rarity.EPIC).fireproof();
-        var item = new GlacialWeapon(material, settings);
-        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(claymoreAttackDamage, paladins_claymoreAttackSpeed));
-    }
-    //MACES
-    private static final float maceAttackDamage = 10.4F;
-    private static Weapon.Entry maceDragon(String name, Weapon.CustomMaterial material) {
-        return maceDragon(null, name, material);
-    }
-    private static Weapon.Entry maceDragon(String requiredMod, String name, Weapon.CustomMaterial material) {
-        var settings = new Item.Settings();
-        settings = settings.rarity(Rarity.EPIC).fireproof();
-        var item = new DragonWeapon(material, settings);
-        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(maceAttackDamage, paladins_claymoreAttackSpeed));
-    }
-    private static Weapon.Entry maceElderGuardian(String name, Weapon.CustomMaterial material) {
-        return maceElderGuardian(null, name, material);
-    }
-    private static Weapon.Entry maceElderGuardian(String requiredMod, String name, Weapon.CustomMaterial material) {
-        var settings = new Item.Settings();
-        settings = settings.rarity(Rarity.EPIC).fireproof();
-        var item = new ElderGuardianWeapon(material, settings);
-        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(maceAttackDamage, paladins_claymoreAttackSpeed));
-    }
-    private static Weapon.Entry maceWither(String name, Weapon.CustomMaterial material) {
-        return maceWither(null, name, material);
-    }
-    private static Weapon.Entry maceWither(String requiredMod, String name, Weapon.CustomMaterial material) {
-        var settings = new Item.Settings();
-        settings = settings.rarity(Rarity.EPIC).fireproof();
-        var item = new WitherWeapon(material, settings);
-        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(maceAttackDamage, paladins_claymoreAttackSpeed));
-    }
-    private static Weapon.Entry maceGlacial(String name, Weapon.CustomMaterial material) {
-        return maceGlacial(null, name, material);
-    }
-    private static Weapon.Entry maceGlacial(String requiredMod, String name, Weapon.CustomMaterial material) {
-        var settings = new Item.Settings();
-        settings = settings.rarity(Rarity.EPIC).fireproof();
-        var item = new GlacialWeapon(material, settings);
-        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(maceAttackDamage, paladins_maceAttackSpeed));
-    }
-    //HAMMER
-    private static final float hammerAttackDamage = 15.0F;
-    private static Weapon.Entry hammerDragon(String name, Weapon.CustomMaterial material) {
-        return hammerDragon(null, name, material);
-    }
-    private static Weapon.Entry hammerDragon(String requiredMod, String name, Weapon.CustomMaterial material) {
-        var settings = new Item.Settings();
-        settings = settings.rarity(Rarity.EPIC).fireproof();
-        var item = new DragonWeapon(material, settings);
-        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(hammerAttackDamage, paladins_greatHammerAttackSpeed));
-    }
-    private static Weapon.Entry hammerElderGuardian(String name, Weapon.CustomMaterial material) {
-        return hammerElderGuardian(null, name, material);
-    }
-    private static Weapon.Entry hammerElderGuardian(String requiredMod, String name, Weapon.CustomMaterial material) {
-        var settings = new Item.Settings();
-        settings = settings.rarity(Rarity.EPIC).fireproof();
-        var item = new ElderGuardianWeapon(material, settings);
-        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(hammerAttackDamage, paladins_greatHammerAttackSpeed));
-    }
-    private static Weapon.Entry hammerWither(String name, Weapon.CustomMaterial material) {
-        return hammerWither(null, name, material);
-    }
-    private static Weapon.Entry hammerWither(String requiredMod, String name, Weapon.CustomMaterial material) {
-        var settings = new Item.Settings();
-        settings = settings.rarity(Rarity.EPIC).fireproof();
-        var item = new WitherWeapon(material, settings);
-        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(hammerAttackDamage, paladins_greatHammerAttackSpeed));
-    }
-    private static Weapon.Entry hammerGlacial(String name, Weapon.CustomMaterial material) {
-        return hammerGlacial(null, name, material);
-    }
-    private static Weapon.Entry hammerGlacial(String requiredMod, String name, Weapon.CustomMaterial material) {
-        var settings = new Item.Settings();
-        settings = settings.rarity(Rarity.EPIC).fireproof();
-        var item = new GlacialWeapon(material, settings);
-        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(hammerAttackDamage, paladins_greatHammerAttackSpeed));
-    }
-
-
-
-
-    public static void register(Map<String, ItemConfig.Weapon> configs) {
+    public static void register(Map<String, WeaponConfig> configs) {
         if (!tweaksConfig.value.disable_special_lne_weapons) {
             var dragonRepair = ingredient("loot_n_explore:ender_dragon_scales",
                     FabricLoader.getInstance().isModLoaded("loot_n_explore"), Items.NETHERITE_INGOT);
@@ -199,51 +98,64 @@ public class WeaponRegister {
                     FabricLoader.getInstance().isModLoaded("loot_n_explore"), Items.NETHERITE_INGOT);
             var witherRepair = ingredient("minecraft:nether_star",
                     FabricLoader.getInstance().isModLoaded("loot_n_explore"), Items.NETHERITE_INGOT);
-            //HOLY STAFF
-            elderGuardianStaff("sirens_holy_staff",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, elderGuardianRepair))
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.HEALING.id, staffSpellPower));
-            //CLAYMORES
-            claymoreDragon("ender_dragon_claymore",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, dragonRepair))
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, weaponSpellPower));
-            claymoreElderGuardian("elder_guardian_claymore",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, elderGuardianRepair))
-                    .attribute(ItemConfig.Attribute.bonus(MoreSpellSchools.WATER.id, weaponSpellPower));
-            claymoreWither("wither_claymore",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, witherRepair))
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.SOUL.id, weaponSpellPower));
-            claymoreGlacial("glacial_claymore",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, frostMonarchRepair))
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.FROST.id, weaponSpellPower));
-            //MACE
-            maceDragon("ender_dragon_mace",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, dragonRepair))
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, weaponSpellPower));
-            maceElderGuardian("elder_guardian_mace",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, elderGuardianRepair))
-                    .attribute(ItemConfig.Attribute.bonus(MoreSpellSchools.WATER.id, weaponSpellPower));
-            maceGlacial("glacial_mace",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, frostMonarchRepair))
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.FROST.id, weaponSpellPower));
-            maceWither("wither_mace",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, witherRepair))
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.SOUL.id, weaponSpellPower));
-            //HAMMER
-            hammerDragon("ender_dragon_great_hammer",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, dragonRepair))
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, weaponSpellPower));
-            hammerElderGuardian("elder_guardian_great_hammer",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, elderGuardianRepair))
-                    .attribute(ItemConfig.Attribute.bonus(MoreSpellSchools.WATER.id, weaponSpellPower));
-            hammerGlacial("glacial_great_hammer",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, frostMonarchRepair))
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.FROST.id, weaponSpellPower));
-            hammerWither("wither_great_hammer",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, witherRepair))
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.SOUL.id, weaponSpellPower));
+
+            claymore("ender_dragon_claymore",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.AMETHYST_SHARD)), claymoreAttackDamage)
+                    .spell(dragonclaw)
+                    .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, weaponSpellPower));
+            mace("ender_dragon_mace",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.AMETHYST_SHARD)), maceAttackDamage)
+                    .spell(dragonclaw)
+                    .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, weaponSpellPower));
+            hammer("ender_dragon_great_hammer",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.AMETHYST_SHARD)), hammerAttackDamage)
+                    .spell(dragonclaw)
+                    .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, weaponSpellPower));
+            claymore("elder_guardian_claymore",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD)), claymoreAttackDamage)
+                    .spell(waterbomb)
+                    .attribute(AttributeModifier.bonus(MoreSpellSchools.WATER.id, weaponSpellPower));
+            mace("elder_guardian_mace",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD)), maceAttackDamage)
+                    .spell(waterbomb)
+                    .attribute(AttributeModifier.bonus(MoreSpellSchools.WATER.id, weaponSpellPower));
+            hammer("elder_guardian_great_hammer",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD)), hammerAttackDamage)
+                    .spell(waterbomb)
+                    .attribute(AttributeModifier.bonus(MoreSpellSchools.WATER.id, weaponSpellPower));
+            healing_staff("elder_guardian_holy_staff",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD)))
+                    .spell(waterbomb)
+                    .attribute(AttributeModifier.bonus(SpellSchools.HEALING.id, staffSpellPower))
+                    .attribute(AttributeModifier.bonus(MoreSpellSchools.WATER.id, staffSpellPower));
+            claymore("wither_claymore",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.BONE)), claymoreAttackDamage)
+                    .spell(wither_pulse)
+                    .attribute(AttributeModifier.bonus(SpellSchools.SOUL.id, weaponSpellPower));
+            mace("wither_mace",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.BONE)), maceAttackDamage)
+                    .spell(wither_pulse)
+                    .attribute(AttributeModifier.bonus(SpellSchools.SOUL.id, weaponSpellPower));
+            hammer("wither_great_hammer",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.BONE)), hammerAttackDamage)
+                    .spell(wither_pulse)
+                    .attribute(AttributeModifier.bonus(SpellSchools.SOUL.id, weaponSpellPower));
+            claymore("glacial_claymore",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.ICE)), claymoreAttackDamage)
+                    .spell(avalanche)
+                    .attribute(AttributeModifier.bonus(SpellSchools.FROST.id, weaponSpellPower));
+            mace("glacial_mace",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.ICE)), maceAttackDamage)
+                    .spell(avalanche)
+                    .attribute(AttributeModifier.bonus(SpellSchools.FROST.id, weaponSpellPower));
+            hammer("glacial_great_hammer",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.ICE)), hammerAttackDamage)
+                    .spell(avalanche)
+                    .attribute(AttributeModifier.bonus(SpellSchools.FROST.id, weaponSpellPower));
+
         }
 
+        entries.forEach(entry -> entry.rarity = Rarity.RARE);
         Weapon.register(configs, entries, Group.RPG_LOOT_KEY);
     }
 }

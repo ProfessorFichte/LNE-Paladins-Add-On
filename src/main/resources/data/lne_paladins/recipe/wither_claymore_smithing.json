@@ -9,15 +9,15 @@
   ],
   "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "loot_n_explore:ender_dragon_scales"
+    "item": "loot_n_explore:wither_spine"
   },
   "base": {
-    "item": "paladins:netherite_mace"
+    "item": "paladins:netherite_claymore"
   },
   "result": {
-    "item": "lne_paladins:ender_dragon_mace"
+    "id": "lne_paladins:wither_claymore"
   },
   "template": {
-    "item": "loot_n_explore:dragon_upgrade_smithing_template"
+    "item": "loot_n_explore:wither_upgrade_smithing_template"
   }
 }

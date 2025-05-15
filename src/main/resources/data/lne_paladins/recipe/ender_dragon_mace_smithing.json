@@ -9,15 +9,15 @@
   ],
   "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "loot_n_explore:frozen_soul"
+    "item": "loot_n_explore:ender_dragon_scales"
   },
   "base": {
-    "item": "paladins:netherite_great_hammer"
+    "item": "paladins:netherite_mace"
   },
   "result": {
-    "item": "lne_paladins:glacial_great_hammer"
+    "id": "lne_paladins:ender_dragon_mace"
   },
   "template": {
-    "item": "loot_n_explore:frostmonarch_upgrade_smithing_template"
+    "item": "loot_n_explore:dragon_upgrade_smithing_template"
   }
 }

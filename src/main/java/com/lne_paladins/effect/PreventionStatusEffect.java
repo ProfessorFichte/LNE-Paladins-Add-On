@@ -1,11 +1,10 @@
 package com.lne_paladins.effect;
 
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
-import net.spell_engine.api.spell.ParticleBatch;
-import net.spell_engine.particle.ParticleHelper;
+import net.spell_engine.api.spell.fx.ParticleBatch;
+import net.spell_engine.fx.ParticleHelper;
 
 public class PreventionStatusEffect extends StatusEffect {
     protected PreventionStatusEffect(StatusEffectCategory category, int color) {
@@ -33,8 +32,8 @@ public class PreventionStatusEffect extends StatusEffect {
             0,
             0.5F);
 
-    @Override
-    public void onApplied(LivingEntity livingEntity, AttributeContainer attributes, int amplifier) {
+    public void onApplied(LivingEntity livingEntity, int amplifier) {
+        super.onApplied(livingEntity, amplifier);
         float actual_health_percentage = livingEntity.getHealth() / livingEntity.getMaxHealth();
         float heal_amount = livingEntity.getMaxHealth() * (0.05F + (0.05F + amplifier));
         if(actual_health_percentage <= 0.2F){
@@ -43,23 +42,23 @@ public class PreventionStatusEffect extends StatusEffect {
                 ParticleHelper.sendBatches(livingEntity, new ParticleBatch[]{particles});
                 ParticleHelper.sendBatches(livingEntity, new ParticleBatch[]{particles1});
             }
-            livingEntity.removeStatusEffect(Effects.PREVENTION);
+            livingEntity.removeStatusEffect(Effects.PREVENTION.registryEntry);
         }
     }
 
-    @Override
-    public void applyUpdateEffect(LivingEntity livingEntity, int pAmplifier) {
+    public boolean applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
         float actual_health_percentage = livingEntity.getHealth() / livingEntity.getMaxHealth();
-        float heal_amount = livingEntity.getMaxHealth() * (0.3F + (0.1F * pAmplifier));
+        float heal_amount = livingEntity.getMaxHealth() * (0.3F + (0.1F * amplifier));
         if(actual_health_percentage <= 0.2F){
             livingEntity.heal(heal_amount);
             if(!livingEntity.getWorld().isClient()){
                 ParticleHelper.sendBatches(livingEntity, new ParticleBatch[]{particles});
                 ParticleHelper.sendBatches(livingEntity, new ParticleBatch[]{particles1});
             }
-            livingEntity.removeStatusEffect(Effects.PREVENTION);
+            livingEntity.removeStatusEffect(Effects.PREVENTION.registryEntry);
         }
-        super.applyUpdateEffect(livingEntity, pAmplifier);
+        super.applyUpdateEffect(livingEntity, amplifier);
+        return true;
     }
 
     @Override

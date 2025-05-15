@@ -9,15 +9,15 @@
   ],
   "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "loot_n_explore:frozen_soul"
+    "item": "loot_n_explore:elder_guardian_eye"
   },
   "base": {
     "item": "paladins:netherite_claymore"
   },
   "result": {
-    "item": "lne_paladins:glacial_claymore"
+    "id": "lne_paladins:elder_guardian_claymore"
   },
   "template": {
-    "item": "loot_n_explore:frostmonarch_upgrade_smithing_template"
+    "item": "loot_n_explore:guardian_upgrade_smithing_template"
   }
 }

@@ -9,15 +9,15 @@
   ],
   "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "minecraft:nether_star"
+    "item": "loot_n_explore:elder_guardian_eye"
   },
   "base": {
-    "item": "paladins:netherite_claymore"
+    "item": "paladins:netherite_holy_staff"
   },
   "result": {
-    "item": "lne_paladins:wither_claymore"
+    "id": "lne_paladins:elder_guardian_holy_staff"
   },
   "template": {
-    "item": "loot_n_explore:wither_upgrade_smithing_template"
+    "item": "loot_n_explore:guardian_upgrade_smithing_template"
   }
 }

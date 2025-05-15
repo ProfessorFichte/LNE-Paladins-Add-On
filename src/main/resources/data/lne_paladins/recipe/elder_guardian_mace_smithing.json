@@ -15,7 +15,7 @@
     "item": "paladins:netherite_mace"
   },
   "result": {
-    "item": "lne_paladins:elder_guardian_mace"
+    "id": "lne_paladins:elder_guardian_mace"
   },
   "template": {
     "item": "loot_n_explore:guardian_upgrade_smithing_template"

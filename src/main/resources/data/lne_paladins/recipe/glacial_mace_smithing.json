@@ -15,7 +15,7 @@
     "item": "paladins:netherite_mace"
   },
   "result": {
-    "item": "lne_paladins:glacial_mace"
+    "id": "lne_paladins:glacial_mace"
   },
   "template": {
     "item": "loot_n_explore:frostmonarch_upgrade_smithing_template"

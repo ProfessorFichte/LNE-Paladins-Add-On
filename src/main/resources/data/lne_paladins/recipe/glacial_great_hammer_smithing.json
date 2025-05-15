@@ -9,15 +9,15 @@
   ],
   "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "loot_n_explore:elder_guardian_eye"
+    "item": "loot_n_explore:frozen_soul"
   },
   "base": {
-    "item": "paladins:netherite_holy_staff"
+    "item": "paladins:netherite_great_hammer"
   },
   "result": {
-    "item": "lne_paladins:sirens_holy_staff"
+    "id": "lne_paladins:glacial_great_hammer"
   },
   "template": {
-    "item": "loot_n_explore:guardian_upgrade_smithing_template"
+    "item": "loot_n_explore:frostmonarch_upgrade_smithing_template"
   }
 }

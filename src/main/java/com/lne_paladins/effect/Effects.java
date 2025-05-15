@@ -6,31 +6,53 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import net.spell_engine.api.effect.ActionImpairing;
 import net.spell_engine.api.effect.EntityActionsAllowed;
 import net.spell_engine.api.effect.Synchronized;
 
+import java.util.ArrayList;
+
 import static com.lne_paladins.LNE_Paladins_Mod.MOD_ID;
 
 public class Effects {
-    public static StatusEffect SIRENS_SONG = new CustomStatusEffect(StatusEffectCategory.HARMFUL, 0x01d9cf);
-    public static StatusEffect HOLY_WEAPON = new CustomStatusEffect(StatusEffectCategory.BENEFICIAL, 0xffffcc);
-    public static StatusEffect PREVENTION = new PreventionStatusEffect(StatusEffectCategory.BENEFICIAL, 0xffffcc);
+    private static final ArrayList<Entry> entries = new ArrayList<Entry>();
+    public static class Entry {
+        public final Identifier id;
+        public final StatusEffect effect;
+        public RegistryEntry<StatusEffect> registryEntry;
+
+        public Entry(String name, StatusEffect effect) {
+            this.id = Identifier.of(MOD_ID, name);
+            this.effect = effect;
+            entries.add(this);
+        }
+
+        public void register() {
+            registryEntry = Registry.registerReference(Registries.STATUS_EFFECT, id, effect);
+        }
+
+        public Identifier modifierId() {
+            return Identifier.of(MOD_ID, "effect." + id.getPath());
+        }
+    }
+    public static final Entry SIRENS_SONG =  new Entry("sirens_song",
+            new CustomStatusEffect(StatusEffectCategory.HARMFUL, 0x01d9cf));
+    public static final Entry HOLY_WEAPON =  new Entry("holy_weapon",
+            new CustomStatusEffect(StatusEffectCategory.BENEFICIAL, 0xffffcc));
+    public static final Entry PREVENTION =  new Entry("holy_prevention",
+            new PreventionStatusEffect(StatusEffectCategory.BENEFICIAL, 0xffffcc));
 
     public static void register() {
-        HOLY_WEAPON.addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, "8df38693-8f24-4c8c-b346-75ab7e6cc1aa",
-                0.1F, EntityAttributeModifier.Operation.MULTIPLY_BASE);
+        Synchronized.configure(SIRENS_SONG.effect, true);
+        Synchronized.configure(HOLY_WEAPON.effect, true);
+        Synchronized.configure(PREVENTION.effect, true);
 
-        Synchronized.configure(SIRENS_SONG, true);
-        Synchronized.configure(HOLY_WEAPON, true);
-        Synchronized.configure(PREVENTION, true);
+        ActionImpairing.configure(SIRENS_SONG.effect, EntityActionsAllowed.STUN);
 
-        ActionImpairing.configure(SIRENS_SONG, EntityActionsAllowed.STUN);
-
-        int ID = 20200;
-        Registry.register(Registries.STATUS_EFFECT, ID++, new Identifier(MOD_ID, "sirens_song").toString(), SIRENS_SONG);
-        Registry.register(Registries.STATUS_EFFECT, ID++, new Identifier(MOD_ID, "holy_weapon").toString(), HOLY_WEAPON);
-        Registry.register(Registries.STATUS_EFFECT, ID++, new Identifier(MOD_ID, "holy_prevention").toString(), PREVENTION);
+        for (Entry entry: entries) {
+            entry.register();
+        }
     }
 }

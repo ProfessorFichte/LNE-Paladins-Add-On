@@ -12,10 +12,10 @@
     "item": "loot_n_explore:ender_dragon_scales"
   },
   "base": {
-    "item": "paladins:netherite_claymore"
+    "item": "paladins:netherite_great_hammer"
   },
   "result": {
-    "item": "lne_paladins:ender_dragon_claymore"
+    "id": "lne_paladins:ender_dragon_great_hammer"
   },
   "template": {
     "item": "loot_n_explore:dragon_upgrade_smithing_template"

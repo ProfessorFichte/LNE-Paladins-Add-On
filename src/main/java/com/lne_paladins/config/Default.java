@@ -1,15 +1,10 @@
 package com.lne_paladins.config;
 
-import net.spell_engine.api.item.ItemConfig;
-import com.lne_paladins.item.WeaponRegister;
+import net.spell_engine.api.config.ConfigFile;
 
 public class Default {
-    public final static ItemConfig itemConfig;
+    public final static ConfigFile.Equipment itemConfig;
     static {
-        itemConfig = new ItemConfig();
-        for (var weapon: WeaponRegister.entries) {
-            itemConfig.weapons.put(weapon.name(), weapon.defaults());
-        }
-
+        itemConfig = new ConfigFile.Equipment();
     }
 }

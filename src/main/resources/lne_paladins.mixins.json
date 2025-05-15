@@ -3,9 +3,6 @@
   "package": "com.lne_paladins.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "LivingEntityMixin",
-    "PlayerEntityMixin",
-    "SpellHelperMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -5,5 +5,4 @@ public class TweaksConfig {
     public float sirens_staff_tears_debuff_chance = 0.15F;
     public float sirens_staff_song_chance = 0.1F;
     public int sirens_staff_song_duration = 2;
-
 }

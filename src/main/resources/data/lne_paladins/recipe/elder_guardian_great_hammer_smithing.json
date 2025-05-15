@@ -12,10 +12,10 @@
     "item": "loot_n_explore:elder_guardian_eye"
   },
   "base": {
-    "item": "paladins:netherite_claymore"
+    "item": "paladins:netherite_great_hammer"
   },
   "result": {
-    "item": "lne_paladins:elder_guardian_claymore"
+    "id": "lne_paladins:elder_guardian_great_hammer"
   },
   "template": {
     "item": "loot_n_explore:guardian_upgrade_smithing_template"
