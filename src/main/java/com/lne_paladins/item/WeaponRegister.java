@@ -26,6 +26,7 @@ import java.util.function.Supplier;
 
 import static com.lne_paladins.LNE_Paladins_Mod.MOD_ID;
 import static com.lne_paladins.LNE_Paladins_Mod.tweaksConfig;
+import static more_rpg_loot.compat.spell_engine.LNE_Weapons.*;
 
 public class WeaponRegister {
     public static final ArrayList<Weapon.Entry> entries = new ArrayList<>();
@@ -62,10 +63,7 @@ public class WeaponRegister {
     private static final float staffSpellPower = 7.0F;
     private static final float weaponSpellPower = 2.0F;
     ///SPELL IDS
-    public static Identifier dragonclaw = Identifier.of(RPGLoot.MOD_ID, "dragonclaw");
-    public static Identifier avalanche = Identifier.of(RPGLoot.MOD_ID, "avalanche");
-    public static Identifier waterbomb = Identifier.of(RPGLoot.MOD_ID, "waterbomb");
-    public static Identifier wither_pulse = Identifier.of(RPGLoot.MOD_ID, "wither_pulse");
+    public static Identifier sirens_tears = Identifier.of(MOD_ID, "sirens_tears");
 
     private static Weapon.Entry healing_staff(String name, Weapon.CustomMaterial material) {
         var entry = entry(name, material, StaffItem::new, new WeaponConfig(staffAttackDamage, paladins_staffAttackSpeed), Equipment.WeaponType.HEALING_STAFF);
@@ -116,7 +114,7 @@ public class WeaponRegister {
                     .attribute(AttributeModifier.bonus(MoreSpellSchools.WATER.id, weaponSpellPower));
             healing_staff("elder_guardian_holy_staff",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD)))
-                    .spell(waterbomb)
+                    .spell(sirens_tears)
                     .attribute(AttributeModifier.bonus(SpellSchools.HEALING.id, staffSpellPower))
                     .attribute(AttributeModifier.bonus(MoreSpellSchools.WATER.id, staffSpellPower));
             claymore("wither_claymore",

@@ -1,3 +1,6 @@
+### 1.0.1 - 1.21.1
+- forgot to add sirens tears spell to the elder guardian holy staff
+
 ### 1.0.0 - 1.21.1
 # Official 1.21.1 Release!
 # CHANGES
