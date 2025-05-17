@@ -23,12 +23,15 @@
   "effect.lne_paladins.sirens_song.description": "The affected target is in a hypnotic stasis unable to move or perform attacks.",
 
   "spell.lne_paladins.holy_weapon.name": "Holy Weapon",
-  "spell.lne_paladins.holy_weapon.description": "Enhances your next {effect_amplifier} melee hits, dealing extra healing spell power damage.",
+  "spell.lne_paladins.holy_weapon.description": "Enhances your next melee hits with {damage} healing spell damage, heals the caster for {heal} hearts.",
   "effect.lne_paladins.holy_weapon": "Holy Weapon",
   "effect.lne_paladins.holy_weapon.description": "Enhances your melee hits heal with additional healing power damage, 100% crit chance against undead.",
 
   "spell.lne_paladins.holy_prevention.name": "Prevention",
   "spell.lne_paladins.holy_prevention.description": "Invisible healing shield for {effect_duration} seconds, that activates when you fall below 20%% of your max health.",
   "effect.lne_paladins.holy_prevention": "Prevention",
-  "effect.lne_paladins.holy_prevention.description": "Heals you when you fall below 20% max health, the heal amount enhances with effect amplifier. If you´re already under 20% when the effect is applied, the healing is reduced. "
+  "effect.lne_paladins.holy_prevention.description": "Heals you when you fall below 20% max health, the heal amount enhances with effect amplifier. If you´re already under 20% when the effect is applied, the healing is reduced. ",
+
+  "item.paladins.paladin.treasure_spell_scroll": "Treasure Paladin Spell Scroll",
+  "item.paladins.priest.treasure_spell_scroll": "Treasure Holy Spell Scroll"
 }

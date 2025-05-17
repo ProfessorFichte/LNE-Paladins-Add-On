@@ -1,44 +1,77 @@
 {
-  "type": "minecraft:chest",
   "pools": [
-
     {
       "rolls": 1,
       "entries": [
         {
           "type": "minecraft:item",
-          "weight": 3,
-          "name": "minecraft:book"
-        },
-        {
-          "type": "item",
-          "name": "paladins:priest_spell_book",
-          "weight": 2,
-          "functions": [
-            {
-              "function": "set_nbt",
-              "tag": "{spell_container:{pool:\"paladins:priest\",spell_ids:[\"paladins:holy_shock\"],spell_container:\"MAGIC\"}}",
-              "conditions": [
-                {
-                  "condition": "random_chance",
-                  "chance": 0.4
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "item",
-          "name": "paladins:priest_spell_book",
+          "name": "spell_engine:scroll",
           "weight": 1,
           "functions": [
             {
-              "function": "set_nbt",
-              "tag": "{spell_container:{pool:\"paladins:priest\",spell_ids:[\"paladins:holy_shock\",\"paladins:holy_beam\"],spell_container:\"MAGIC\"}}"
+              "function": "minecraft:set_components",
+              "components": {
+                "spell_engine:spell_container": {
+                  "spell_ids": ["paladins:holy_shock"],
+                  "max_spell_count": 1
+                },
+                "minecraft:custom_model_data": 5,
+                "minecraft:item_name": "{translate:item.paladins.priest.spell_scroll}",
+                "minecraft:rarity": "common"
+              }
+            },
+            {
+              "function": "minecraft:set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "spell_engine:scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "spell_engine:spell_container": {
+                  "spell_ids": ["paladins:holy_beam"],
+                  "max_spell_count": 1
+                },
+                "minecraft:custom_model_data": 5,
+                "minecraft:item_name": "{translate:item.paladins.priest.spell_scroll}",
+                "minecraft:rarity": "uncommon"
+              }
+            },
+            {
+              "function": "minecraft:set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "spell_engine:scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "spell_engine:spell_container": {
+                  "spell_ids": ["paladins:circle_of_healing"],
+                  "max_spell_count": 1
+                },
+                "minecraft:custom_model_data": 5,
+                "minecraft:item_name": "{translate:item.paladins.priest.spell_scroll}",
+                "minecraft:rarity": "rare"
+              }
+            },
+            {
+              "function": "minecraft:set_count",
+              "count": 1
             }
           ]
         }
-
       ]
     }
   ]

@@ -10,7 +10,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "loot_n_explore:spell_books/paladins/beginner_priest"
+          "value": "loot_n_explore:spell_scrolls/paladins/beginner_priest"
         }
       ]
     },
@@ -23,7 +23,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "paladins:chests/village_monk"
+          "value": "paladins:chests/village_monk"
         }
       ]
     }

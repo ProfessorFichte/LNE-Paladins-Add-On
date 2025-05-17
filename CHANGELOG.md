@@ -5,5 +5,4 @@
 - The Class related structures will now contain spell scrolls in their loot chests
 - Made some small loot table tweaks
 - Siren's Holy Staff's Item Id was changed to -> elder_guardian_holy_staff
-- Holy Weapon Effect doesn't heal anymore you per hit, just the extra damage per hit
-- THe Holy Weapon Hits are 100% Crit against undead foes
+- THe Holy Weapon Hits deal increased damage against undead foes

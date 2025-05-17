@@ -90,15 +90,6 @@ public class WeaponRegister {
 
     public static void register(Map<String, WeaponConfig> configs) {
         if (!tweaksConfig.value.disable_special_lne_weapons) {
-            var dragonRepair = ingredient("loot_n_explore:ender_dragon_scales",
-                    FabricLoader.getInstance().isModLoaded("loot_n_explore"), Items.NETHERITE_INGOT);
-            var elderGuardianRepair = ingredient("loot_n_explore:elder_guardian_eye",
-                    FabricLoader.getInstance().isModLoaded("loot_n_explore"), Items.NETHERITE_INGOT);
-            var frostMonarchRepair = ingredient("loot_n_explore:frozen_soul",
-                    FabricLoader.getInstance().isModLoaded("loot_n_explore"), Items.NETHERITE_INGOT);
-            var witherRepair = ingredient("minecraft:nether_star",
-                    FabricLoader.getInstance().isModLoaded("loot_n_explore"), Items.NETHERITE_INGOT);
-
             claymore("ender_dragon_claymore",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.AMETHYST_SHARD)), claymoreAttackDamage)
                     .spell(dragonclaw)

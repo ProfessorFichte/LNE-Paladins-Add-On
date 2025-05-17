@@ -53,14 +53,15 @@
     "type": "STASH_EFFECT",
     "stash_effect": {
       "id": "lne_paladins:holy_weapon",
-      "amplifier": 7,
+      "amplifier": 0,
+      "apply_mode": "SET",
       "duration": 10.0,
       "triggers": [
         {
           "type": "MELEE_IMPACT"
         }
       ],
-      "consume": 1,
+      "consume": 0,
       "impact_mode": "PERFORM"
     }
   },
@@ -75,14 +76,15 @@
             }
           ],
           "modifier": {
-            "critical_chance_bonus": 1.0
+            "power_multiplier": 0.5
           }
         }
       ],
+      "attribute": "minecraft:generic.attack_damage",
       "action": {
         "type": "DAMAGE",
         "damage": {
-          "spell_power_coefficient": 1.0
+          "spell_power_coefficient": 0.3
         }
       },
       "particles": [
@@ -107,9 +109,40 @@
       "sound": {
         "id": "paladins:holy_shock_damage"
       }
+    },
+    {
+      "attribute": "minecraft:generic.attack_damage",
+      "action": {
+        "type": "HEAL",
+        "apply_to_caster": true,
+        "heal": {
+          "spell_power_coefficient": 0.1
+        }
+      },
+      "particles": [
+        {
+          "particle_id": "spell_engine:magic_spark_float",
+          "origin": "CENTER",
+          "shape": "WIDE_PIPE",
+          "count": 15.0,
+          "min_speed": 0.02,
+          "max_speed": 0.1,
+          "color_rgba": 4281545727
+        },
+        {
+          "particle_id": "spell_engine:magic_nature_impact_ascend",
+          "origin": "FEET",
+          "shape": "PILLAR",
+          "count": 30.0,
+          "min_speed": 0.02,
+          "max_speed": 0.15
+        }
+      ],
+      "sound": {
+        "id": "spell_engine:generic_healing_impact_1"
+      }
     }
-  ],
-
+    ],
   "cost": {
     "cooldown": {
       "duration": 35.0

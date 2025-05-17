@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "lne_paladins:elder_guardian_claymore",
+      "required": false
+    },
+    {
+      "id": "lne_paladins:elder_guardian_mace",
+      "required": false
+    },
+    {
+      "id": "lne_paladins:elder_guardian_great_hammer",
+      "required": false
+    },
+    {
+      "id": "lne_paladins:elder_guardian_holy_staff",
+      "required": false
+    }
+  ]
+}

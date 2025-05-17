@@ -1,0 +1,20 @@
+{
+  "values": [
+    {
+      "id": "lne_paladins:ender_dragon_mace",
+      "required": false
+    },
+    {
+      "id": "lne_paladins:elder_guardian_mace",
+      "required": false
+    },
+    {
+      "id": "lne_paladins:wither_mace",
+      "required": false
+    },
+    {
+      "id": "lne_paladins:glacial_mace",
+      "required": false
+    }
+  ]
+}

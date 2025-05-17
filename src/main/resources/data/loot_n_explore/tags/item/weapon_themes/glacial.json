@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "lne_paladins:glacial_claymore",
+      "required": false
+    },
+    {
+      "id": "lne_paladins:glacial_mace",
+      "required": false
+    },
+    {
+      "id": "lne_paladins:glacial_great_hammer",
+      "required": false
+    }
+  ]
+}

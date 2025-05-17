@@ -1,0 +1,20 @@
+{
+  "values": [
+    {
+      "id": "lne_paladins:ender_dragon_great_hammer",
+      "required": false
+    },
+    {
+      "id": "lne_paladins:elder_guardian_great_hammer",
+      "required": false
+    },
+    {
+      "id": "lne_paladins:wither_great_hammer",
+      "required": false
+    },
+    {
+      "id": "lne_paladins:glacial_great_hammer",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "lne_paladins:wither_claymore",
+      "required": false
+    },
+    {
+      "id": "lne_paladins:wither_mace",
+      "required": false
+    },
+    {
+      "id": "lne_paladins:wither_great_hammer",
+      "required": false
+    }
+  ]
+}
