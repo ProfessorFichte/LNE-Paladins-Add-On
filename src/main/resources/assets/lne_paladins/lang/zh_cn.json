@@ -1,0 +1,34 @@
+{
+    "item.lne_paladins.glacial_claymore": "冰川巨刃",
+    "item.lne_paladins.wither_claymore": "凋灵大剑",
+    "item.lne_paladins.ender_dragon_claymore": "末影之刃",
+    "item.lne_paladins.elder_guardian_claymore": "海皇圣剑",
+
+    "item.lne_paladins.glacial_mace": "冰锥粉碎者",
+    "item.lne_paladins.wither_mace": "凋零链锤",
+    "item.lne_paladins.ender_dragon_mace": "龙牙战锤",
+    "item.lne_paladins.elder_guardian_mace": "海星权杖",
+
+    "item.lne_paladins.glacial_great_hammer": "寒霜巨槌",
+    "item.lne_paladins.wither_great_hammer": "凋零战锤",
+    "item.lne_paladins.ender_dragon_great_hammer": "龙魂轰击",
+    "item.lne_paladins.elder_guardian_great_hammer": "海啸",
+
+    "item.lne_paladins.sirens_holy_staff": "海妖圣杖",
+    "passive.lne_paladins.sirens_holy_staff_ally": "友方被动：海妖之泪",
+    "passive.lne_paladins.sirens_holy_staff_ally_1": "15% 概率在治疗时清除负面效果",
+    "passive.lne_paladins.sirens_holy_staff_enemy": "敌方被动：海妖之歌",
+    "passive.lne_paladins.sirens_holy_staff_enemy_1": "10% 概率触发海妖之歌，使目标陷入催眠静滞",
+    "effect.lne_paladins.sirens_song": "海妖之歌",
+    "effect.lne_paladins.sirens_song.description": "目标陷入催眠静滞状态，无法移动或攻击",
+  
+    "spell.lne_paladins.holy_weapon.name": "§5神圣武装",
+    "spell.lne_paladins.holy_weapon.description": "提升物理伤害，持续{effect_duration}秒内近战攻击可恢复生命",
+    "effect.lne_paladins.holy_weapon": "神圣武装",
+    "effect.lne_paladins.holy_weapon.description": "增强物理伤害并使近战攻击具有治疗效果，对亡灵生物造成额外魔法伤害",
+  
+    "spell.lne_paladins.holy_prevention.name": "§5圣佑结界",
+    "spell.lne_paladins.holy_prevention.description": "生命低于 20% 时触发的隐形治疗护盾",
+    "effect.lne_paladins.holy_prevention": "圣佑结界",
+    "effect.lne_paladins.holy_prevention.description": "生命低于 20% 时进行治疗，治疗效果随效果等级提升。若生效时已低于 20%，则治疗效果减半"
+}
