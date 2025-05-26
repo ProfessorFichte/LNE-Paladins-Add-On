@@ -1,8 +1,6 @@
 package com.lne_paladins.item;
 
-import more_rpg_loot.RPGLoot;
 import more_rpg_loot.item.Group;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterials;

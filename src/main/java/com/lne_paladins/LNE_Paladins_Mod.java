@@ -3,6 +3,7 @@ package com.lne_paladins;
 import com.lne_paladins.client.particle.LNEP_Particles;
 import com.lne_paladins.config.Default;
 import com.lne_paladins.effect.Effects;
+import com.lne_paladins.item.LNEShields;
 import com.lne_paladins.item.WeaponRegister;
 import net.fabricmc.api.ModInitializer;
 import com.lne_paladins.config.TweaksConfig;
@@ -28,6 +29,12 @@ public class LNE_Paladins_Mod implements ModInitializer {
 			.setDirectory(MOD_ID)
 			.sanitize(true)
 			.build();
+	public static ConfigManager<ConfigFile.Shields> shieldConfig = new ConfigManager<>
+			("shields", new ConfigFile.Shields())
+			.builder()
+			.setDirectory(MOD_ID)
+			.sanitize(true)
+			.build();
 
 	@Override
 	public void onInitialize() {
@@ -36,8 +43,11 @@ public class LNE_Paladins_Mod implements ModInitializer {
 		Effects.register();
 		if(FabricLoader.getInstance().isModLoaded("loot_n_explore")) {
 			itemConfig.refresh();
+			shieldConfig.refresh();
+			LNEShields.register(shieldConfig.value.shields);
 			WeaponRegister.register(itemConfig.value.weapons);
 			itemConfig.save();
+			shieldConfig.save();
 		}
 	}
 }

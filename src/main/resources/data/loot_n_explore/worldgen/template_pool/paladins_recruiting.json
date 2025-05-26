@@ -6,9 +6,9 @@
       "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "loot_n_explore:paladins_recruiting",
+        "location": "loot_n_explore:paladins_recruiting/main_0",
         "projection": "rigid",
-        "processors": "minecraft:empty"
+        "processors": "loot_n_explore:grass_terrain_randomizer"
       }
     }
   ]
