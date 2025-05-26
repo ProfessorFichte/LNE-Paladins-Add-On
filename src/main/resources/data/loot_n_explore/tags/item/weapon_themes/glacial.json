@@ -12,6 +12,10 @@
     {
       "id": "lne_paladins:glacial_great_hammer",
       "required": false
+    },
+    {
+      "id": "lne_paladins:glacial_shield",
+      "required": false
     }
   ]
 }

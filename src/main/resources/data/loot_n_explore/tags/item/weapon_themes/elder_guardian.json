@@ -16,6 +16,10 @@
     {
       "id": "lne_paladins:elder_guardian_holy_staff",
       "required": false
+    },
+    {
+      "id": "lne_paladins:elder_guardian_shield",
+      "required": false
     }
   ]
 }

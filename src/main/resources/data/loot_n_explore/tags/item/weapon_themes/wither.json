@@ -12,6 +12,10 @@
     {
       "id": "lne_paladins:wither_great_hammer",
       "required": false
+    },
+    {
+      "id": "lne_paladins:wither_shield",
+      "required": false
     }
   ]
 }

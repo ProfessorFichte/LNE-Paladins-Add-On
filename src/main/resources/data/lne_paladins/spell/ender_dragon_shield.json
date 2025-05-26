@@ -1,0 +1,70 @@
+{
+  "school": "PHYSICAL_MELEE",
+  "range": 3.5,
+  "tier": 8,
+  "type": "PASSIVE",
+  "passive": {
+    "triggers": [
+      {
+        "type": "SHIELD_BLOCK",
+        "chance": 0.4
+      }
+    ]
+  },
+  "target": {
+    "type": "AREA",
+    "area": {
+      "vertical_range_multiplier": 1.0
+    }
+  },
+  "release": {
+    "sound": {
+      "id": "entity.generic.explode"
+    },
+    "particles": [
+      {
+        "particle_id": "spell_engine:magic_arcane_impact_burst",
+        "shape": "CIRCLE",
+        "origin": "CENTER",
+        "count": 130.0,
+        "min_speed": 0.2,
+        "max_speed": 1.5
+      },
+      {
+        "particle_id": "spell_engine:magic_arcane_stripe_burst",
+        "shape": "CIRCLE",
+        "origin": "CENTER",
+        "count": 130.0,
+        "min_speed": 0.8,
+        "max_speed": 1.9
+      }
+    ]
+  },
+  "impacts": [
+    {
+      "action": {
+        "type": "DAMAGE",
+        "damage": {
+          "spell_power_coefficient": 0.4,
+          "knockback": 1.0
+        }
+      },
+      "particles": [
+        {
+          "particle_id": "spell_engine:magic_arcane_impact_burst",
+          "shape": "SPHERE",
+          "origin": "CENTER",
+          "count": 30.0,
+          "min_speed": 0.2,
+          "max_speed": 1.2
+        }
+      ]
+    }
+  ],
+  "cost": {
+    "cooldown": {
+      "duration": 10.0,
+      "hosting_item": false
+    }
+  }
+}

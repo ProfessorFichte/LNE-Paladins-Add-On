@@ -12,6 +12,10 @@
     {
       "id": "lne_paladins:ender_dragon_great_hammer",
       "required": false
+    },
+    {
+      "id": "lne_paladins:ender_dragon_shield",
+      "required": false
     }
   ]
 }
