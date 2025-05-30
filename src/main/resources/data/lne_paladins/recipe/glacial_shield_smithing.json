@@ -1,0 +1,23 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "loot_n_explore"
+      ]
+    }
+  ],
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "loot_n_explore:frozen_soul"
+  },
+  "base": {
+    "item": "paladins:netherite_kite_shield"
+  },
+  "result": {
+    "id": "lne_paladins:glacial_shield"
+  },
+  "template": {
+    "item": "loot_n_explore:frostmonarch_upgrade_smithing_template"
+  }
+}

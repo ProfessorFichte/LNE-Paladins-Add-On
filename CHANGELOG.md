@@ -1,3 +1,6 @@
+### 1.0.3 - 1.21.1
+- forgot some shield recipes
+
 ### 1.0.2 - 1.21.1
 - 4x new LNE-Paladin Shield variants
 - new Models for the LNE - Paladin Great Hammer's & Mace's
