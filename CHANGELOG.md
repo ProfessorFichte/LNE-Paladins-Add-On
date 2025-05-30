@@ -1,9 +1,10 @@
 ### 1.0.2 - 1.21.1
 - 4x new LNE-Paladin Shield variants
 - new Models for the LNE - Paladin Great Hammer's & Mace's
-- a new paladin & priest church structure!
+- a new paladin & priest holy church structure!
 - increased separation & spacing for paladin structure sets, because they generated to frequently
 - Update Mod License to ARR
+- generate small random paths and decoration near some small structures
 
 ### 1.0.1 - 1.21.1
 - forgot to add sirens tears spell to the elder guardian holy staff
