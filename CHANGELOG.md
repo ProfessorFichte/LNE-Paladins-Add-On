@@ -1,3 +1,6 @@
+### 1.0.4 - 1.21.1
+- Update Mod Icon
+
 ### 1.0.3 - 1.21.1
 - forgot some shield recipes
 
