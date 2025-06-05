@@ -1,3 +1,8 @@
+# 0.1.12 - 1.20.1
+- Backport new Models to 1.20.1 Mod Version
+- Update Mod Icon
+- Add zh_cn lang file (Thx Ansurfen)
+
 # 0.1.11 - 1.20.1
 - fix Siren Staff Passive GitHub Issue #1 NullReferenceException
 

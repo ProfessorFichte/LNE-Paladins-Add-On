@@ -1,5 +1,6 @@
 package com.lne_paladins.api;
 
+import com.lne_paladins.LNE_Paladins_Mod;
 import com.lne_paladins.effect.Effects;
 import com.lne_paladins.item.weapons.SirensStaff;
 import more_rpg_loot.util.HelperMethods;
@@ -33,7 +34,10 @@ public class LnePaladinPassives {
             Spell spell = getSpell(spellId);
             SpellSchool school = getSpell(spellId).school;
             Spell.Impact.Action.Type type = spell.impact[0].action.type;
+            //Spell.Impact.Action.Type type2 = spell.impact[1].action.type;
             if(type != null){
+                //LNE_Paladins_Mod.LOGGER.info("type " + type );
+                //LNE_Paladins_Mod.LOGGER.info("type2 " + type2 );
                 var target = targets.stream().findFirst();
                 if (item instanceof SirensStaff && type.equals(Spell.Impact.Action.Type.HEAL) && school == SpellSchools.HEALING) {
                     //float spell_power_coefficient = spell.impact[0].action.heal.spell_power_coefficient;

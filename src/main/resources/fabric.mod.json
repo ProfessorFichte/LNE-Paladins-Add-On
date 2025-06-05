@@ -10,7 +10,7 @@
 	"contact": {
 		"sources": "https://github.com/ProfessorFichte/LNE-Paladins-Add-On"
 	},
-	"license": "MIT",
+	"license": "ARR",
 	"icon": "assets/lne_paladins/icon.png",
 	"environment": "*",
 	"entrypoints": {
