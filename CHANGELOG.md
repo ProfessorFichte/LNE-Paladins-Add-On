@@ -1,3 +1,6 @@
+### 1.0.5 - 1.21.1
+- Spell Engine 1.7
+
 ### 1.0.4 - 1.21.1
 - Update Mod Icon
 

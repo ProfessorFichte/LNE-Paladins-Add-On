@@ -56,7 +56,8 @@
           "origin": "CENTER",
           "count": 30.0,
           "min_speed": 0.2,
-          "max_speed": 1.2
+          "max_speed": 1.2,
+          "color_rgba": 4284940287
         }
       ]
     }
