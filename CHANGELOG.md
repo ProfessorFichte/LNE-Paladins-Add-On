@@ -1,3 +1,8 @@
+### 1.0.6 - 1.21.1
+- Spell Engine 1.7.1 Crash Fix
+- Holy Weapon & Prevention are now a T4 spell
+- they can now also be looted outside the classes structure
+
 ### 1.0.5 - 1.21.1
 - Spell Engine 1.7
 

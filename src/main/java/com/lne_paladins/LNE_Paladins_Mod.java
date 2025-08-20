@@ -1,6 +1,5 @@
 package com.lne_paladins;
 
-import com.lne_paladins.client.particle.LNEP_Particles;
 import com.lne_paladins.config.Default;
 import com.lne_paladins.effect.Effects;
 import com.lne_paladins.item.LNEShields;
@@ -39,7 +38,6 @@ public class LNE_Paladins_Mod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		tweaksConfig.refresh();
-		LNEP_Particles.register();
 		Effects.register();
 		if(FabricLoader.getInstance().isModLoaded("loot_n_explore")) {
 			itemConfig.refresh();

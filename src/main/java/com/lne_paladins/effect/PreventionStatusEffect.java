@@ -4,6 +4,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.spell_engine.api.spell.fx.ParticleBatch;
+import net.spell_engine.client.util.Color;
 import net.spell_engine.fx.ParticleHelper;
 
 public class PreventionStatusEffect extends StatusEffect {
@@ -12,15 +13,15 @@ public class PreventionStatusEffect extends StatusEffect {
     }
 
     private static final ParticleBatch particles = new ParticleBatch(
-            "lne_paladins:prevention_sign",
-            ParticleBatch.Shape.PIPE,
-            ParticleBatch.Origin.CENTER,
+            "spell_engine:magic_heal_ascend",
+            ParticleBatch.Shape.WIDE_PIPE,
+            ParticleBatch.Origin.GROUND,
             null,
-            1,
-            0.55F,
-            0.55F,
+            25,
+            0.02F,
+            0.15F,
             0,
-            -0.5F);
+            0.5F).color(Color.HOLY.toRGBA());
     private static final ParticleBatch particles1 = new ParticleBatch(
             "spell_engine:healing_ascend",
             ParticleBatch.Shape.PILLAR,
