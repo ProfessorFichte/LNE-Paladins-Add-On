@@ -8,12 +8,12 @@ import net.fabricmc.api.ModInitializer;
 import com.lne_paladins.config.TweaksConfig;
 import net.fabricmc.loader.api.FabricLoader;
 import net.spell_engine.api.config.ConfigFile;
-import net.tinyconfig.ConfigManager;
+import net.tiny_config.ConfigManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class LNE_Paladins_Mod implements ModInitializer {
+public class LNE_Paladins_Mod {
 	public static final String MOD_ID = "lne_paladins";
 	public static final Logger LOGGER = LoggerFactory.getLogger("lne_paladins");
 	public static ConfigManager<ConfigFile.Equipment> itemConfig = new ConfigManager<>
@@ -35,10 +35,11 @@ public class LNE_Paladins_Mod implements ModInitializer {
 			.sanitize(true)
 			.build();
 
-	@Override
-	public void onInitialize() {
+	public static void init() {
 		tweaksConfig.refresh();
-		Effects.register();
+
+	}
+	public static void registerItems(){
 		if(FabricLoader.getInstance().isModLoaded("loot_n_explore")) {
 			itemConfig.refresh();
 			shieldConfig.refresh();
@@ -48,4 +49,8 @@ public class LNE_Paladins_Mod implements ModInitializer {
 			shieldConfig.save();
 		}
 	}
+	public static void registerEffects(){
+		Effects.register();
+	}
+
 }

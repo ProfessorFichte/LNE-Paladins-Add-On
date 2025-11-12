@@ -1,0 +1,45 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+#issueTrackerURL = ""
+license = "ARR"
+
+[[mods]]
+modId = "lne_paladins"
+version = "${version}"
+displayName = "LNE Paladins"
+authors = "Fichte"
+description = '''
+Loot & Explore Add-On with Paladins RPG-Series Content.
+'''
+logoFile = "icon.png"
+
+[[dependencies.lne_paladins]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.lne_paladins]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.lne_paladins]]
+modId = "paladins"
+type = "required"
+versionRange = "[${paladins_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.lne_paladins]]
+modId = "more_rpg_classes"
+type = "required"
+versionRange = "[${more_rpg_library_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[mixins]]
+config = "lne_paladins.mixins.json"

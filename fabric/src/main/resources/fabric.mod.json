@@ -11,14 +11,14 @@
 		"sources": "https://github.com/ProfessorFichte/LNE-Paladins-Add-On"
 	},
 	"license": "ARR",
-	"icon": "assets/lne_paladins/icon.png",
+	"icon": "icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"client":[
-			"com.lne_paladins.client.LNE_PaladinsClient"
+			"com.lne_paladins.fabric.client.FabricClient"
 		],
 		"main": [
-          "com.lne_paladins.LNE_Paladins_Mod"
+          "com.lne_paladins.fabric.FabricMod"
 		],
 		"fabric-datagen": [
 			"com.lne_paladins.Lne_paladinsDataGenerator"

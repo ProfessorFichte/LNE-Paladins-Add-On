@@ -1,3 +1,8 @@
+### 1.0.7 - 1.21.1
+- Move to Architectury Enviroment for Multiloader
+- NeoForge Beta!
+- Update Weapon Spell Power
+
 ### 1.0.6 - 1.21.1
 - Spell Engine 1.7.1 Crash Fix
 - Holy Weapon & Prevention are now a T4 spell

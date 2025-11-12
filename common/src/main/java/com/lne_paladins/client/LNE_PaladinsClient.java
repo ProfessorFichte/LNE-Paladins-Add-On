@@ -10,11 +10,9 @@ import net.spell_engine.api.render.CustomModels;
 
 import java.util.List;
 
-@Environment(EnvType.CLIENT)
-public class LNE_PaladinsClient implements ClientModInitializer {
+public class LNE_PaladinsClient{
 
-    @Override
-    public void onInitializeClient() {
+    public static void init() {
         CustomModels.registerModelIds(List.of(
                 HolyWeaponRenderer.modelId
         ));
