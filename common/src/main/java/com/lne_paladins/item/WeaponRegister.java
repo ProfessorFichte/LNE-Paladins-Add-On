@@ -58,8 +58,8 @@ public class WeaponRegister {
     private static final float maceAttackDamage = 11F;
     private static final float paladins_staffAttackSpeed = -3F;
     private static final float staffAttackDamage = 4;
-    private static final float staffSpellPower = 7.0F;
-    private static final float weaponSpellPower = 2.0F;
+    private static final float staffSpellPower = 8.0F;
+    private static final float weaponSpellPower = 4.0F;
     ///SPELL IDS
     public static Identifier sirens_tears = Identifier.of(MOD_ID, "sirens_tears");
 
