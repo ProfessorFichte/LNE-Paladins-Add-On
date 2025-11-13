@@ -2,6 +2,8 @@
 - Move to Architectury Enviroment for Multiloader
 - NeoForge Beta!
 - Update Weapon Spell Power
+- Add new raided Holy Church variant with Illagers inside
+- Add new Desert Mosque structure
 
 ### 1.0.6 - 1.21.1
 - Spell Engine 1.7.1 Crash Fix
