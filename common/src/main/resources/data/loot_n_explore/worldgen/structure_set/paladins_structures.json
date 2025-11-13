@@ -15,6 +15,10 @@
     {
       "structure": "loot_n_explore:holy_church",
       "weight": 1
+    },
+    {
+      "structure": "loot_n_explore:holy_mosque",
+      "weight": 1
     }
   ],
   "placement": {
