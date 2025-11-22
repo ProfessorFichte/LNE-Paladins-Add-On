@@ -1,3 +1,7 @@
+### 1.0.8 - 1.21.1
+- fix desert_villager jigsaw
+- improve some small details in the buildings
+
 ### 1.0.7 - 1.21.1
 - Move to Architectury Enviroment for Multiloader
 - NeoForge Beta!
