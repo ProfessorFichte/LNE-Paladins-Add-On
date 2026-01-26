@@ -169,22 +169,22 @@
         },
         {
           "type": "minecraft:item",
-          "name": "paladins:prior_armor_head",
+          "name": "paladins:priest_robe_head",
           "weight": 1
         },
         {
           "type": "minecraft:item",
-          "name": "paladins:prior_armor_chest",
+          "name": "paladins:priest_robe_chest",
           "weight": 1
         },
         {
           "type": "minecraft:item",
-          "name": "paladins:prior_armor_legs",
+          "name": "paladins:priest_robe_legs",
           "weight": 1
         },
         {
           "type": "minecraft:item",
-          "name": "paladins:prior_armor_feet",
+          "name": "paladins:priest_robe_feet",
           "weight": 1
         }
       ]

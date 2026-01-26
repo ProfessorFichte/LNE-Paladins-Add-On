@@ -215,6 +215,27 @@
         },
         {
           "type": "minecraft:item",
+          "name": "paladins:holy_staff",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 13
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.35
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "paladins:paladin_armor_head",
           "weight": 2,
           "functions": [
@@ -299,7 +320,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "paladins:priest_armor_head",
+          "name": "paladins:priest_robe_head",
           "weight": 2,
           "functions": [
             {
@@ -320,7 +341,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "paladins:priest_armor_chest",
+          "name": "paladins:priest_robe_chest",
           "weight": 2,
           "functions": [
             {
@@ -341,7 +362,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "paladins:priest_armor_legs",
+          "name": "paladins:priest_robe_legs",
           "weight": 2,
           "functions": [
             {
@@ -362,7 +383,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "paladins:priest_armor_feet",
+          "name": "paladins:priest_robe_feet",
           "weight": 2,
           "functions": [
             {
@@ -572,7 +593,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "paladins:prior_armor_head",
+          "name": "paladins:prior_robe_head",
           "weight": 1,
           "functions": [
             {
@@ -593,7 +614,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "paladins:prior_armor_chest",
+          "name": "paladins:prior_robe_chest",
           "weight": 1,
           "functions": [
             {
@@ -614,7 +635,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "paladins:prior_armor_legs",
+          "name": "paladins:prior_robe_legs",
           "weight": 1,
           "functions": [
             {
@@ -635,7 +656,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "paladins:prior_armor_feet",
+          "name": "paladins:prior_robe_feet",
           "weight": 1,
           "functions": [
             {
