@@ -51,6 +51,11 @@
     "type": "STASH_EFFECT",
     "stash_effect": {
       "id": "lne_paladins:holy_weapon",
+      "triggers": [
+        {
+          "type": "MELEE_IMPACT"
+        }
+      ],
       "consume": 0
     }
   },

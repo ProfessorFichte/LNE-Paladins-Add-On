@@ -415,6 +415,9 @@ public class PaladinsSpells {
         spell.deliver.stash_effect.amplifier = 0;
         spell.deliver.stash_effect.duration = 10.0F;
         spell.deliver.stash_effect.consume = 0;
+        var stashMeleeTrigger = new Spell.Trigger();
+        stashMeleeTrigger.type = Spell.Trigger.Type.MELEE_IMPACT;
+        spell.deliver.stash_effect.triggers = List.of(stashMeleeTrigger);
 
         var damage = SpellBuilder.Impacts.damage(0.3F);
         damage.attribute = "minecraft:generic.attack_damage";
