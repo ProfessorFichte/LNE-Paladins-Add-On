@@ -43,7 +43,7 @@ public class PreventionStatusEffect extends StatusEffect {
                 ParticleHelper.sendBatches(livingEntity, new ParticleBatch[]{particles});
                 ParticleHelper.sendBatches(livingEntity, new ParticleBatch[]{particles1});
             }
-            livingEntity.removeStatusEffect(Effects.PREVENTION.registryEntry);
+            livingEntity.removeStatusEffect(LNE_PaladinsEffects.PREVENTION.entry);
         }
     }
 
@@ -56,7 +56,7 @@ public class PreventionStatusEffect extends StatusEffect {
                 ParticleHelper.sendBatches(livingEntity, new ParticleBatch[]{particles});
                 ParticleHelper.sendBatches(livingEntity, new ParticleBatch[]{particles1});
             }
-            livingEntity.removeStatusEffect(Effects.PREVENTION.registryEntry);
+            livingEntity.removeStatusEffect(LNE_PaladinsEffects.PREVENTION.entry);
         }
         super.applyUpdateEffect(livingEntity, amplifier);
         return true;

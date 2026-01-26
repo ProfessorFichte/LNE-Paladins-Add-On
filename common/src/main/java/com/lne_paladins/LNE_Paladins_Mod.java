@@ -1,10 +1,9 @@
 package com.lne_paladins;
 
 import com.lne_paladins.config.Default;
-import com.lne_paladins.effect.Effects;
+import com.lne_paladins.effect.LNE_PaladinsEffects;
 import com.lne_paladins.item.LNEShields;
 import com.lne_paladins.item.WeaponRegister;
-import net.fabricmc.api.ModInitializer;
 import com.lne_paladins.config.TweaksConfig;
 import net.fabricmc.loader.api.FabricLoader;
 import net.spell_engine.api.config.ConfigFile;
@@ -34,6 +33,12 @@ public class LNE_Paladins_Mod {
 			.setDirectory(MOD_ID)
 			.sanitize(true)
 			.build();
+	public static ConfigManager<ConfigFile.Effects> effectConfig = new ConfigManager<>
+			("effects", new ConfigFile.Effects())
+			.builder()
+			.setDirectory(MOD_ID)
+			.sanitize(true)
+			.build();
 
 	public static void init() {
 		tweaksConfig.refresh();
@@ -43,6 +48,7 @@ public class LNE_Paladins_Mod {
 		if(FabricLoader.getInstance().isModLoaded("loot_n_explore")) {
 			itemConfig.refresh();
 			shieldConfig.refresh();
+			effectConfig.refresh();
 			LNEShields.register(shieldConfig.value.shields);
 			WeaponRegister.register(itemConfig.value.weapons);
 			itemConfig.save();
@@ -50,7 +56,8 @@ public class LNE_Paladins_Mod {
 		}
 	}
 	public static void registerEffects(){
-		Effects.register();
+		LNE_PaladinsEffects.register(effectConfig.value);
+		effectConfig.save();
 	}
 
 }

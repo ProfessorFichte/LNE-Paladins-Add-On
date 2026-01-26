@@ -86,58 +86,75 @@ public class WeaponRegister {
 
     public static void register(Map<String, WeaponConfig> configs) {
         if (!tweaksConfig.value.disable_special_lne_weapons) {
+            ///ENDER DRAGON WEAPON THEMES
             claymore("ender_dragon_claymore",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.AMETHYST_SHARD)), claymoreAttackDamage)
                     .spell(dragonclaw)
+                    .translatedName("Ender Blade")
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, weaponSpellPower));
             mace("ender_dragon_mace",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.AMETHYST_SHARD)), maceAttackDamage)
                     .spell(dragonclaw)
+                    .translatedName("Dragon´s Maw")
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, weaponSpellPower));
             hammer("ender_dragon_great_hammer",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.AMETHYST_SHARD)), hammerAttackDamage)
                     .spell(dragonclaw)
+                    .translatedName("Dragons Nails")
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, weaponSpellPower));
+            ///OCEAN WEAPON THEMES
             claymore("elder_guardian_claymore",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD)), claymoreAttackDamage)
                     .spell(waterbomb)
+                    .translatedName("Sea King's Blade")
                     .attribute(AttributeModifier.bonus(MoreSpellSchools.WATER.id, weaponSpellPower));
             mace("elder_guardian_mace",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD)), maceAttackDamage)
                     .spell(waterbomb)
+                    .translatedName("Sea Star")
                     .attribute(AttributeModifier.bonus(MoreSpellSchools.WATER.id, weaponSpellPower));
             hammer("elder_guardian_great_hammer",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD)), hammerAttackDamage)
                     .spell(waterbomb)
+                    .translatedName("Tsunamis Wrath")
                     .attribute(AttributeModifier.bonus(MoreSpellSchools.WATER.id, weaponSpellPower));
             healing_staff("elder_guardian_holy_staff",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD)))
                     .spell(sirens_tears)
+                    .translatedName("Siren's Holy Staff")
                     .attribute(AttributeModifier.bonus(SpellSchools.HEALING.id, staffSpellPower))
                     .attribute(AttributeModifier.bonus(MoreSpellSchools.WATER.id, staffSpellPower));
+            ///WITHER WEAPON THEMES
             claymore("wither_claymore",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.BONE)), claymoreAttackDamage)
                     .spell(wither_pulse)
+                    .translatedName("Withered Claymore")
                     .attribute(AttributeModifier.bonus(SpellSchools.SOUL.id, weaponSpellPower));
             mace("wither_mace",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.BONE)), maceAttackDamage)
                     .spell(wither_pulse)
+                    .translatedName("Withered Mace")
                     .attribute(AttributeModifier.bonus(SpellSchools.SOUL.id, weaponSpellPower));
             hammer("wither_great_hammer",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.BONE)), hammerAttackDamage)
                     .spell(wither_pulse)
+                    .translatedName("Withered Crusher")
                     .attribute(AttributeModifier.bonus(SpellSchools.SOUL.id, weaponSpellPower));
+            ///GLACIAL WEAPON THEMES
             claymore("glacial_claymore",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.ICE)), claymoreAttackDamage)
                     .spell(avalanche)
+                    .translatedName("Glaciers Edge")
                     .attribute(AttributeModifier.bonus(SpellSchools.FROST.id, weaponSpellPower));
             mace("glacial_mace",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.ICE)), maceAttackDamage)
                     .spell(avalanche)
+                    .translatedName("Icicle Crusher")
                     .attribute(AttributeModifier.bonus(SpellSchools.FROST.id, weaponSpellPower));
             hammer("glacial_great_hammer",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.ICE)), hammerAttackDamage)
                     .spell(avalanche)
+                    .translatedName("Frozen Mallet")
                     .attribute(AttributeModifier.bonus(SpellSchools.FROST.id, weaponSpellPower));
 
         }

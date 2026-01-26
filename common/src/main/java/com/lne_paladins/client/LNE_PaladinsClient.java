@@ -1,10 +1,7 @@
 package com.lne_paladins.client;
 
 import com.lne_paladins.client.effect.HolyWeaponRenderer;
-import com.lne_paladins.effect.Effects;
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+import com.lne_paladins.effect.LNE_PaladinsEffects;
 import net.spell_engine.api.effect.CustomModelStatusEffect;
 import net.spell_engine.api.render.CustomModels;
 
@@ -16,6 +13,6 @@ public class LNE_PaladinsClient{
         CustomModels.registerModelIds(List.of(
                 HolyWeaponRenderer.modelId
         ));
-        CustomModelStatusEffect.register(Effects.HOLY_WEAPON.effect, new HolyWeaponRenderer());
+        CustomModelStatusEffect.register(LNE_PaladinsEffects.HOLY_WEAPON.effect, new HolyWeaponRenderer());
     }
 }

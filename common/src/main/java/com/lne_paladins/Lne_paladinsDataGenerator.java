@@ -1,29 +1,20 @@
 package com.lne_paladins;
 
-import com.lne_paladins.item.WeaponRegister;
+import com.lne_paladins.datagen.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.minecraft.registry.RegistryWrapper;
-import net.spell_engine.rpg_series.datagen.RPGSeriesDataGen;
-
-import java.util.concurrent.CompletableFuture;
 
 public class Lne_paladinsDataGenerator implements DataGeneratorEntrypoint {
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
-		pack.addProvider(ItemTagGenerator::new);
-	}
 
-	public static class ItemTagGenerator extends RPGSeriesDataGen.ItemTagGenerator {
-		public ItemTagGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
-			super(output, registriesFuture);
-		}
+		pack.addProvider(ModLanguageProvider::new);
+		pack.addProvider(ModModelProvider::new);
+		pack.addProvider(ModRecipeProvider::new);
+		pack.addProvider(PaladinsAbilityDatagen::new);
+		pack.addProvider(ModItemTagProvider::new);
+		pack.addProvider(WeaponAttributesGenerator::new);
 
-		@Override
-		protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-			generateWeaponTags(WeaponRegister.entries);
-		}
 	}
 }

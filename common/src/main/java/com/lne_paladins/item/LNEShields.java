@@ -15,6 +15,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.minecraft.util.Rarity;
+import net.minecraft.util.Util;
 import net.spell_engine.api.config.AttributeModifier;
 import net.spell_engine.api.config.ShieldConfig;
 import net.spell_engine.api.item.Equipment;
@@ -36,6 +37,7 @@ public class LNEShields {
         private final Identifier id;
         private final Supplier<Ingredient> repair;
         private final List<AttributeModifier> attributes;
+        private String translatedName = "";
         private final int durability;
         public Rarity rarity = Rarity.RARE;
         public List<Identifier> spells = null;
@@ -69,6 +71,17 @@ public class LNEShields {
             spells = List.of(spellId);
             return this;
         }
+        public Entry translatedName(String translatedName) {
+            this.translatedName = translatedName;
+            return this;
+        }
+        public String translatedName() {
+            return translatedName;
+        }
+        public String translationKey() {
+            return Util.createTranslationKey("item", id());
+        }
+
     }
 
     public static final ArrayList<Entry> entries = new ArrayList<>();
@@ -116,21 +129,25 @@ public class LNEShields {
                     new AttributeModifier(GENERIC_ATTACK_SPEED,  0.05F,  EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE),
                     new AttributeModifier(GENERIC_MAX_HEALTH,  6.0f,  EntityAttributeModifier.Operation.ADD_VALUE)
             ), durability)
+                    .translatedName("Coral Reef Guardian")
                     .spell(ender_dragon_shield_spell);
             shield("elder_guardian_shield",() -> Ingredient.ofItems(Items.PRISMARINE_SHARD), List.of(
                     new AttributeModifier(DAMAGE_REFLECT,  0.35F,  EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE),
                     new AttributeModifier(GENERIC_MAX_HEALTH,  6.0f,  EntityAttributeModifier.Operation.ADD_VALUE)
             ), durability)
+                    .translatedName("Dragon Bulwark")
                     .spell(elder_guardian_shield_spell);
             shield("glacial_shield",() -> Ingredient.ofItems(Items.ICE), List.of(
                     new AttributeModifier(GENERIC_ARMOR_TOUGHNESS,  1.0F,  EntityAttributeModifier.Operation.ADD_VALUE),
                     new AttributeModifier(GENERIC_MAX_HEALTH,  6.0f,  EntityAttributeModifier.Operation.ADD_VALUE)
             ), durability)
+                    .translatedName("Frozen Wall")
                     .spell(glacial_shield_spell);
             shield("wither_shield",() -> Ingredient.ofItems(Items.BONE), List.of(
                     new AttributeModifier(GENERIC_ATTACK_DAMAGE,  0.05F,  EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE),
                     new AttributeModifier(GENERIC_MAX_HEALTH,  6.0f,  EntityAttributeModifier.Operation.ADD_VALUE)
             ), durability)
+                    .translatedName("The Mouth of the Wither")
                     .spell(wither_shield_spell);
         }
 

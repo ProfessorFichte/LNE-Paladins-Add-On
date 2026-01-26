@@ -1,0 +1,20 @@
+{
+  "values": [
+    {
+      "id": "lne_paladins:ender_dragon_shield",
+      "required": false
+    },
+    {
+      "id": "lne_paladins:elder_guardian_shield",
+      "required": false
+    },
+    {
+      "id": "lne_paladins:glacial_shield",
+      "required": false
+    },
+    {
+      "id": "lne_paladins:wither_shield",
+      "required": false
+    }
+  ]
+}
