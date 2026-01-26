@@ -1,6 +1,9 @@
 ### 1.0.8 - 1.21.1
 - fix desert_villager jigsaw
 - improve some small details in the buildings
+- Update loot tables and completely overhaul them!
+- The Project now almost completely runs with Datagen!
+- move all the structures from loot_n_explore to lne_paladins, so its more clearer that these structures come from this add on
 
 ### 1.0.7 - 1.21.1
 - Move to Architectury Enviroment for Multiloader

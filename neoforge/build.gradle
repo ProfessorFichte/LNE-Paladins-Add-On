@@ -162,7 +162,9 @@ if (System.getenv("CURSEFORGE_API_KEY")) {
             relations {
                 // Required dependencies
                 requiredDependency 'spell-engine'
-                requiredDependency 'spell-power'
+                requiredDependency 'more-rpg-library'
+                requiredDependency 'paladins-and-priests'
+                optionalDependency 'loot-n-explore'
             }
 
             mainArtifact(remapJar)
@@ -190,7 +192,9 @@ if (System.getenv("MODRINTH_API_KEY")) {
         dependencies {
             // Required dependencies
             required.project 'spell-engine'
-            required.project 'spell-power'
+            required.project 'more-rpg-library'
+            required.project 'paladins-and-priests'
+            optional.project 'loot-n-explore'
         }
     }
 }
