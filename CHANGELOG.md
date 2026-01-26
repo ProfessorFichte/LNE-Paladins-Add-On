@@ -1,32 +1,32 @@
-### 1.0.8 - 1.21.1
+# 1.0.8 - 1.21.1
 - fix desert_villager jigsaw
 - improve some small details in the buildings
 - Update loot tables and completely overhaul them!
 - The Project now almost completely runs with Datagen!
 - move all the structures from loot_n_explore to lne_paladins, so its more clearer that these structures come from this add on
 
-### 1.0.7 - 1.21.1
+# 1.0.7 - 1.21.1
 - Move to Architectury Enviroment for Multiloader
 - NeoForge Beta!
 - Update Weapon Spell Power
 - Add new raided Holy Church variant with Illagers inside
 - Add new Desert Mosque structure
 
-### 1.0.6 - 1.21.1
+# 1.0.6 - 1.21.1
 - Spell Engine 1.7.1 Crash Fix
 - Holy Weapon & Prevention are now a T4 spell
 - they can now also be looted outside the classes structure
 
-### 1.0.5 - 1.21.1
+# 1.0.5 - 1.21.1
 - Spell Engine 1.7
 
-### 1.0.4 - 1.21.1
+# 1.0.4 - 1.21.1
 - Update Mod Icon
 
-### 1.0.3 - 1.21.1
+# 1.0.3 - 1.21.1
 - forgot some shield recipes
 
-### 1.0.2 - 1.21.1
+# 1.0.2 - 1.21.1
 - 4x new LNE-Paladin Shield variants
 - new Models for the LNE - Paladin Great Hammer's & Mace's
 - a new paladin & priest holy church structure!
@@ -34,12 +34,12 @@
 - Update Mod License to ARR
 - generate small random paths and decoration near some small structures
 
-### 1.0.1 - 1.21.1
+# 1.0.1 - 1.21.1
 - forgot to add sirens tears spell to the elder guardian holy staff
 
-### 1.0.0 - 1.21.1
-# Official 1.21.1 Release!
-# CHANGES
+# 1.0.0 - 1.21.1
+## Official 1.21.1 Release!
+### CHANGES
 - Passive Spells For the Weapons are now handled with the new Spell Engine Passive API
 - The Class related structures will now contain spell scrolls in their loot chests
 - Made some small loot table tweaks
