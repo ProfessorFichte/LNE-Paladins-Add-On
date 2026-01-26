@@ -1,0 +1,34 @@
+{
+  "structures": [
+    {
+      "structure": "lne_paladins:holy_shrine",
+      "weight": 5
+    },
+    {
+      "structure": "lne_paladins:paladins_recruiting",
+      "weight": 5
+    },
+    {
+      "structure": "lne_paladins:small_holy_church",
+      "weight": 3
+    },
+    {
+      "structure": "lne_paladins:holy_church",
+      "weight": 1
+    },
+    {
+      "structure": "lne_paladins:holy_mosque",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "exclusion_zone": {
+      "other_set": "minecraft:villages",
+      "chunk_count": 12
+    },
+    "type": "minecraft:random_spread",
+    "spacing": 30,
+    "separation": 15,
+    "salt": 843216987
+  }
+}
