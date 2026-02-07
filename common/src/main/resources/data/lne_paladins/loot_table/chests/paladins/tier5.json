@@ -1,0 +1,668 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 2,
+        "max": 4
+      },
+      "bonus_rolls": 0.75,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "runes:healing_stone",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 15,
+                "max": 26
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_ingot",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 7
+              }
+            }
+          ],
+          "conditions": []
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:gold_ingot",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 7
+              }
+            }
+          ],
+          "conditions": []
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:copper_ingot",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 7
+              }
+            }
+          ],
+          "conditions": []
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:ghast_tear",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:golden_apple",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "paladins:diamond_mace",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 13,
+                "max": 24
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "paladins:diamond_great_hammer",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 13,
+                "max": 24
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "paladins:diamond_claymore",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 13,
+                "max": 24
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "paladins:diamond_kite_shield",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 13,
+                "max": 24
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "paladins:crusader_armor_head",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 13,
+                "max": 24
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "paladins:crusader_armor_chest",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 13,
+                "max": 24
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "paladins:crusader_armor_legs",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 13,
+                "max": 24
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "paladins:crusader_armor_feet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 13,
+                "max": 24
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 1
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "spell_engine:scroll",
+          "functions": [
+            {
+              "function": "more_rpg_classes:specific_spell_scroll_pool",
+              "spell_pools": ["#paladins:paladin"],
+              "spell_tier_min": 3,
+              "spell_tier_max": 4,
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 1
+      },
+      "entries": [
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "jewelry:netherite_sapphire_ring"
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "jewelry:netherite_sapphire_necklace"
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "jewelry:netherite_citrine_ring"
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "jewelry:netherite_citrine_necklace"
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "relics_rpgs:greater_perk_melee_stun"
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "relics_rpgs:greater_perk_defense_block"
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "relics_rpgs:greater_perk_shield_reset"
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "relics_rpgs:greater_proc_defense_danger"
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "loot_n_explore:vital_drink"
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "loot_n_explore:holy_water"
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "oathswornpaladins:holy_symbol"
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 2
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "name": "spell_engine:scroll",
+          "functions": [
+            {
+              "function": "more_rpg_classes:specific_spell_scroll_pool",
+              "spell_pools": ["#oathswornpaladins:vengeance","#oathswornpaladins:defiance","#oathswornpaladins:glory"],
+              "spell_tier_min": 3,
+              "spell_tier_max": 4,
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "oathswornpaladins:diamond_forge_mace",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 13
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "oathswornpaladins:diamond_longsword",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 13
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "oathswornpaladins:bastion_guardian_head",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 13
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "oathswornpaladins:bastion_guardian_chest",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 13
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "oathswornpaladins:bastion_guardian_legs",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 13
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "oathswornpaladins:bastion_guardian_feet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 13
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "oathswornpaladins:end_city_guardian_head",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 13
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "oathswornpaladins:end_city_guardian_chest",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 13
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "oathswornpaladins:end_city_guardian_legs",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 13
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "oathswornpaladins:end_city_guardian_feet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 13
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "oathswornpaladins:temple_guardian_head",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 13
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "oathswornpaladins:temple_guardian_chest",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 13
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "oathswornpaladins:temple_guardian_legs",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 13
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "more_rpg_classes:conditional_item",
+          "item": "oathswornpaladins:temple_guardian_feet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 13
+              },
+              "conditions": [
+                {
+                  "condition": "random_chance",
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
