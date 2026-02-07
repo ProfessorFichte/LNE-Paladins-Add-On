@@ -1,0 +1,96 @@
+{
+  "processors": [
+    {
+      "processor_type": "more_rpg_classes:path_adaptation",
+      "filler_block": "minecraft:pink_stained_glass",
+      "terrain_mappings": [
+        { "terrain": "#minecraft:dirt", "output": "minecraft:dirt_path" },
+        { "terrain": "minecraft:grass_block", "output": "minecraft:dirt_path" },
+        { "terrain": "minecraft:sand", "output": "minecraft:sandstone" },
+        { "terrain": "minecraft:red_sand", "output": "minecraft:red_sandstone" },
+        { "terrain": "minecraft:gravel", "output": "minecraft:cobblestone" },
+        { "terrain": "minecraft:stone", "output": "minecraft:cobblestone" },
+        { "terrain": "minecraft:snow_block", "output": "minecraft:packed_ice" }
+      ],
+      "water_output": "minecraft:oak_planks",
+      "stop_on_water": true,
+      "water_check_radius": 3,
+      "water_threshold": 0.25,
+      "remove_floating_blocks": true
+    },
+    {
+      "processor_type": "more_rpg_classes:water_pillar",
+      "corner_block": "minecraft:yellow_stained_glass",
+      "pillar_block": "minecraft:oak_log",
+      "fence_block": "minecraft:oak_fence",
+      "max_pillar_depth": 16,
+      "terrain_mappings": [
+        { "terrain": "#minecraft:dirt", "output": "minecraft:dirt_path" },
+        { "terrain": "minecraft:grass_block", "output": "minecraft:dirt_path" },
+        { "terrain": "minecraft:sand", "output": "minecraft:sandstone" }
+      ],
+      "fallback_block": "minecraft:dirt_path",
+      "sample_radius": 2,
+      "blend_with_terrain": true
+    },
+    {
+      "processor_type": "more_rpg_classes:terrain_blending",
+      "blend_block": "minecraft:lime_stained_glass",
+      "sample_radius": 2,
+      "fallback_block": "minecraft:grass_block",
+      "match_below": true,
+      "match_horizontal": true,
+      "variation_chance": 0.15
+    },
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "input_predicate": {
+            "block": "minecraft:dirt_path",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.05
+          },
+          "location_predicate": { "predicate_type": "minecraft:always_true" },
+          "output_state": { "Name": "minecraft:gravel" }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:grass_block",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.05
+          },
+          "location_predicate": { "predicate_type": "minecraft:always_true" },
+          "output_state": { "Name": "minecraft:dirt_path" }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:grass_block",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.075
+          },
+          "location_predicate": { "predicate_type": "minecraft:always_true" },
+          "output_state": { "Name": "minecraft:gravel" }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:grass_block",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.2
+          },
+          "location_predicate": { "predicate_type": "minecraft:always_true" },
+          "output_state": { "Name": "minecraft:moss_block" }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:grass_block",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.025
+          },
+          "location_predicate": { "predicate_type": "minecraft:always_true" },
+          "output_state": { "Name": "minecraft:mossy_cobblestone" }
+        }
+      ]
+    }
+  ]
+}

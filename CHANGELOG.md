@@ -1,3 +1,10 @@
+# 1.0.9 - 1.21.1
+- Fixed the Loot Table Errors in the Logs from the Paladin Recruitment Structure
+- Split the Priest and Paladin Loot Tables for Better configuration of loot tables
+- Added compatibility for the Oathsworn Paladin's Equipment in the Paladin's Loot Tables!
+- Heavily improved the generation of Path's from this Mod's Structure's
+- Added a new Illager Occupied variant of the Small Church
+
 # 1.0.8 - 1.21.1
 - fix desert_villager jigsaw
 - improve some small details in the buildings

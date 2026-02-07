@@ -4,7 +4,7 @@
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
         "location": "lne_paladins:paladin_paths/simple/extra_0",
-        "processors": "lne_paladins:grass_terrain_randomizer",
+        "processors": "lne_paladins:paladin_path_adaptation",
         "projection": "rigid"
       },
       "weight": 1
@@ -13,7 +13,7 @@
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
         "location": "lne_paladins:paladin_paths/simple/extra_1",
-        "processors": "lne_paladins:grass_terrain_randomizer",
+        "processors": "lne_paladins:paladin_path_adaptation",
         "projection": "rigid"
       },
       "weight": 3
@@ -22,7 +22,7 @@
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
         "location": "lne_paladins:paladin_paths/simple/extra_2",
-        "processors": "lne_paladins:grass_terrain_randomizer",
+        "processors": "lne_paladins:paladin_path_adaptation",
         "projection": "rigid"
       },
       "weight": 3
@@ -31,7 +31,7 @@
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
         "location": "lne_paladins:paladin_paths/simple/extra_3",
-        "processors": "lne_paladins:grass_terrain_randomizer",
+        "processors": "lne_paladins:paladin_path_adaptation",
         "projection": "rigid"
       },
       "weight": 3
