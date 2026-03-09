@@ -68,7 +68,7 @@
           "max_speed": 0.4
         },
         {
-          "particle_id": "spell_engine:magic_frost_impact_burst",
+          "particle_id": "spell_engine:magic_frost_burst",
           "origin": "CENTER",
           "shape": "SPHERE",
           "count": 30.0,

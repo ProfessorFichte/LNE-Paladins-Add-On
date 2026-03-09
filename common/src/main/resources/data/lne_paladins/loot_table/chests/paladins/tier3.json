@@ -446,11 +446,11 @@
         {
           "type": "minecraft:item",
           "weight": 1,
-          "name": "spell_engine:scroll",
+          "name": "spell_engine:spell_scroll",
           "functions": [
             {
               "function": "more_rpg_classes:specific_spell_scroll_pool",
-              "spell_pools": ["#paladins:paladin"],
+              "spell_pools": ["#paladins:spell_scroll/paladin"],
               "spell_tier_min": 2,
               "spell_tier_max": 3,
               "count": 1
@@ -526,11 +526,11 @@
         {
           "type": "minecraft:item",
           "weight": 1,
-          "name": "spell_engine:scroll",
+          "name": "spell_engine:spell_scroll",
           "functions": [
             {
               "function": "more_rpg_classes:specific_spell_scroll_pool",
-              "spell_pools": ["#oathswornpaladins:vengeance","#oathswornpaladins:defiance","#oathswornpaladins:glory"],
+              "spell_pools": ["#oathswornpaladins:spell_scroll/vengeance","#oathswornpaladins:spell_scroll/defiance","#oathswornpaladins:spell_scroll/glory"],
               "spell_tier_min": 2,
               "spell_tier_max": 3,
               "count": 1

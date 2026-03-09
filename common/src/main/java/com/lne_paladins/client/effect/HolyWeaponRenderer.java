@@ -15,7 +15,7 @@ import static com.lne_paladins.LNE_Paladins_Mod.MOD_ID;
 
 public class HolyWeaponRenderer implements CustomModelStatusEffect.Renderer{
     private static final RenderLayer RENDER_LAYER = TexturedRenderLayers.getEntityCutout();
-    public static final Identifier modelId = Identifier.of(MOD_ID, "effect/holy_weapon");
+    public static final Identifier modelId = Identifier.of(MOD_ID, "spell_effect/holy_weapon");
 
     @Override
     public void renderEffect(int amplifier, LivingEntity livingEntity, float delta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumers, int light) {

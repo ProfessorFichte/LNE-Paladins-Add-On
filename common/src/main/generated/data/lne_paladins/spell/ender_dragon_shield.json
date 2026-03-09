@@ -14,20 +14,22 @@
   "release": {
     "particles": [
       {
-        "particle_id": "spell_engine:magic_arcane_impact_burst",
+        "particle_id": "spell_engine:magic_arcane_burst",
         "origin": "CENTER",
         "shape": "CIRCLE",
         "count": 130.0,
         "min_speed": 0.2,
-        "max_speed": 1.5
+        "max_speed": 1.5,
+        "color_rgba": 4284940287
       },
       {
-        "particle_id": "spell_engine:magic_arcane_stripe_burst",
+        "particle_id": "spell_engine:magic_stripe_burst",
         "origin": "CENTER",
         "shape": "CIRCLE",
         "count": 130.0,
         "min_speed": 0.8,
-        "max_speed": 1.9
+        "max_speed": 1.9,
+        "color_rgba": 4284940287
       }
     ],
     "sound": {
@@ -48,7 +50,7 @@
       },
       "particles": [
         {
-          "particle_id": "spell_engine:magic_arcane_impact_burst",
+          "particle_id": "spell_engine:magic_spell_burst",
           "origin": "CENTER",
           "shape": "SPHERE",
           "count": 30.0,

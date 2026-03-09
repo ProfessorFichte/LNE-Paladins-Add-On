@@ -37,7 +37,7 @@
           "min_speed": 0.2
         },
         {
-          "particle_id": "spell_engine:magic_impact_decelerate",
+          "particle_id": "spell_engine:magic_spell_decelerate",
           "origin": "FEET",
           "shape": "WIDE_PIPE",
           "count": 15.0,

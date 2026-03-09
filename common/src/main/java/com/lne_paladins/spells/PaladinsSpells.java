@@ -6,8 +6,11 @@ import net.spell_engine.api.datagen.SpellBuilder;
 import net.spell_engine.api.spell.ExternalSpellSchools;
 import net.spell_engine.api.spell.Spell;
 import net.spell_engine.api.spell.fx.ParticleBatch;
+import net.spell_engine.api.spell.fx.PlayerAnimation;
 import net.spell_engine.api.spell.fx.Sound;
 import net.spell_engine.api.util.TriState;
+import net.spell_engine.client.util.Color;
+import net.spell_engine.fx.SpellEngineParticles;
 import net.spell_power.api.SpellSchools;
 import org.jetbrains.annotations.Nullable;
 
@@ -68,11 +71,6 @@ public class PaladinsSpells {
         bleedingEffect.action.status_effect.show_particles = false;
         bleedingEffect.particles = new ParticleBatch[]{
             new ParticleBatch(
-                "more_rpg_classes:blood_drop",
-                ParticleBatch.Shape.PIPE, ParticleBatch.Origin.CENTER,
-                20.0F, 0.1F, 3.0F
-            ),
-            new ParticleBatch(
                 "spell_engine:dripping_blood",
                 ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
                 10.0F, 0.05F, 0.3F
@@ -82,7 +80,9 @@ public class PaladinsSpells {
         var damage = SpellBuilder.Impacts.damage(0.2F,0.25F);
         damage.particles = new ParticleBatch[]{
             new ParticleBatch(
-                "spell_engine:magic_spark_float",
+                    SpellEngineParticles.MagicParticles.get(
+                            SpellEngineParticles.MagicParticles.Shape.SPARK,
+                            SpellEngineParticles.MagicParticles.Motion.FLOAT).id().toString(),
                 ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
                 10.0F, 0.3F, 0.35F
             ).color(3217014783L)
@@ -122,18 +122,18 @@ public class PaladinsSpells {
         spell.release.sound = new Sound(Identifier.of("spell_engine:generic_frost_release"));
         spell.release.particles = new ParticleBatch[]{
             new ParticleBatch(
-                "spell_engine:snowflake",
+            SpellEngineParticles.snowflake.id().toString(),
                 ParticleBatch.Shape.CIRCLE, ParticleBatch.Origin.CENTER,
                 60.0F, 0.1F, 0.3F
             ),
             new ParticleBatch(
-                "spell_engine:frost_shard",
+                SpellEngineParticles.frost_shard.id().toString(),
                 ParticleBatch.Shape.CIRCLE, ParticleBatch.Origin.CENTER,
                 60.0F, 0.3F, 0.6F
             )
         };
         var rangedParticle = new ParticleBatch(
-            "spell_engine:area_effect_293",
+            SpellEngineParticles.area_effect_293.id().toString(),
             ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.GROUND,
             1.0F, 0.0F, 0.0F
         ).color(2582052863L);
@@ -146,12 +146,14 @@ public class PaladinsSpells {
         frozenEffect.action.status_effect.show_particles = false;
         frozenEffect.particles = new ParticleBatch[]{
             new ParticleBatch(
-                "spell_engine:snowflake",
+                SpellEngineParticles.snowflake.id().toString(),
                 ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
                 25.0F, 0.1F, 0.4F
             ),
             new ParticleBatch(
-                "spell_engine:magic_frost_impact_burst",
+                    SpellEngineParticles.MagicParticles.get(
+                            SpellEngineParticles.MagicParticles.Shape.FROST,
+                            SpellEngineParticles.MagicParticles.Motion.BURST).id().toString(),
                 ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
                 30.0F, 0.2F, 0.7F
             )
@@ -228,7 +230,7 @@ public class PaladinsSpells {
             travelParticle
         };
         spell.deliver.projectile.projectile.client_data.model = new Spell.ProjectileModel();
-        spell.deliver.projectile.projectile.client_data.model.model_id = "loot_n_explore:projectile/wither_skull";
+        spell.deliver.projectile.projectile.client_data.model.model_id = "loot_n_explore:spell_projectile/wither_skull";
         spell.deliver.projectile.projectile.client_data.model.scale = 1.5F;
         spell.deliver.projectile.projectile.client_data.model.rotate_degrees_per_tick = 0.0F;
 
@@ -237,7 +239,9 @@ public class PaladinsSpells {
         witherEffect.action.status_effect.show_particles = false;
         witherEffect.particles = new ParticleBatch[]{
             new ParticleBatch(
-                "spell_engine:magic_skull_decelerate",
+                    SpellEngineParticles.MagicParticles.get(
+                            SpellEngineParticles.MagicParticles.Shape.SKULL,
+                            SpellEngineParticles.MagicParticles.Motion.DECELERATE).id().toString(),
                 ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
                 25.0F, 0.2F, 0.25F
             ).color(858993663L)
@@ -287,21 +291,27 @@ public class PaladinsSpells {
         spell.release.sound = new Sound(Identifier.of("entity.generic.explode"));
         spell.release.particles = new ParticleBatch[]{
             new ParticleBatch(
-                "spell_engine:magic_arcane_impact_burst",
+                    SpellEngineParticles.MagicParticles.get(
+                            SpellEngineParticles.MagicParticles.Shape.ARCANE,
+                            SpellEngineParticles.MagicParticles.Motion.BURST).id().toString(),
                 ParticleBatch.Shape.CIRCLE, ParticleBatch.Origin.CENTER,
                 130.0F, 0.2F, 1.5F
-            ),
+            ).color(Color.ARCANE.toRGBA()),
             new ParticleBatch(
-                "spell_engine:magic_arcane_stripe_burst",
+                    SpellEngineParticles.MagicParticles.get(
+                            SpellEngineParticles.MagicParticles.Shape.STRIPE,
+                            SpellEngineParticles.MagicParticles.Motion.BURST).id().toString(),
                 ParticleBatch.Shape.CIRCLE, ParticleBatch.Origin.CENTER,
                 130.0F, 0.8F, 1.9F
-            )
+            ).color(Color.ARCANE.toRGBA())
         };
 
         var damage = SpellBuilder.Impacts.damage(0.4F,1.0F);
         damage.particles = new ParticleBatch[]{
             new ParticleBatch(
-                "spell_engine:magic_arcane_impact_burst",
+                    SpellEngineParticles.MagicParticles.get(
+                            SpellEngineParticles.MagicParticles.Shape.SPELL,
+                            SpellEngineParticles.MagicParticles.Motion.BURST).id().toString(),
                 ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
                 30.0F, 0.2F, 1.2F
             ).color(4284940287L)
@@ -346,7 +356,9 @@ public class PaladinsSpells {
                 1.0F, 0.2F, 1.0F
             ),
             new ParticleBatch(
-                "spell_engine:magic_impact_decelerate",
+                    SpellEngineParticles.MagicParticles.get(
+                            SpellEngineParticles.MagicParticles.Shape.SPELL,
+                            SpellEngineParticles.MagicParticles.Motion.DECELERATE).id().toString(),
                 ParticleBatch.Shape.WIDE_PIPE, ParticleBatch.Origin.FEET,
                 15.0F, 0.3F, 0.3F
             ).color(4294954239L)
@@ -374,31 +386,33 @@ public class PaladinsSpells {
         var spell = SpellBuilder.createSpellActive();
         spell.school = SpellSchools.HEALING;
         spell.range = 0.0F;
-        spell.tier = 4;
+        spell.tier = 5;
 
         spell.active.cast = new Spell.Active.Cast();
-        spell.active.cast.duration = 0.75F;
-        spell.active.cast.animation = "more_rpg_classes:kneeing_uprising_charge";
+        spell.active.cast.duration = 0.5F;
+        spell.active.cast.animation = PlayerAnimation.of("more_rpg_classes:kneeing_uprising_charge");
         var castParticle = new ParticleBatch(
-            "spell_engine:magic_spark_float",
+                SpellEngineParticles.MagicParticles.get(
+                        SpellEngineParticles.MagicParticles.Shape.SPARK,
+                        SpellEngineParticles.MagicParticles.Motion.FLOAT).id().toString(),
             ParticleBatch.Shape.PIPE, ParticleBatch.Origin.FEET,
             4.0F, 0.01F, 0.1F
-        ).color(4294954239L);
+        ).color(Color.HOLY.toRGBA());
         castParticle.extent = 1.5F;
         spell.active.cast.particles = new ParticleBatch[]{
             castParticle
         };
 
-        spell.release.animation = "spell_engine:one_handed_area_release";
+        spell.release.animation = PlayerAnimation.of("spell_engine:one_handed_area_release");
         spell.release.sound = new Sound(Identifier.of("more_rpg_classes:holy_release"));
         var releaseParticle1 = new ParticleBatch(
-            "spell_engine:electric_arc_a",
+            SpellEngineParticles.electric_arc_A.id().toString(),
             ParticleBatch.Shape.PILLAR, ParticleBatch.Origin.FEET,
             6.0F, 0.01F, 0.05F
         );
         releaseParticle1.extent = 1.0F;
         var releaseParticle2 = new ParticleBatch(
-            "spell_engine:electric_arc_b",
+            SpellEngineParticles.electric_arc_B.id().toString(),
             ParticleBatch.Shape.PILLAR, ParticleBatch.Origin.FEET,
             8.0F, 0.01F, 0.05F
         );
@@ -419,42 +433,48 @@ public class PaladinsSpells {
         stashMeleeTrigger.type = Spell.Trigger.Type.MELEE_IMPACT;
         spell.deliver.stash_effect.triggers = List.of(stashMeleeTrigger);
 
-        var damage = SpellBuilder.Impacts.damage(0.3F);
+        var damage = SpellBuilder.Impacts.damage(0.4F);
         damage.attribute = "minecraft:generic.attack_damage";
         damage.particles = new ParticleBatch[]{
             new ParticleBatch(
-                "spell_engine:magic_impact_burst",
+                    SpellEngineParticles.MagicParticles.get(
+                            SpellEngineParticles.MagicParticles.Shape.SPELL,
+                            SpellEngineParticles.MagicParticles.Motion.BURST).id().toString(),
                 ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
                 10.0F, 0.2F, 0.7F
-            ).color(4294954239L),
+            ).color(Color.HOLY.toRGBA()),
             new ParticleBatch(
-                "spell_engine:electric_arc_a",
+                SpellEngineParticles.electric_arc_A.id().toString(),
                 ParticleBatch.Shape.PILLAR, ParticleBatch.Origin.CENTER,
                 6.0F, 0.01F, 0.05F
             )
         };
         damage.sound = new Sound(Identifier.of("paladins:holy_shock_damage"));
 
-        var heal = SpellBuilder.Impacts.heal(0.1F);
+        var heal = SpellBuilder.Impacts.heal(0.15F);
         heal.attribute = "minecraft:generic.attack_damage";
         heal.action.apply_to_caster = true;
         heal.particles = new ParticleBatch[]{
             new ParticleBatch(
-                "spell_engine:magic_spark_float",
+                    SpellEngineParticles.MagicParticles.get(
+                            SpellEngineParticles.MagicParticles.Shape.SPARK,
+                            SpellEngineParticles.MagicParticles.Motion.FLOAT).id().toString(),
                 ParticleBatch.Shape.WIDE_PIPE, ParticleBatch.Origin.CENTER,
                 15.0F, 0.02F, 0.1F
-            ).color(4294954239L),
+            ).color(Color.HOLY.toRGBA()),
             new ParticleBatch(
-                "spell_engine:magic_heal_ascend",
+                    SpellEngineParticles.MagicParticles.get(
+                            SpellEngineParticles.MagicParticles.Shape.HEAL,
+                            SpellEngineParticles.MagicParticles.Motion.ASCEND).id().toString(),
                 ParticleBatch.Shape.WIDE_PIPE, ParticleBatch.Origin.FEET,
                 10.0F, 0.02F, 0.15F
-            ).color(1728014079L)
+            ).color(Color.GREEN.toRGBA())
         };
         heal.sound = new Sound(Identifier.of("spell_engine:generic_healing_impact_1"));
 
         spell.impacts = List.of(damage, heal);
 
-        SpellBuilder.Cost.cooldown(spell,35);
+        SpellBuilder.Cost.cooldown(spell,30);
         SpellBuilder.Cost.item(spell,"runes:healing_stone");
 
         return new Entry(id, spell, title, description, null);
@@ -469,21 +489,23 @@ public class PaladinsSpells {
         var spell = SpellBuilder.createSpellActive();
         spell.school = SpellSchools.HEALING;
         spell.range = 20.0F;
-        spell.tier = 4;
+        spell.tier = 5;
 
         spell.active.cast = new Spell.Active.Cast();
         spell.active.cast.duration = 1.0F;
-        spell.active.cast.animation = "spell_engine:one_handed_healing_charge";
+        spell.active.cast.animation = PlayerAnimation.of("spell_engine:one_handed_healing_charge");
         spell.active.cast.sound = new Sound(Identifier.of("spell_engine:generic_healing_casting"), 0);
         spell.active.cast.particles = new ParticleBatch[]{
             new ParticleBatch(
-                "spell_engine:magic_spark_float",
+                    SpellEngineParticles.MagicParticles.get(
+                            SpellEngineParticles.MagicParticles.Shape.SPARK,
+                            SpellEngineParticles.MagicParticles.Motion.FLOAT).id().toString(),
                 ParticleBatch.Shape.PIPE, ParticleBatch.Origin.FEET,
                 15.0F, 0.05F, 0.1F
-            ).color(4294954239L)
+            ).color(Color.HOLY.toRGBA())
         };
 
-        spell.release.animation = "spell_engine:one_handed_healing_release";
+        spell.release.animation = PlayerAnimation.of("spell_engine:one_handed_healing_release");
         spell.release.sound = new Sound(Identifier.of("spell_engine:generic_healing_release"));
 
         spell.target.type = Spell.Target.Type.AIM;
@@ -491,20 +513,22 @@ public class PaladinsSpells {
         spell.target.aim.use_caster_as_fallback = true;
 
         var preventionEffect = SpellBuilder.Impacts.effectSet("lne_paladins:holy_prevention",10,0);
-        preventionEffect.action.status_effect.amplifier_power_multiplier = 0.2F;
+        preventionEffect.action.status_effect.amplifier_power_multiplier = 0.25F;
         preventionEffect.action.status_effect.show_particles = false;
         preventionEffect.particles = new ParticleBatch[]{
             new ParticleBatch(
-                "spell_engine:magic_impact_ascend",
+                    SpellEngineParticles.MagicParticles.get(
+                            SpellEngineParticles.MagicParticles.Shape.SPARK,
+                            SpellEngineParticles.MagicParticles.Motion.ASCEND).id().toString(),
                 ParticleBatch.Shape.PILLAR, ParticleBatch.Origin.FEET,
                 25.0F, 0.02F, 0.15F
-            ).color(4294954239L)
+            ).color(Color.HOLY.toRGBA())
         };
         preventionEffect.sound = new Sound(Identifier.of("spell_engine:generic_healing_impact_1"));
 
         spell.impacts = List.of(preventionEffect);
 
-        SpellBuilder.Cost.cooldown(spell,45);
+        SpellBuilder.Cost.cooldown(spell,40);
         SpellBuilder.Cost.item(spell,"runes:healing_stone");
 
         return new Entry(id, spell, title, description, null);

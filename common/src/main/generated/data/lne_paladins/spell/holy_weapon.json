@@ -1,12 +1,14 @@
 {
   "school": "spell_power:healing",
   "range": 0.0,
-  "tier": 4,
+  "tier": 5,
   "learn": {},
   "active": {
     "cast": {
-      "duration": 0.75,
-      "animation": "more_rpg_classes:kneeing_uprising_charge",
+      "duration": 0.5,
+      "animation": {
+        "id": "more_rpg_classes:kneeing_uprising_charge"
+      },
       "particles": [
         {
           "particle_id": "spell_engine:magic_spark_float",
@@ -22,7 +24,9 @@
     }
   },
   "release": {
-    "animation": "spell_engine:one_handed_area_release",
+    "animation": {
+      "id": "spell_engine:one_handed_area_release"
+    },
     "particles": [
       {
         "particle_id": "spell_engine:electric_arc_a",
@@ -65,12 +69,12 @@
       "action": {
         "type": "DAMAGE",
         "damage": {
-          "spell_power_coefficient": 0.3
+          "spell_power_coefficient": 0.4
         }
       },
       "particles": [
         {
-          "particle_id": "spell_engine:magic_impact_burst",
+          "particle_id": "spell_engine:magic_spell_burst",
           "origin": "CENTER",
           "shape": "SPHERE",
           "count": 10.0,
@@ -97,7 +101,7 @@
         "type": "HEAL",
         "apply_to_caster": true,
         "heal": {
-          "spell_power_coefficient": 0.1
+          "spell_power_coefficient": 0.15
         }
       },
       "particles": [
@@ -117,7 +121,7 @@
           "count": 10.0,
           "min_speed": 0.02,
           "max_speed": 0.15,
-          "color_rgba": 1728014079
+          "color_rgba": 16711935
         }
       ],
       "sound": {
@@ -127,7 +131,7 @@
   ],
   "cost": {
     "cooldown": {
-      "duration": 35.0
+      "duration": 30.0
     },
     "item": {
       "id": "runes:healing_stone"

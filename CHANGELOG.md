@@ -1,3 +1,11 @@
+# 1.1.0 - 1.21.1
+**Update to use Spell Engine 1.9.0**
+- DISCLAIMER: All spell books and spell scrolls will be reset, due to major API changes.
+- Prevention & Holy Weapon are now Tier 5 Spells
+- The Spells can now also be learned in the Spell Binding Table
+- The additional Spells also got slightly buffed
+- Small tweaks in the Loot Tables
+
 # 1.0.9 - 1.21.1
 - Fixed the Loot Table Errors in the Logs from the Paladin Recruitment Structure
 - Split the Priest and Paladin Loot Tables for Better configuration of loot tables

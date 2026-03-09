@@ -18,11 +18,10 @@ import net.minecraft.util.Rarity;
 import net.minecraft.util.Util;
 import net.spell_engine.api.config.AttributeModifier;
 import net.spell_engine.api.config.ShieldConfig;
-import net.spell_engine.api.item.Equipment;
-import net.spell_engine.api.item.Tiers;
-import net.spell_engine.api.item.weapon.Weapon;
+import net.spell_engine.rpg_series.item.Equipment;
+import net.spell_engine.rpg_series.item.Weapon;
 import net.spell_engine.api.spell.SpellDataComponents;
-import net.spell_engine.api.spell.container.SpellContainerHelper;
+import net.spell_engine.api.spell.container.SpellContainers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -151,7 +150,6 @@ public class LNEShields {
                     .spell(wither_shield_spell);
         }
 
-        var netheriteTier = Tiers.unsafe("netherite");
         ArrayList<Item> shields = new ArrayList<>();
         for (var entry: entries) {
             var config = configs.get(entry.id.toString());
@@ -166,15 +164,15 @@ public class LNEShields {
                 shieldAttributes.add(new Pair<>(modifier.attribute(), modifier.modifier()));
             }
             var settings = new Item.Settings().maxDamage(config.durability);
-            var tier = Tiers.unsafe(entry.id());
-            if (tier >= netheriteTier) {
+            var tier = entry.lootProperties.tier();
+            if (tier >= 3) {
                 settings.fireproof();
             }
             if (entry.rarity != Rarity.COMMON) {
                 settings.rarity(entry.rarity);
             }
             if (entry.spells != null) {
-                settings.component(SpellDataComponents.SPELL_CONTAINER, SpellContainerHelper.createForShield(entry.spells));
+                settings.component(SpellDataComponents.SPELL_CONTAINER, SpellContainers.forShield(entry.spells));
             }
             var shield = new CustomShieldItem(SoundEvents.ITEM_ARMOR_EQUIP_IRON, entry.repair, shieldAttributes, settings);
             Registry.register(Registries.ITEM, entry.id, shield);

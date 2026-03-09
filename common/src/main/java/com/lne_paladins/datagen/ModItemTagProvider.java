@@ -31,7 +31,7 @@ public class ModItemTagProvider extends RPGSeriesDataGen.ItemTagGenerator {
         while(var2.hasNext()) {
             RPGSeriesDataGen.ShieldEntry entry = (RPGSeriesDataGen.ShieldEntry)var2.next();
             Identifier id = entry.id();
-            TagKey<Item> weaponType = RPGSeriesItemTags.WeaponType.get(net.spell_engine.api.item.Equipment.WeaponType.SHIELD);
+            TagKey<Item> weaponType = RPGSeriesItemTags.WeaponType.get(net.spell_engine.rpg_series.item.Equipment.WeaponType.SHIELD);
             FabricTagProvider<Item>.FabricTagBuilder weaponTag = this.getOrCreateTagBuilder(weaponType);
             weaponTag.addOptional(id);
         }

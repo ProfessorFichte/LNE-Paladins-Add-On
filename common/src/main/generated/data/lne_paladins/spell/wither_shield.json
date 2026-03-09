@@ -59,7 +59,7 @@
             }
           ],
           "model": {
-            "model_id": "loot_n_explore:projectile/wither_skull",
+            "model_id": "loot_n_explore:spell_projectile/wither_skull",
             "scale": 1.5,
             "rotate_degrees_per_tick": 0.0
           }
