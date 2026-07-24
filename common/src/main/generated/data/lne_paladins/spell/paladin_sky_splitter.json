@@ -1,0 +1,153 @@
+{
+  "school": "spell_power:physical_melee",
+  "range": 0.0,
+  "tier": 5,
+  "learn": {},
+  "active": {
+    "cast": {
+      "duration": 0.75,
+      "animation": {
+        "id": "more_rpg_classes:kneeing_uprising_charge"
+      },
+      "particles": [
+        {
+          "particle_id": "spell_engine:magic_spark_float",
+          "origin": "FEET",
+          "shape": "PIPE",
+          "count": 4.0,
+          "min_speed": 0.01,
+          "max_speed": 0.1,
+          "extent": 1.5,
+          "color_rgba": 4294954239
+        }
+      ]
+    }
+  },
+  "release": {
+    "animation": {
+      "id": "spell_engine:one_handed_area_release"
+    },
+    "particles": [
+      {
+        "particle_id": "spell_engine:electric_arc_a",
+        "origin": "FEET",
+        "shape": "PILLAR",
+        "count": 6.0,
+        "min_speed": 0.01,
+        "max_speed": 0.05,
+        "extent": 1.0
+      },
+      {
+        "particle_id": "spell_engine:electric_arc_b",
+        "origin": "FEET",
+        "shape": "PILLAR",
+        "count": 8.0,
+        "min_speed": 0.01,
+        "max_speed": 0.05,
+        "extent": 1.0
+      }
+    ],
+    "sound": {
+      "id": "more_rpg_classes:holy_release"
+    }
+  },
+  "deliver": {
+    "type": "CUSTOM",
+    "custom": {
+      "handler": "lne_paladins:sky_splitter"
+    }
+  },
+  "impacts": [
+    {
+      "school": "spell_power:physical_melee",
+      "power_blend": [
+        {
+          "school": "spell_power:healing",
+          "power": true,
+          "critical_chance": true,
+          "critical_damage": true,
+          "weight": 0.33333334
+        }
+      ],
+      "target_modifiers": [
+        {
+          "conditions": [
+            {
+              "entity_type": "#minecraft:undead"
+            }
+          ],
+          "modifier": {
+            "power_multiplier": 0.5
+          }
+        }
+      ],
+      "action": {
+        "type": "DAMAGE",
+        "damage": {
+          "spell_power_coefficient": 1.2,
+          "knockback": 1.5
+        }
+      },
+      "particles": [
+        {
+          "particle_id": "spell_engine:magic_spell_burst",
+          "origin": "CENTER",
+          "shape": "SPHERE",
+          "count": 15.0,
+          "min_speed": 0.2,
+          "max_speed": 0.7,
+          "color_rgba": 4294954239
+        }
+      ],
+      "sound": {
+        "id": "paladins:holy_shock_damage"
+      }
+    },
+    {
+      "action": {
+        "type": "STATUS_EFFECT",
+        "apply_to_caster": true,
+        "status_effect": {
+          "effect_id": "lne_paladins:templars_retribution",
+          "duration": 8.0
+        }
+      }
+    }
+  ],
+  "area_impact": {
+    "radius": 3.0,
+    "area": {
+      "distance_dropoff": "SQUARED"
+    },
+    "particles": [
+      {
+        "particle_id": "spell_engine:electric_arc_a",
+        "origin": "CENTER",
+        "shape": "SPHERE",
+        "count": 20.0,
+        "min_speed": 0.8,
+        "max_speed": 0.9
+      },
+      {
+        "particle_id": "spell_engine:electric_arc_b",
+        "origin": "CENTER",
+        "shape": "SPHERE",
+        "count": 20.0,
+        "min_speed": 0.2,
+        "max_speed": 0.4
+      }
+    ],
+    "sound": {
+      "id": "paladins:judgement_impact",
+      "volume": 1.5
+    }
+  },
+  "cost": {
+    "cooldown": {
+      "duration": 30.0
+    },
+    "item": {
+      "id": "runes:healing_stone"
+    }
+  }
+}
