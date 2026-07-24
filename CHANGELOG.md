@@ -1,3 +1,11 @@
+# 1.1.1 - 1.21.1
+- Adapt to Spell Engine 1.9.10+ API Changes
+**Balancing & Internal Changes:**
+- Removed Holy Weapon as an extra spell for Paladin.
+- New Spell for Paladin: "Templar's Sky Splitter" 
+- Call down a ring of falling templar swords around you, dealing damage & Increasing the attack damage of the paladin
+- The model is a placeholder, a new model will be created for this spell.
+
 # 1.1.0 - 1.21.1
 **Update to use Spell Engine 1.9.0**
 - DISCLAIMER: All spell books and spell scrolls will be reset, due to major API changes.

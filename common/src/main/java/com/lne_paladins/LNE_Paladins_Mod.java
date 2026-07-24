@@ -2,9 +2,11 @@ package com.lne_paladins;
 
 import com.lne_paladins.config.Default;
 import com.lne_paladins.effect.LNE_PaladinsEffects;
+import com.lne_paladins.entity.ModEntitiesRegistry;
 import com.lne_paladins.item.LNEShields;
 import com.lne_paladins.item.WeaponRegister;
 import com.lne_paladins.config.TweaksConfig;
+import com.lne_paladins.spells.CustomSpellDeliveries;
 import net.fabricmc.loader.api.FabricLoader;
 import net.spell_engine.api.config.ConfigFile;
 import net.tiny_config.ConfigManager;
@@ -42,7 +44,8 @@ public class LNE_Paladins_Mod {
 
 	public static void init() {
 		tweaksConfig.refresh();
-
+		ModEntitiesRegistry.registerEntities();
+		CustomSpellDeliveries.register();
 	}
 	public static void registerItems(){
 		if(FabricLoader.getInstance().isModLoaded("loot_n_explore")) {

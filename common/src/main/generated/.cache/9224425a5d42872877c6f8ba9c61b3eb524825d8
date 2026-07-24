@@ -1,8 +1,8 @@
-// 1.21.1	2026-03-09T22:21:13.7313388	L&E Paladins-Add On/Spell Generator
-86e189a0ae122500644e5b68ff6716f20b3194a6 data\lne_paladins\spell\elder_guardian_shield.json
+// 1.21.1	2026-07-24T18:56:56.2424098	L&E Paladins-Add On/Spell Generator
+31fa252435ee95d8cc8353fccd4cdc12b3ec380a data\lne_paladins\spell\elder_guardian_shield.json
 5f52fc5290de44737075241e8d6461703c7dd430 data\lne_paladins\spell\sirens_tears.json
 77daa0c1be50e2c1dfab41a72e05434c5d3b2d43 data\lne_paladins\spell\glacial_shield.json
-3e209b9c4be5885ce74bff5673a0a21588f7c1cc data\lne_paladins\spell\wither_shield.json
+40440124af4ae031d3f359b08ac11a7e7453af82 data\lne_paladins\spell\paladin_sky_splitter.json
+961ef67d2c0726914d093fb38c6b4b725e4f9b77 data\lne_paladins\spell\wither_shield.json
 9e67536fc1ca5303567336534477698129d8351c data\lne_paladins\spell\holy_prevention.json
 9b0de864f98a8472fc96aa35286ff65dc6581b6e data\lne_paladins\spell\ender_dragon_shield.json
-4f230090aeb9782edc203e665633b5c805add42b data\lne_paladins\spell\holy_weapon.json

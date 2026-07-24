@@ -3,7 +3,7 @@ package com.lne_paladins.datagen;
 import com.lne_paladins.effect.LNE_PaladinsEffects;
 import com.lne_paladins.item.LNEShields;
 import com.lne_paladins.item.WeaponRegister;
-import com.lne_paladins.spells.PaladinsSpells;
+import com.lne_paladins.spells.LNE_PaladinsSpells;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.registry.RegistryWrapper;
@@ -25,7 +25,7 @@ public class ModLanguageProvider extends FabricLanguageProvider {
             builder.add(entry.effect.getTranslationKey() + ".description", entry.description);
         });
 
-        for (var entry : PaladinsSpells.entries) {
+        for (var entry : LNE_PaladinsSpells.entries) {
             var id = entry.id();
                 builder.add("spell." + id.getNamespace() + "." + id.getPath() + ".name", entry.title());
                 builder.add("spell." + id.getNamespace() + "." + id.getPath() + ".description", entry.description());

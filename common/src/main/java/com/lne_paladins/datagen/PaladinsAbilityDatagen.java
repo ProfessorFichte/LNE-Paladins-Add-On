@@ -1,6 +1,6 @@
 package com.lne_paladins.datagen;
 
-import com.lne_paladins.spells.PaladinsSpells;
+import com.lne_paladins.spells.LNE_PaladinsSpells;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.registry.RegistryWrapper;
 import net.spell_engine.api.datagen.SpellGenerator;
@@ -15,7 +15,7 @@ public class PaladinsAbilityDatagen extends SpellGenerator {
     @Override
     public void generateSpells(Builder builder) {
         // Register all spells from the PaladinsSpells entries list
-        for (var entry : PaladinsSpells.entries) {
+        for (var entry : LNE_PaladinsSpells.entries) {
             builder.add(entry.id(), entry.spell());
         }
     }

@@ -3,6 +3,9 @@ package com.lne_paladins.effect;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
+import net.minecraft.server.world.ServerWorld;
+import net.more_rpg_classes.client.particle.MoreParticles;
+import net.more_rpg_classes.client.particle.PopupParticleEffect;
 import net.spell_engine.api.spell.fx.ParticleBatch;
 import net.spell_engine.client.util.Color;
 import net.spell_engine.fx.ParticleHelper;
@@ -42,6 +45,7 @@ public class PreventionStatusEffect extends StatusEffect {
             if(!livingEntity.getWorld().isClient()){
                 ParticleHelper.sendBatches(livingEntity, new ParticleBatch[]{particles});
                 ParticleHelper.sendBatches(livingEntity, new ParticleBatch[]{particles1});
+                popIcon(livingEntity);
             }
             livingEntity.removeStatusEffect(LNE_PaladinsEffects.PREVENTION.entry);
         }
@@ -55,11 +59,21 @@ public class PreventionStatusEffect extends StatusEffect {
             if(!livingEntity.getWorld().isClient()){
                 ParticleHelper.sendBatches(livingEntity, new ParticleBatch[]{particles});
                 ParticleHelper.sendBatches(livingEntity, new ParticleBatch[]{particles1});
+                popIcon(livingEntity);
             }
             livingEntity.removeStatusEffect(LNE_PaladinsEffects.PREVENTION.entry);
         }
         super.applyUpdateEffect(livingEntity, amplifier);
         return true;
+    }
+
+    private static void popIcon(LivingEntity livingEntity) {
+        if (livingEntity.getWorld() instanceof ServerWorld serverWorld) {
+            serverWorld.spawnParticles(
+                    new PopupParticleEffect(MoreParticles.POPUP, LNE_PaladinsEffects.PREVENTION.id, false, livingEntity.getId()),
+                    livingEntity.getX(), livingEntity.getEyeY() + 0.2, livingEntity.getZ(),
+                    1, 0, 0, 0, 0);
+        }
     }
 
     @Override

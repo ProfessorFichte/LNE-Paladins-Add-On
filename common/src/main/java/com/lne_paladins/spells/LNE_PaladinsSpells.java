@@ -1,14 +1,17 @@
 package com.lne_paladins.spells;
 
 import net.minecraft.util.Identifier;
-import net.more_rpg_classes.custom.MoreSpellSchools;
+import com.lne_paladins.effect.LNE_PaladinsEffects;
+import net.paladins.content.PaladinSounds;
 import net.spell_engine.api.datagen.SpellBuilder;
+import net.spell_engine.api.effect.SpellEngineEffects;
 import net.spell_engine.api.spell.ExternalSpellSchools;
 import net.spell_engine.api.spell.Spell;
 import net.spell_engine.api.spell.fx.ParticleBatch;
 import net.spell_engine.api.spell.fx.PlayerAnimation;
 import net.spell_engine.api.spell.fx.Sound;
 import net.spell_engine.api.util.TriState;
+import net.spell_engine.client.gui.SpellTooltip;
 import net.spell_engine.client.util.Color;
 import net.spell_engine.fx.SpellEngineParticles;
 import net.spell_power.api.SpellSchools;
@@ -19,7 +22,7 @@ import java.util.List;
 
 import static com.lne_paladins.LNE_Paladins_Mod.MOD_ID;
 
-public class PaladinsSpells {
+public class LNE_PaladinsSpells {
     public record Entry(Identifier id, Spell spell, String title, String description,
                         @Nullable net.spell_engine.client.gui.SpellTooltip.DescriptionMutator mutator) {
     }
@@ -63,11 +66,9 @@ public class PaladinsSpells {
 
         spell.target.type = Spell.Target.Type.FROM_TRIGGER;
 
-        var bleedingEffect = SpellBuilder.Impacts.effectSet("more_rpg_classes:bleeding",7,0);
-        bleedingEffect.target_modifiers = List.of(
-            createDenyModifier("#minecraft:undead")
-        );
+        var bleedingEffect = SpellBuilder.Impacts.effectSet(SpellEngineEffects.BLEED.id.toString(),7,0);
         bleedingEffect.action.status_effect.amplifier_power_multiplier = 0.3F;
+        bleedingEffect.action.status_effect.amplifier_cap = 2;
         bleedingEffect.action.status_effect.show_particles = false;
         bleedingEffect.particles = new ParticleBatch[]{
             new ParticleBatch(
@@ -229,10 +230,9 @@ public class PaladinsSpells {
         spell.deliver.projectile.projectile.client_data.travel_particles = new ParticleBatch[]{
             travelParticle
         };
-        spell.deliver.projectile.projectile.client_data.model = new Spell.ProjectileModel();
-        spell.deliver.projectile.projectile.client_data.model.model_id = "loot_n_explore:spell_projectile/wither_skull";
-        spell.deliver.projectile.projectile.client_data.model.scale = 1.5F;
-        spell.deliver.projectile.projectile.client_data.model.rotate_degrees_per_tick = 0.0F;
+        var witherSkullModel = SpellBuilder.ProjectileModels.model("loot_n_explore:spell_projectile/wither_skull", 1.5F);
+        witherSkullModel.rotate_degrees_per_tick = 0.0F;
+        spell.deliver.projectile.projectile.client_data.composite_model = SpellBuilder.ProjectileModels.composite(witherSkullModel);
 
         var witherEffect = SpellBuilder.Impacts.effectSet("wither",5,1);
         witherEffect.action.status_effect.amplifier_power_multiplier = 0.25F;
@@ -377,19 +377,25 @@ public class PaladinsSpells {
     }
 
     // ===== ACTIVE SPELL DEFINITIONS =====
-    public static Entry holy_weapon = add(holy_weapon());
-    private static Entry holy_weapon() {
-        var id = Identifier.of(MOD_ID, "holy_weapon");
-        var title = "Holy Weapon";
-        var description = "Empower your weapon for {stash_duration} seconds. Melee attacks deal {damage} damage and heal you.";
+    public static Entry paladin_sky_splitter = add(paladin_sky_splitter());
+    private static Entry paladin_sky_splitter() {
+        var id = Identifier.of(MOD_ID, "paladin_sky_splitter");
+        var title = "Templar's Sky Splitter";
+        var description = "Call down a ring of falling templar swords around you, dealing {damage} damage. Increasing the attack damage of the caster by {bonus}.";
+        var effect = LNE_PaladinsEffects.TEMPLARS_RETRIBUTION;
+        SpellTooltip.DescriptionMutator mutator = (args) -> {
+            var modifier = effect.config().firstModifier();
+            var bonus = SpellTooltip.bonus(Math.abs(modifier.value), modifier.operation);
+            return args.description()
+                    .replace("{bonus}", bonus);
+        };
 
         var spell = SpellBuilder.createSpellActive();
-        spell.school = SpellSchools.HEALING;
+        spell.school = ExternalSpellSchools.PHYSICAL_MELEE;
         spell.range = 0.0F;
         spell.tier = 5;
 
-        spell.active.cast = new Spell.Active.Cast();
-        spell.active.cast.duration = 0.5F;
+        spell.active.cast.duration = 0.75F;
         spell.active.cast.animation = PlayerAnimation.of("more_rpg_classes:kneeing_uprising_charge");
         var castParticle = new ParticleBatch(
                 SpellEngineParticles.MagicParticles.get(
@@ -423,61 +429,52 @@ public class PaladinsSpells {
         };
 
         spell.deliver = new Spell.Delivery();
-        spell.deliver.type = Spell.Delivery.Type.STASH_EFFECT;
-        spell.deliver.stash_effect = new Spell.Delivery.StashEffect();
-        spell.deliver.stash_effect.id = "lne_paladins:holy_weapon";
-        spell.deliver.stash_effect.amplifier = 0;
-        spell.deliver.stash_effect.duration = 10.0F;
-        spell.deliver.stash_effect.consume = 0;
-        var stashMeleeTrigger = new Spell.Trigger();
-        stashMeleeTrigger.type = Spell.Trigger.Type.MELEE_IMPACT;
-        spell.deliver.stash_effect.triggers = List.of(stashMeleeTrigger);
+        spell.deliver.type = Spell.Delivery.Type.CUSTOM;
+        spell.deliver.custom = new Spell.Delivery.Custom();
+        spell.deliver.custom.handler = Identifier.of(MOD_ID, "sky_splitter").toString();
 
-        var damage = SpellBuilder.Impacts.damage(0.4F);
-        damage.attribute = "minecraft:generic.attack_damage";
+        var damage = SpellBuilder.Impacts.damage(1.2F, 1.5F);
+        damage.target_modifiers = List.of(SpellBuilder.ImpactModifiers.extraDamageAgainstUndead());
+        damage.school = ExternalSpellSchools.PHYSICAL_MELEE;
+        damage.power_blend = List.of(SpellBuilder.Impacts.powerBlend(
+                SpellSchools.HEALING, 1F / 3F, true, true, true));
         damage.particles = new ParticleBatch[]{
             new ParticleBatch(
                     SpellEngineParticles.MagicParticles.get(
                             SpellEngineParticles.MagicParticles.Shape.SPELL,
                             SpellEngineParticles.MagicParticles.Motion.BURST).id().toString(),
                 ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
-                10.0F, 0.2F, 0.7F
-            ).color(Color.HOLY.toRGBA()),
-            new ParticleBatch(
-                SpellEngineParticles.electric_arc_A.id().toString(),
-                ParticleBatch.Shape.PILLAR, ParticleBatch.Origin.CENTER,
-                6.0F, 0.01F, 0.05F
-            )
+                15.0F, 0.2F, 0.7F
+            ).color(Color.HOLY.toRGBA())
         };
         damage.sound = new Sound(Identifier.of("paladins:holy_shock_damage"));
 
-        var heal = SpellBuilder.Impacts.heal(0.15F);
-        heal.attribute = "minecraft:generic.attack_damage";
-        heal.action.apply_to_caster = true;
-        heal.particles = new ParticleBatch[]{
-            new ParticleBatch(
-                    SpellEngineParticles.MagicParticles.get(
-                            SpellEngineParticles.MagicParticles.Shape.SPARK,
-                            SpellEngineParticles.MagicParticles.Motion.FLOAT).id().toString(),
-                ParticleBatch.Shape.WIDE_PIPE, ParticleBatch.Origin.CENTER,
-                15.0F, 0.02F, 0.1F
-            ).color(Color.HOLY.toRGBA()),
-            new ParticleBatch(
-                    SpellEngineParticles.MagicParticles.get(
-                            SpellEngineParticles.MagicParticles.Shape.HEAL,
-                            SpellEngineParticles.MagicParticles.Motion.ASCEND).id().toString(),
-                ParticleBatch.Shape.WIDE_PIPE, ParticleBatch.Origin.FEET,
-                10.0F, 0.02F, 0.15F
-            ).color(Color.GREEN.toRGBA())
-        };
-        heal.sound = new Sound(Identifier.of("spell_engine:generic_healing_impact_1"));
+        var templarsRetribution = SpellBuilder.Impacts.effectSet(
+                LNE_PaladinsEffects.TEMPLARS_RETRIBUTION.id.toString(), 8, 0);
+        templarsRetribution.action.apply_to_caster = true;
+        templarsRetribution.action.status_effect.show_particles = false;
 
-        spell.impacts = List.of(damage, heal);
+        spell.impacts = List.of(damage, templarsRetribution);
+
+        spell.area_impact = new Spell.AreaImpact();
+        spell.area_impact.radius = 3;
+        spell.area_impact.area.distance_dropoff = Spell.Target.Area.DropoffCurve.SQUARED;
+        spell.area_impact.particles = new ParticleBatch[] {
+                new ParticleBatch(
+                        SpellEngineParticles.electric_arc_A.id().toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
+                        20, 0.8F, 0.9F),
+                new ParticleBatch(
+                        SpellEngineParticles.electric_arc_B.id().toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
+                        20, 0.2F, 0.4F),
+        };
+        spell.area_impact.sound = Sound.withVolume(PaladinSounds.judgement_impact.id(), 1.5F);
 
         SpellBuilder.Cost.cooldown(spell,30);
         SpellBuilder.Cost.item(spell,"runes:healing_stone");
 
-        return new Entry(id, spell, title, description, null);
+        return new Entry(id, spell, title, description, mutator);
     }
 
     public static Entry holy_prevention = add(holy_prevention());

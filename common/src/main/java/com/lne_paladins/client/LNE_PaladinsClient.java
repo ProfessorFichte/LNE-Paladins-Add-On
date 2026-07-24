@@ -1,12 +1,19 @@
 package com.lne_paladins.client;
 
-import com.lne_paladins.client.effect.HolyWeaponRenderer;
-import com.lne_paladins.effect.LNE_PaladinsEffects;
-import net.spell_engine.api.effect.CustomModelStatusEffect;
+import com.lne_paladins.client.entity.TemplarsSkySplitterProjectileRenderer;
+import com.lne_paladins.entity.TemplarsSkySplitterProjectile;
+import com.lne_paladins.spells.LNE_PaladinsSpells;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.spell_engine.client.gui.SpellTooltip;
 
 public class LNE_PaladinsClient{
 
     public static void init() {
-        CustomModelStatusEffect.register(LNE_PaladinsEffects.HOLY_WEAPON.effect, new HolyWeaponRenderer());
+        for (var spell: LNE_PaladinsSpells.entries) {
+            if (spell.mutator() != null) {
+                SpellTooltip.addDescriptionMutator(spell.id(), spell.mutator());
+            }
+        }
+        EntityRendererRegistry.register(TemplarsSkySplitterProjectile.ENTITY_TYPE, TemplarsSkySplitterProjectileRenderer::new);
     }
 }
