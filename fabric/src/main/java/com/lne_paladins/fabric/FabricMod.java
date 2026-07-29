@@ -7,6 +7,7 @@ public final class FabricMod implements ModInitializer {
     @Override
     public void onInitialize() {
         LNE_Paladins_Mod.init();
+        LNE_Paladins_Mod.registerEntities();
         LNE_Paladins_Mod.registerEffects();
         LNE_Paladins_Mod.registerItems();
     }

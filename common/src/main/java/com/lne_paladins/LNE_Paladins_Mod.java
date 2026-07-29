@@ -44,8 +44,10 @@ public class LNE_Paladins_Mod {
 
 	public static void init() {
 		tweaksConfig.refresh();
-		ModEntitiesRegistry.registerEntities();
 		CustomSpellDeliveries.register();
+	}
+	public static void registerEntities(){
+		ModEntitiesRegistry.registerEntities();
 	}
 	public static void registerItems(){
 		if(FabricLoader.getInstance().isModLoaded("loot_n_explore")) {

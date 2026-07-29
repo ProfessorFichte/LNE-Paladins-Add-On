@@ -13,6 +13,9 @@ public final class NeoForgeMod {
         modBus.addListener(RegisterEvent.class, NeoForgeMod::register);
     }
     public static void register(RegisterEvent event) {
+        event.register(RegistryKeys.ENTITY_TYPE, reg -> {
+            LNE_Paladins_Mod.registerEntities();
+        });
         event.register(RegistryKeys.ITEM, reg -> {
             LNE_Paladins_Mod.registerItems();
         });

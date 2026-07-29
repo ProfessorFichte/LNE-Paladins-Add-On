@@ -1,3 +1,8 @@
+# 1.1.2 - 1.21.1
+- Fixed Neoforge Crash
+- clean up code
+- Replace Infested Stone Bricks with normal Stone Bricks in the Holy Church GH Issue #3
+
 # 1.1.1 - 1.21.1
 - Adapt to Spell Engine 1.9.10+ API Changes
 **Balancing & Internal Changes:**
