@@ -10,6 +10,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.more_rpg_classes.custom.MoreSpellSchools;
+import net.more_rpg_classes.custom.MrpgLibSpells;
 import net.paladins.content.PaladinSpells;
 import net.spell_engine.api.config.AttributeModifier;
 import net.spell_engine.api.config.WeaponConfig;
@@ -64,7 +65,7 @@ public class WeaponRegister {
     private static final float staffSpellPower = 8.0F;
     private static final float weaponSpellPower = 4.0F;
     ///SPELL IDS
-    public static Identifier sirens_tears = Identifier.of(MOD_ID, "sirens_tears");
+    public static Identifier sirens_tears = MrpgLibSpells.sirens_tears.id();
 
     private static Weapon.Entry healing_staff(String name, Weapon.CustomMaterial material) {
         var entry = entry(name, material, StaffItem::new, new WeaponConfig(staffAttackDamage, paladins_staffAttackSpeed), Equipment.WeaponType.HEALING_STAFF)
@@ -96,33 +97,33 @@ public class WeaponRegister {
             ///ENDER DRAGON WEAPON THEMES
             claymore("ender_dragon_claymore",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.AMETHYST_SHARD)), claymoreAttackDamage)
-                    .withAdditionalSpell(LNE_Abilities.dragonclaw.id().toString())
+                    .withAdditionalSpell(MrpgLibSpells.dragonclaw_melee.id().toString())
                     .translatedName("Ender Blade")
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, weaponSpellPower));
             mace("ender_dragon_mace",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.AMETHYST_SHARD)), maceAttackDamage)
-                    .withAdditionalSpell(LNE_Abilities.dragonclaw.id().toString())
+                    .withAdditionalSpell(MrpgLibSpells.dragonclaw_melee.id().toString())
                     .translatedName("Dragon´s Maw")
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, weaponSpellPower));
             hammer("ender_dragon_great_hammer",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.AMETHYST_SHARD)), hammerAttackDamage)
-                    .withAdditionalSpell(LNE_Abilities.dragonclaw.id().toString())
+                    .withAdditionalSpell(MrpgLibSpells.dragonclaw_melee.id().toString())
                     .translatedName("Dragons Nails")
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, weaponSpellPower));
             ///OCEAN WEAPON THEMES
             claymore("elder_guardian_claymore",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD)), claymoreAttackDamage)
-                    .withAdditionalSpell(LNE_Abilities.waterbomb.id().toString())
+                    .withAdditionalSpell(MrpgLibSpells.waterbomb_melee.id().toString())
                     .translatedName("Sea King's Blade")
                     .attribute(AttributeModifier.bonus(MoreSpellSchools.WATER.id, weaponSpellPower));
             mace("elder_guardian_mace",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD)), maceAttackDamage)
-                    .withAdditionalSpell(LNE_Abilities.waterbomb.id().toString())
+                    .withAdditionalSpell(MrpgLibSpells.waterbomb_melee.id().toString())
                     .translatedName("Sea Star")
                     .attribute(AttributeModifier.bonus(MoreSpellSchools.WATER.id, weaponSpellPower));
             hammer("elder_guardian_great_hammer",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD)), hammerAttackDamage)
-                    .withAdditionalSpell(LNE_Abilities.waterbomb.id().toString())
+                    .withAdditionalSpell(MrpgLibSpells.waterbomb_melee.id().toString())
                     .translatedName("Tsunamis Wrath")
                     .attribute(AttributeModifier.bonus(MoreSpellSchools.WATER.id, weaponSpellPower));
             healing_staff("elder_guardian_holy_staff",
@@ -134,33 +135,33 @@ public class WeaponRegister {
             ///WITHER WEAPON THEMES
             claymore("wither_claymore",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.BONE)), claymoreAttackDamage)
-                    .withAdditionalSpell(LNE_Abilities.wither_pulse.id().toString())
+                    .withAdditionalSpell(MrpgLibSpells.wither_pulse_melee.id().toString())
                     .translatedName("Withered Claymore")
                     .attribute(AttributeModifier.bonus(SpellSchools.SOUL.id, weaponSpellPower));
             mace("wither_mace",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.BONE)), maceAttackDamage)
-                    .withAdditionalSpell(LNE_Abilities.wither_pulse.id().toString())
+                    .withAdditionalSpell(MrpgLibSpells.wither_pulse_melee.id().toString())
                     .translatedName("Withered Mace")
                     .attribute(AttributeModifier.bonus(SpellSchools.SOUL.id, weaponSpellPower));
             hammer("wither_great_hammer",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.BONE)), hammerAttackDamage)
-                    .withAdditionalSpell(LNE_Abilities.wither_pulse.id().toString())
+                    .withAdditionalSpell(MrpgLibSpells.wither_pulse_melee.id().toString())
                     .translatedName("Withered Crusher")
                     .attribute(AttributeModifier.bonus(SpellSchools.SOUL.id, weaponSpellPower));
             ///GLACIAL WEAPON THEMES
             claymore("glacial_claymore",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.ICE)), claymoreAttackDamage)
-                    .withAdditionalSpell(LNE_Abilities.avalanche.id().toString())
+                    .withAdditionalSpell(MrpgLibSpells.avalanche_melee.id().toString())
                     .translatedName("Glaciers Edge")
                     .attribute(AttributeModifier.bonus(SpellSchools.FROST.id, weaponSpellPower));
             mace("glacial_mace",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.ICE)), maceAttackDamage)
-                    .withAdditionalSpell(LNE_Abilities.avalanche.id().toString())
+                    .withAdditionalSpell(MrpgLibSpells.avalanche_melee.id().toString())
                     .translatedName("Icicle Crusher")
                     .attribute(AttributeModifier.bonus(SpellSchools.FROST.id, weaponSpellPower));
             hammer("glacial_great_hammer",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.ICE)), hammerAttackDamage)
-                    .withAdditionalSpell(LNE_Abilities.avalanche.id().toString())
+                    .withAdditionalSpell(MrpgLibSpells.avalanche_melee.id().toString())
                     .translatedName("Frozen Mallet")
                     .attribute(AttributeModifier.bonus(SpellSchools.FROST.id, weaponSpellPower));
 

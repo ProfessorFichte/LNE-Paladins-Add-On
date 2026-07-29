@@ -16,6 +16,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.Util;
+import net.more_rpg_classes.custom.MrpgLibSpells;
 import net.spell_engine.api.config.AttributeModifier;
 import net.spell_engine.api.config.ShieldConfig;
 import net.spell_engine.rpg_series.item.Equipment;
@@ -108,10 +109,10 @@ public class LNEShields {
     }
 
     ///SPELL IDS
-    public static Identifier elder_guardian_shield_spell = Identifier.of(MOD_ID, "elder_guardian_shield");
-    public static Identifier ender_dragon_shield_spell = Identifier.of(MOD_ID, "ender_dragon_shield");
-    public static Identifier glacial_shield_spell = Identifier.of(MOD_ID, "glacial_shield");
-    public static Identifier wither_shield_spell = Identifier.of(MOD_ID, "wither_shield");
+    public static Identifier elder_guardian_shield_spell = MrpgLibSpells.elder_guardian_shield.id();
+    public static Identifier ender_dragon_shield_spell = MrpgLibSpells.ender_dragon_shield.id();
+    public static Identifier glacial_shield_spell = MrpgLibSpells.glacial_shield.id();
+    public static Identifier wither_shield_spell = MrpgLibSpells.wither_shield.id();
 
     private static final String GENERIC_ARMOR_TOUGHNESS = "minecraft:generic.armor_toughness";
     private static final String GENERIC_MAX_HEALTH = "generic.max_health";
