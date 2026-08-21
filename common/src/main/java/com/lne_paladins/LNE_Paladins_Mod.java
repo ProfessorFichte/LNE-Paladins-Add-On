@@ -8,7 +8,7 @@ import com.lne_paladins.item.WeaponRegister;
 import com.lne_paladins.config.TweaksConfig;
 import com.lne_paladins.spells.CustomSpellDeliveries;
 import net.fabricmc.loader.api.FabricLoader;
-import net.spell_engine.api.config.ConfigFile;
+import net.spell_engine.rpg_series.config.ConfigFile;
 import net.tiny_config.ConfigManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
