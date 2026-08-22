@@ -1,3 +1,5 @@
+# 1.2.0 - 1.21.1
+- Adopt Spell Engine 1.10
 # 1.1.2 - 1.21.1
 - Fixed Neoforge Crash
 - clean up code
