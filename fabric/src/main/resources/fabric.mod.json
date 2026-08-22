@@ -28,12 +28,13 @@
 		"lne_paladins.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.16.5",
-		"minecraft": "~1.21",
+		"fabricloader": ">=${fabric_loader_version}",
+		"minecraft": ">=${minecraft_compat_version}",
 		"java": ">=17",
 		"fabric-api": "*",
-		"paladins": "*",
-		"more_rpg_classes": "*"
+		"spell_engine": ">=${spell_engine_version}",
+		"paladins": ">=${paladins_version}",
+		"more_rpg_classes": ">=${more_rpg_library_version}"
 	},
 	"suggests": {
 		"loot_n_explore": ">=1.0.2-1.21.1"
