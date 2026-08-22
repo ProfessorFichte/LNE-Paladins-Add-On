@@ -21,7 +21,8 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.spell_engine.api.spell.Spell;
 import net.spell_engine.api.spell.registry.SpellRegistry;
-import net.spell_engine.internals.SpellHelper;
+import net.spell_engine.internals.SpellExecution;
+import net.spell_engine.internals.impact.SpellImpacts;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashSet;
@@ -40,7 +41,7 @@ public class TemplarsSkySplitterProjectile extends ProjectileEntity {
     private static final float MAX_FALL_SPEED = 1.2F;
 
     private RegistryEntry<Spell> spellEntry;
-    private SpellHelper.ImpactContext context;
+    private SpellExecution.ImpactContext context;
     private float scale = 1F;
     private boolean landed = false;
     private int groundTicks = 0;
@@ -55,7 +56,7 @@ public class TemplarsSkySplitterProjectile extends ProjectileEntity {
         super(entityType, world);
     }
 
-    public TemplarsSkySplitterProjectile(World world, LivingEntity owner, RegistryEntry<Spell> spellEntry, SpellHelper.ImpactContext context, float scale) {
+    public TemplarsSkySplitterProjectile(World world, LivingEntity owner, RegistryEntry<Spell> spellEntry, SpellExecution.ImpactContext context, float scale) {
         super(ENTITY_TYPE, world);
         this.setOwner(owner);
         this.spellEntry = spellEntry;
@@ -165,8 +166,8 @@ public class TemplarsSkySplitterProjectile extends ProjectileEntity {
         if (this.getWorld().isClient) return;
         if (this.getOwner() instanceof LivingEntity caster && this.spellEntry != null) {
             var impactTarget = target != null ? target : caster;
-            var impactContext = this.context != null ? this.context : new SpellHelper.ImpactContext();
-            SpellHelper.projectileImpact(caster, this, impactTarget, this.spellEntry, impactContext.position(this.getPos()));
+            var impactContext = this.context != null ? this.context : new SpellExecution.ImpactContext();
+            SpellImpacts.projectileImpact(caster, this, impactTarget, this.spellEntry, impactContext.position(this.getPos()));
         }
     }
 
