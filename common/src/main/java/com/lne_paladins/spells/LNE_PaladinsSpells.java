@@ -36,13 +36,8 @@ public class LNE_PaladinsSpells {
         var id = Identifier.of(MOD_ID, "paladin_sky_splitter");
         var title = "Templar's Sky Splitter";
         var effect = LNE_PaladinsEffects.TEMPLARS_RETRIBUTION;
-        // Was a `SpellTooltip.DescriptionMutator` reading `effect.config().firstModifier()` through
-        // `SpellTooltip.bonus(Math.abs(value), operation)`. That is exactly what the declarative effect
-        // token expresses, and it reads the same config, so server overrides still apply.
-        // Templar's Retribution carries a single modifier (attack damage, +20% ADD_MULTIPLIED_BASE), so
-        // the token's blank-attribute fallback is unambiguous and matches `firstModifier()`.
-        // The impact applies the effect at amplifier 0, hence amplifier 0 here.
-        // `ABS` reproduces the mutator's `Math.abs`, and matches the "Increasing ... by" prose.
+        // Templar's Retribution carries a single modifier (attack damage), so the token's
+        // blank-attribute fallback is unambiguous. `ABS` matches the "Increasing ... by" prose.
         var description = "Call down a ring of falling templar swords around you, dealing {damage} damage."
                 + " Increasing the attack damage of the caster by "
                 + TooltipTokens.effect(effect.id, 0, null, TooltipTokens.Format.ABS) + ".";
@@ -54,7 +49,6 @@ public class LNE_PaladinsSpells {
 
         spell.active.cast.duration = 0.75F;
         spell.active.cast.animation = PlayerAnimation.of("more_rpg_classes:kneeing_uprising_charge");
-        // Continuous emitter - casting particles stay a plain list.
         spell.active.cast.particles = List.of(
                 ParticleGroupBuilder.magic(SpellEngineParticles.magic_spark, ParticleGroup.Motion.FLOAT, Color.HOLY)
                         .batch(b -> b.shape(ParticleGroup.Shape.PIPE)
@@ -64,9 +58,6 @@ public class LNE_PaladinsSpells {
 
         spell.release.animation = PlayerAnimation.of("spell_engine:one_handed_area_release");
         spell.release.sound = new Sound(Identifier.of("more_rpg_classes:holy_release"));
-        // `electric_arc_A/B` were retired in 1.10; `ParticleGroupBuilder.electricArc` rebuilds that look
-        // on the `lightning_arc_*` textures. Neither site authored scale/colour/max_age, so the helper's
-        // baked values override nothing.
         spell.release.visuals = Fx.Visuals.of(
                 ParticleGroupBuilder.electricArc(SpellEngineParticles.lightning_arc_A)
                         .batch(b -> b.shape(ParticleGroup.Shape.PILLAR)
@@ -135,7 +126,6 @@ public class LNE_PaladinsSpells {
         spell.active.cast.duration = 1.0F;
         spell.active.cast.animation = PlayerAnimation.of("spell_engine:one_handed_healing_charge");
         spell.active.cast.sound = new Sound(Identifier.of("spell_engine:generic_healing_casting"), 0);
-        // Continuous emitter - casting particles stay a plain list.
         spell.active.cast.particles = List.of(
                 ParticleGroupBuilder.magic(SpellEngineParticles.magic_spark, ParticleGroup.Motion.FLOAT, Color.HOLY)
                         .batch(b -> b.shape(ParticleGroup.Shape.PIPE)

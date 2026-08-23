@@ -19,17 +19,12 @@ public class PreventionStatusEffect extends StatusEffect {
         super(category, color);
     }
 
-    // V1: `magic_heal_ascend`, WIDE_PIPE (= PIPE at double the body radius), GROUND anchored.
     private static final ParticleGroup particles =
             ParticleGroupBuilder.magic(SpellEngineParticles.magic_heal, ParticleGroup.Motion.ASCEND, Color.HOLY)
                     .batch(b -> b.shape(ParticleGroup.Shape.PIPE).widthFactor(2F)
                             .anchor(ParticleGroup.Anchor.GROUND)
                             .count(25F).speed(0.02F, 0.15F)
                             .extent(0.5F));
-    // V1 named `spell_engine:healing_ascend`, which was never a registered particle type: V1 magic ids
-    // are `magic_<shape>_<float|ascend|decelerate|burst>` and there is no `healing` shape. This batch has
-    // therefore rendered nothing in every shipped version. Ported to the effect it plainly meant - the
-    // healing magic particle, ASCEND motion, untinted as authored - which makes it start rendering.
     private static final ParticleGroup particles1 =
             ParticleGroupBuilder.magic(SpellEngineParticles.magic_heal, ParticleGroup.Motion.ASCEND)
                     .batch(b -> b.shape(ParticleGroup.Shape.PILLAR)
