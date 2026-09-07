@@ -28,9 +28,9 @@ ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.lne_paladins]]
-modId = "forgified_fabric_api"
+modId = "armor_model_api"
 type = "required"
-versionRange = "[${forgified_fabric_api_version},)"
+versionRange = "[${armor_model_api_version},)"
 ordering = "NONE"
 side = "BOTH"
 

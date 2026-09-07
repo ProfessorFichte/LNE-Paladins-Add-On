@@ -7,7 +7,7 @@ import com.lne_paladins.item.LNEShields;
 import com.lne_paladins.item.WeaponRegister;
 import com.lne_paladins.config.TweaksConfig;
 import com.lne_paladins.spells.CustomSpellDeliveries;
-import net.fabricmc.loader.api.FabricLoader;
+import net.spell_engine.Platform;
 import net.spell_engine.rpg_series.config.ConfigFile;
 import net.tiny_config.ConfigManager;
 import org.slf4j.Logger;
@@ -50,7 +50,7 @@ public class LNE_Paladins_Mod {
 		ModEntitiesRegistry.registerEntities();
 	}
 	public static void registerItems(){
-		if(FabricLoader.getInstance().isModLoaded("loot_n_explore")) {
+		if(Platform.util().isModLoaded("loot_n_explore")) {
 			itemConfig.refresh();
 			shieldConfig.refresh();
 			effectConfig.refresh();

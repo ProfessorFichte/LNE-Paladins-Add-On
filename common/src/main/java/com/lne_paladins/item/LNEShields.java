@@ -2,12 +2,13 @@ package com.lne_paladins.item;
 
 import more_rpg_loot.item.Group;
 import net.fabric_extras.shield_api.item.CustomShieldItem;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -85,6 +86,8 @@ public class LNEShields {
     }
 
     public static final ArrayList<Entry> entries = new ArrayList<>();
+    public static final ArrayList<Item> shields = new ArrayList<>();
+    public static final RegistryKey<ItemGroup> tabKey = Group.RPG_LOOT_KEY;
 
     private static Supplier<Ingredient> ingredient(String idString, boolean requirement, Item fallback) {
         var id = Identifier.of(idString);
@@ -151,7 +154,6 @@ public class LNEShields {
                     .spell(wither_shield_spell);
         }
 
-        ArrayList<Item> shields = new ArrayList<>();
         for (var entry: entries) {
             var config = configs.get(entry.id.toString());
             if (config == null) {
@@ -179,11 +181,5 @@ public class LNEShields {
             Registry.register(Registries.ITEM, entry.id, shield);
             shields.add(shield);
         }
-
-        ItemGroupEvents.modifyEntriesEvent(Group.RPG_LOOT_KEY).register((content) -> {
-            for (var shield: shields) {
-                content.add(shield);
-            }
-        });
     }
 }

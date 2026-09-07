@@ -1,7 +1,9 @@
 package com.lne_paladins.fabric;
 
 import com.lne_paladins.LNE_Paladins_Mod;
+import com.lne_paladins.item.LNEShields;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 
 public final class FabricMod implements ModInitializer {
     @Override
@@ -10,5 +12,11 @@ public final class FabricMod implements ModInitializer {
         LNE_Paladins_Mod.registerEntities();
         LNE_Paladins_Mod.registerEffects();
         LNE_Paladins_Mod.registerItems();
+
+        ItemGroupEvents.modifyEntriesEvent(LNEShields.tabKey).register((content) -> {
+            for (var shield : LNEShields.shields) {
+                content.add(shield);
+            }
+        });
     }
 }
