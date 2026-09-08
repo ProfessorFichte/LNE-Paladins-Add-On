@@ -4,6 +4,7 @@ import com.lne_paladins.LNE_Paladins_Mod;
 import com.lne_paladins.item.LNEShields;
 import net.minecraft.registry.RegistryKeys;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
@@ -27,6 +28,9 @@ public final class NeoForgeMod {
         });
     }
     private static void buildTabContents(BuildCreativeModeTabContentsEvent event) {
+        if (!ModList.get().isLoaded("loot_n_explore")) {
+            return;
+        }
         if (!event.getTabKey().equals(LNEShields.tabKey)) {
             return;
         }
