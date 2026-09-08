@@ -1,6 +1,7 @@
 package com.lne_paladins.effect;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.server.world.ServerWorld;
@@ -32,8 +33,9 @@ public class PreventionStatusEffect extends StatusEffect {
                             .verticalOrigin(ParticleGroupBuilder.Batches.FEET)
                             .extent(0.5F));
 
-    public void onApplied(LivingEntity livingEntity, int amplifier) {
-        super.onApplied(livingEntity, amplifier);
+    @Override
+    public void onApplied(LivingEntity livingEntity, AttributeContainer attributes, int amplifier) {
+        super.onApplied(livingEntity, attributes, amplifier);
         float actual_health_percentage = livingEntity.getHealth() / livingEntity.getMaxHealth();
         float heal_amount = livingEntity.getMaxHealth() * (0.05F + (0.05F + amplifier));
         if(actual_health_percentage <= 0.2F){
@@ -43,11 +45,12 @@ public class PreventionStatusEffect extends StatusEffect {
                 ParticleHelper.sendBatches(livingEntity, List.of(particles1));
                 popIcon(livingEntity);
             }
-            livingEntity.removeStatusEffect(LNE_PaladinsEffects.PREVENTION.entry);
+            livingEntity.removeStatusEffect(LNE_PaladinsEffects.PREVENTION.effect);
         }
     }
 
-    public boolean applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
+    @Override
+    public void applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
         float actual_health_percentage = livingEntity.getHealth() / livingEntity.getMaxHealth();
         float heal_amount = livingEntity.getMaxHealth() * (0.3F + (0.1F * amplifier));
         if(actual_health_percentage <= 0.2F){
@@ -57,10 +60,9 @@ public class PreventionStatusEffect extends StatusEffect {
                 ParticleHelper.sendBatches(livingEntity, List.of(particles1));
                 popIcon(livingEntity);
             }
-            livingEntity.removeStatusEffect(LNE_PaladinsEffects.PREVENTION.entry);
+            livingEntity.removeStatusEffect(LNE_PaladinsEffects.PREVENTION.effect);
         }
         super.applyUpdateEffect(livingEntity, amplifier);
-        return true;
     }
 
     private static void popIcon(LivingEntity livingEntity) {

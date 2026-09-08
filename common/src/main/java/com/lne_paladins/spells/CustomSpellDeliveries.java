@@ -15,7 +15,7 @@ public class CustomSpellDeliveries {
 
     public static void register() {
         SpellHandlers.registerCustomDelivery(
-            Identifier.of(MOD_ID, "sky_splitter"),
+            new Identifier(MOD_ID, "sky_splitter"),
             (world, spellEntry, caster, targets, context, targetLocation) -> {
                 if (world.isClient) return false;
 

@@ -1,6 +1,6 @@
 package com.lne_paladins.item;
 
-import more_rpg_loot.item.Group;
+import com.lne_paladins.compat.LootNExplore;
 import net.fabric_extras.shield_api.item.CustomShieldItem;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -11,7 +11,6 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
@@ -22,7 +21,7 @@ import net.spell_engine.rpg_series.config.AttributeModifier;
 import net.spell_engine.rpg_series.config.ShieldConfig;
 import net.spell_engine.rpg_series.item.Equipment;
 import net.spell_engine.rpg_series.item.Weapon;
-import net.spell_engine.api.spell.SpellDataComponents;
+import net.spell_engine.api.item.SpellItemData;
 import net.spell_engine.api.spell.container.SpellContainers;
 
 import java.util.ArrayList;
@@ -87,10 +86,10 @@ public class LNEShields {
 
     public static final ArrayList<Entry> entries = new ArrayList<>();
     public static final ArrayList<Item> shields = new ArrayList<>();
-    public static final RegistryKey<ItemGroup> tabKey = Group.RPG_LOOT_KEY;
+    public static final RegistryKey<ItemGroup> tabKey = LootNExplore.GROUP_KEY;
 
     private static Supplier<Ingredient> ingredient(String idString, boolean requirement, Item fallback) {
-        var id = Identifier.of(idString);
+        var id = new Identifier(idString);
         if (requirement) {
             return () -> {
                 return Ingredient.ofItems(fallback);
@@ -105,7 +104,7 @@ public class LNEShields {
     }
 
     public static Entry shield(String name, Supplier<Ingredient> repair, List<AttributeModifier> attributes, int durability) {
-        var entry = new Entry(Identifier.of(MOD_ID, name), repair, attributes, durability);
+        var entry = new Entry(new Identifier(MOD_ID, name), repair, attributes, durability);
         entry.lootProperties = Equipment.LootProperties.of(5);
         entries.add(entry);
         return entry;
@@ -129,26 +128,26 @@ public class LNEShields {
     public static void register(Map<String, ShieldConfig> configs) {
         if (!tweaksConfig.value.disable_special_lne_weapons) {
             shield("ender_dragon_shield",() -> Ingredient.ofItems(Items.AMETHYST_SHARD), List.of(
-                    new AttributeModifier(GENERIC_ATTACK_SPEED,  0.05F,  EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-                    new AttributeModifier(GENERIC_MAX_HEALTH,  6.0f,  EntityAttributeModifier.Operation.ADD_VALUE)
+                    new AttributeModifier(GENERIC_ATTACK_SPEED,  0.05F,  EntityAttributeModifier.Operation.MULTIPLY_BASE),
+                    new AttributeModifier(GENERIC_MAX_HEALTH,  6.0f,  EntityAttributeModifier.Operation.ADDITION)
             ), durability)
                     .translatedName("Coral Reef Guardian")
                     .spell(ender_dragon_shield_spell);
             shield("elder_guardian_shield",() -> Ingredient.ofItems(Items.PRISMARINE_SHARD), List.of(
-                    new AttributeModifier(DAMAGE_REFLECT,  0.35F,  EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-                    new AttributeModifier(GENERIC_MAX_HEALTH,  6.0f,  EntityAttributeModifier.Operation.ADD_VALUE)
+                    new AttributeModifier(DAMAGE_REFLECT,  0.35F,  EntityAttributeModifier.Operation.MULTIPLY_BASE),
+                    new AttributeModifier(GENERIC_MAX_HEALTH,  6.0f,  EntityAttributeModifier.Operation.ADDITION)
             ), durability)
                     .translatedName("Dragon Bulwark")
                     .spell(elder_guardian_shield_spell);
             shield("glacial_shield",() -> Ingredient.ofItems(Items.ICE), List.of(
-                    new AttributeModifier(GENERIC_ARMOR_TOUGHNESS,  1.0F,  EntityAttributeModifier.Operation.ADD_VALUE),
-                    new AttributeModifier(GENERIC_MAX_HEALTH,  6.0f,  EntityAttributeModifier.Operation.ADD_VALUE)
+                    new AttributeModifier(GENERIC_ARMOR_TOUGHNESS,  1.0F,  EntityAttributeModifier.Operation.ADDITION),
+                    new AttributeModifier(GENERIC_MAX_HEALTH,  6.0f,  EntityAttributeModifier.Operation.ADDITION)
             ), durability)
                     .translatedName("Frozen Wall")
                     .spell(glacial_shield_spell);
             shield("wither_shield",() -> Ingredient.ofItems(Items.BONE), List.of(
-                    new AttributeModifier(GENERIC_ATTACK_DAMAGE,  0.05F,  EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-                    new AttributeModifier(GENERIC_MAX_HEALTH,  6.0f,  EntityAttributeModifier.Operation.ADD_VALUE)
+                    new AttributeModifier(GENERIC_ATTACK_DAMAGE,  0.05F,  EntityAttributeModifier.Operation.MULTIPLY_BASE),
+                    new AttributeModifier(GENERIC_MAX_HEALTH,  6.0f,  EntityAttributeModifier.Operation.ADDITION)
             ), durability)
                     .translatedName("The Mouth of the Wither")
                     .spell(wither_shield_spell);
@@ -162,9 +161,13 @@ public class LNEShields {
                 config.attributes = entry.attributes;
                 configs.put(entry.id.toString(), config);
             }
-            ArrayList<Pair<RegistryEntry<EntityAttribute>, EntityAttributeModifier>> shieldAttributes = new ArrayList<>();
+            ArrayList<Pair<EntityAttribute, EntityAttributeModifier>> shieldAttributes = new ArrayList<>();
             for (var modifier: Weapon.attributesFrom(config.attributes).modifiers()) {
-                shieldAttributes.add(new Pair<>(modifier.attribute(), modifier.modifier()));
+                // 1.20.1: `ItemAttributeModifiers.Entry` carries the attribute *id*; `attributeValue()`
+                // is null when that attribute is not registered on this runtime (optional mod).
+                var attribute = modifier.attributeValue();
+                if (attribute == null) { continue; }
+                shieldAttributes.add(new Pair<>(attribute, modifier.modifier()));
             }
             var settings = new Item.Settings().maxDamage(config.durability);
             var tier = entry.lootProperties.tier();
@@ -175,7 +178,7 @@ public class LNEShields {
                 settings.rarity(entry.rarity);
             }
             if (entry.spells != null) {
-                settings.component(SpellDataComponents.SPELL_CONTAINER, SpellContainers.forShield(entry.spells));
+                SpellItemData.defaults(settings).spellContainer(SpellContainers.forShield(entry.spells));
             }
             var shield = new CustomShieldItem(SoundEvents.ITEM_ARMOR_EQUIP_IRON, entry.repair, shieldAttributes, settings);
             Registry.register(Registries.ITEM, entry.id, shield);

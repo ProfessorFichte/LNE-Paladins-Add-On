@@ -1,0 +1,7 @@
+accessWidener	v2	named
+# 1.20.1 descriptors (Yarn 1.20.1+build.1).
+# `ProjectileEntity(EntityType, World)` is package-private in the real 1.20.1 jar (it only became
+# public later); the decompiled tree is misleading. TemplarsSkySplitterProjectile extends
+# ProjectileEntity and must call `super(...)`, which no mixin can provide - an @Invoker cannot serve
+# a `super()` call in a subclass constructor. Same shape SpellEngine uses for `RenderLayer.of`.
+accessible	method	net/minecraft/entity/projectile/ProjectileEntity	<init>	(Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/World;)V

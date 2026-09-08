@@ -1,7 +1,6 @@
 package com.lne_paladins.item;
 
-import more_rpg_loot.compat.spell_engine.LNE_Abilities;
-import more_rpg_loot.item.Group;
+import com.lne_paladins.compat.LootNExplore;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterials;
@@ -29,7 +28,6 @@ import java.util.function.Supplier;
 
 import static com.lne_paladins.LNE_Paladins_Mod.MOD_ID;
 import static com.lne_paladins.LNE_Paladins_Mod.tweaksConfig;
-import static more_rpg_loot.compat.spell_engine.LNE_Weapons.*;
 
 public class WeaponRegister {
     public static final ArrayList<Weapon.Entry> entries = new ArrayList<>();
@@ -40,7 +38,7 @@ public class WeaponRegister {
     }
 
     private static Supplier<Ingredient> ingredient(String idString, boolean requirement, Item fallback) {
-        var id = Identifier.of(idString);
+        var id = new Identifier(idString);
         if (requirement) {
             return () -> {
                 return Ingredient.ofItems(fallback);
@@ -168,6 +166,6 @@ public class WeaponRegister {
         }
 
         entries.forEach(entry -> entry.rarity = Rarity.RARE);
-        Weapon.register(configs, entries, Group.RPG_LOOT_KEY);
+        Weapon.register(configs, entries, LootNExplore.GROUP_KEY);
     }
 }

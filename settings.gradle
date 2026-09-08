@@ -11,4 +11,4 @@ rootProject.name = 'lne_paladins'
 
 include 'common'
 include 'fabric'
-include 'neoforge'
+include 'forge'
