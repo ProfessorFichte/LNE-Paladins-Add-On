@@ -28,11 +28,14 @@ dependencies {
     // Fabric-API-free module comes out half-remapped (named classes, intermediary method names on
     // everything inherited through a Fabric API supertype). There is a single shared Loom cache
     // entry per coordinate, so the broken copy is the one `:fabric` runs - see the port notes.
+    // Sibling forks (Bards, Berserker) do take the `-fabric` flavour here and get away with it only
+    // because their `common` pins cloth-config without `{ transitive = false }`, which pulls the whole
+    // of fabric-api onto the remap classpath. Deliberately not copied: see gradle.properties.
     modImplementation("net.tiny_config:tiny_config-common:${project.tiny_config_xplat_version}") { transitive = false }
     modImplementation("net.spell_power:spell_power-common:${project.spell_power_xplat_version}") { transitive = false }
     modImplementation("net.spell_engine:spell_engine-common:${project.spell_engine_xplat_version}") { transitive = false }
     modImplementation("net.more_rpg_classes:more_rpg_library-common:${project.more_rpg_library_version}") { transitive = false }
-    modImplementation("net.rpg_series:paladins-common:${project.paladins_version}") { transitive = false }
+    modImplementation("net.rpg_series:paladins-common:${project.paladins_xplat_version}") { transitive = false }
     modImplementation("net.fabric_extras:shield_api-common:${project.shield_api_version}") { transitive = false }
 
     // Loot & Explore is deliberately NOT a compile dependency of any module: it is Fabric-only

@@ -67,7 +67,7 @@ dependencies {
     modImplementation("maven.modrinth:spell-power:${project.spell_power_version}-${platform}") { transitive = false }
     modImplementation("maven.modrinth:spell-engine:${project.spell_engine_version}-${platform}") { transitive = false }
     modImplementation("net.more_rpg_classes:more_rpg_library-${platform}:${project.more_rpg_library_version}") { transitive = false }
-    modImplementation("net.rpg_series:paladins-${platform}:${project.paladins_version}") { transitive = false }
+    modImplementation("maven.modrinth:paladins-and-priests:${project.paladins_version}-${platform}") { transitive = false }
     modImplementation("net.fabric_extras:shield_api-${platform}:${project.shield_api_version}") { transitive = false }
 
     // Loot & Explore has NO Forge build on any game version. Nothing here compiles or runs against
@@ -141,7 +141,10 @@ publishMods {
             : me.modmuss50.mpp.ReleaseType.BETA
     version = "${project.version}-${platform}"
     displayName = "${project.version}-${platform}"
+    // NeoForge 1.20.1 is a fork of Forge 47.1 that kept the Forge packages and FML,
+    // so the same jar loads there; both loaders are tagged.
     modLoaders.add("forge")
+    modLoaders.add("neoforge")
 
     curseforge {
         projectId = providers.environmentVariable("CURSEFORGE_PROJECT_ID")
