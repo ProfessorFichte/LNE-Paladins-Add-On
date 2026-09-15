@@ -25,6 +25,7 @@ import net.spell_engine.api.item.SpellItemData;
 import net.spell_engine.api.spell.container.SpellContainers;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
@@ -125,7 +126,15 @@ public class LNEShields {
     private static final int durability = 4032;
 
 
-    public static void register(Map<String, ShieldConfig> configs) {
+    private static boolean conditionalEntriesCreated = false;
+
+    /// The conditional entry building that `register` used to do inline. Idempotent: it appends to
+    /// the static `entries` list, and the Fabric and Forge paths must not both append.
+    public static void createConditionalEntries() {
+        if (conditionalEntriesCreated) {
+            return;
+        }
+        conditionalEntriesCreated = true;
         if (!tweaksConfig.value.disable_special_lne_weapons) {
             shield("ender_dragon_shield",() -> Ingredient.ofItems(Items.AMETHYST_SHARD), List.of(
                     new AttributeModifier(GENERIC_ATTACK_SPEED,  0.05F,  EntityAttributeModifier.Operation.MULTIPLY_BASE),
@@ -152,7 +161,14 @@ public class LNEShields {
                     .translatedName("The Mouth of the Wither")
                     .spell(wither_shield_spell);
         }
+    }
 
+    /// Creation half for Forge: the same items `register` writes, keyed by registration id. Nothing
+    /// here touches the registry - the `CustomShieldItem`s are only built, and `shields` (the
+    /// creative-tab contents both loaders replay) is filled exactly as `register` used to fill it.
+    public static Map<Identifier, Item> itemsToRegister(Map<String, ShieldConfig> configs) {
+        createConditionalEntries();
+        var items = new LinkedHashMap<Identifier, Item>();
         for (var entry: entries) {
             var config = configs.get(entry.id.toString());
             if (config == null) {
@@ -181,8 +197,13 @@ public class LNEShields {
                 SpellItemData.defaults(settings).spellContainer(SpellContainers.forShield(entry.spells));
             }
             var shield = new CustomShieldItem(SoundEvents.ITEM_ARMOR_EQUIP_IRON, entry.repair, shieldAttributes, settings);
-            Registry.register(Registries.ITEM, entry.id, shield);
+            items.put(entry.id, shield);
             shields.add(shield);
         }
+        return items;
+    }
+
+    public static void register(Map<String, ShieldConfig> configs) {
+        itemsToRegister(configs).forEach((id, shield) -> Registry.register(Registries.ITEM, id, shield));
     }
 }

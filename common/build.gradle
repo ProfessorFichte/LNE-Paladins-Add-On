@@ -22,13 +22,15 @@ dependencies {
     // There is no Forgified Fabric API on the 1.20.1 line: common/ must stay Fabric-API-free.
     // Fabric-API-shaped call sites (datagen especially) live in the fabric/ module instead.
 
-    // Every ecosystem dependency here is the architectury **-common** (xplat) artifact, never a
-    // platform one. A Fabric platform jar remapped by this Fabric-API-free module comes out
-    // half-remapped (named classes, intermediary method names on Fabric API supertypes) and the
-    // broken copy poisons the Loom cache the platform modules share - see the port notes.
-    modImplementation("net.tiny_config:tiny_config-common:${project.tiny_config_version}") { transitive = false }
-    modImplementation("net.spell_power:spell_power-common:${project.spell_power_version}") { transitive = false }
-    modImplementation("net.spell_engine:spell_engine-common:${project.spell_engine_version}") { transitive = false }
+    // Every ecosystem dependency here is the architectury **-common** (xplat) artifact from
+    // mavenLocal, never a platform one, and never the Modrinth coordinate `fabric/` and `forge/`
+    // use: Modrinth publishes no xplat flavour, and a Fabric platform jar remapped by this
+    // Fabric-API-free module comes out half-remapped (named classes, intermediary method names on
+    // everything inherited through a Fabric API supertype). There is a single shared Loom cache
+    // entry per coordinate, so the broken copy is the one `:fabric` runs - see the port notes.
+    modImplementation("net.tiny_config:tiny_config-common:${project.tiny_config_xplat_version}") { transitive = false }
+    modImplementation("net.spell_power:spell_power-common:${project.spell_power_xplat_version}") { transitive = false }
+    modImplementation("net.spell_engine:spell_engine-common:${project.spell_engine_xplat_version}") { transitive = false }
     modImplementation("net.more_rpg_classes:more_rpg_library-common:${project.more_rpg_library_version}") { transitive = false }
     modImplementation("net.rpg_series:paladins-common:${project.paladins_version}") { transitive = false }
     modImplementation("net.fabric_extras:shield_api-common:${project.shield_api_version}") { transitive = false }

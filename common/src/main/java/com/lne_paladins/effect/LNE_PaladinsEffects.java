@@ -3,6 +3,7 @@ package com.lne_paladins.effect;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.registry.Registries;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.util.Identifier;
 import net.spell_engine.rpg_series.config.AttributeModifier;
@@ -12,6 +13,7 @@ import net.spell_engine.api.effect.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static com.lne_paladins.LNE_Paladins_Mod.MOD_ID;
 
@@ -55,11 +57,23 @@ public class LNE_PaladinsEffects {
             )
     ));
 
-    public static void register(ConfigFile.Effects config) {
+    /// Behaviour attachment, split out of `register` so the Forge path can run it before its own
+    /// registration loop. Operates on the raw effects, so it does not need the registry.
+    public static void configureBehaviours() {
         ActionImpairing.configure(SIRENS_SONG.effect, EntityActionsAllowed.STUN);
         for (var entry: entries) {
             Synchronized.configure(entry.effect, true);
         }
+    }
+
+    /// Creation half for Forge: the same content `register` writes, keyed by registration id.
+    public static Map<Identifier, StatusEffect> effectsToRegister(ConfigFile.Effects config) {
+        configureBehaviours();
+        return Effects.effectsToRegister(entries, config.effects);
+    }
+
+    public static void register(ConfigFile.Effects config) {
+        configureBehaviours();
 
         Effects.register(entries, config.effects);
     }

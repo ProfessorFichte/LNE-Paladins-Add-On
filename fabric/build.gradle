@@ -68,11 +68,11 @@ dependencies {
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
 
     modImplementation("me.shedaniel.cloth:cloth-config-${platform}:${project.cloth_config_version}")
-    modImplementation("net.tiny_config:tiny_config-${platform}:${project.tiny_config_version}") { transitive = false }
-    modImplementation("net.rpg_foundation:armor_model_api-${platform}:${project.armor_model_api_version}") { transitive = false }
+    modImplementation("maven.modrinth:tiny-config:${project.tiny_config_version}-${platform}") { transitive = false }
+    modImplementation("maven.modrinth:armor-model-api:${project.armor_model_api_version}-${platform}") { transitive = false }
     modImplementation("net.foundation:structure_pool_api-${platform}:${project.structure_pool_api_version}") { transitive = false }
-    modImplementation("net.spell_power:spell_power-${platform}:${project.spell_power_version}") { transitive = false }
-    modImplementation("net.spell_engine:spell_engine-${platform}:${project.spell_engine_version}") { transitive = false }
+    modImplementation("maven.modrinth:spell-power:${project.spell_power_version}-${platform}") { transitive = false }
+    modImplementation("maven.modrinth:spell-engine:${project.spell_engine_version}-${platform}") { transitive = false }
     modImplementation("net.more_rpg_classes:more_rpg_library-${platform}:${project.more_rpg_library_version}") { transitive = false }
     modImplementation("net.rpg_series:paladins-${platform}:${project.paladins_version}") { transitive = false }
     modImplementation("net.fabric_extras:shield_api-${platform}:${project.shield_api_version}") { transitive = false }
@@ -89,9 +89,9 @@ dependencies {
     // Spell Engine hard-depends on the player animation library at runtime.
     modLocalRuntime("dev.kosmx.player-anim:player-animation-lib-fabric:${rootProject.player_anim_version}")
     // More-RPG-Library ships `runes:crafting` recipes that fail to parse without Runes.
-    modLocalRuntime("net.rpg_series:runes-fabric:${rootProject.runes_version}") { transitive = false }
+    modLocalRuntime("maven.modrinth:runes:${rootProject.runes_version}-fabric") { transitive = false }
     // Keeps More-RPG-Library's `critical_strike:*` attributes resolvable in the log.
-    modLocalRuntime("net.critical_strike:critical_strike-fabric:${rootProject.critical_strike_version}") { transitive = false }
+    modLocalRuntime("maven.modrinth:critical-strike:${rootProject.critical_strike_version}-fabric") { transitive = false }
 }
 
 processResources {

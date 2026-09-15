@@ -90,7 +90,15 @@ public class WeaponRegister {
         return entry;
     }
 
-    public static void register(Map<String, WeaponConfig> configs) {
+    private static boolean conditionalEntriesCreated = false;
+
+    /// The conditional entry building that `register` used to do inline. Idempotent: it appends to
+    /// the static `entries` list, and the Fabric and Forge paths must not both append.
+    public static void createConditionalEntries() {
+        if (conditionalEntriesCreated) {
+            return;
+        }
+        conditionalEntriesCreated = true;
         if (!tweaksConfig.value.disable_special_lne_weapons) {
             ///ENDER DRAGON WEAPON THEMES
             claymore("ender_dragon_claymore",
@@ -166,6 +174,18 @@ public class WeaponRegister {
         }
 
         entries.forEach(entry -> entry.rarity = Rarity.RARE);
+    }
+
+    /// Creation half for Forge: the same items `register` writes, keyed by registration id. The
+    /// conditional building above has to run first - calling `Weapon.itemsToRegister` straight from
+    /// the Forge entrypoint would hand it an empty entry list and drop every weapon silently.
+    public static Map<Identifier, Item> itemsToRegister(Map<String, WeaponConfig> configs) {
+        createConditionalEntries();
+        return Weapon.itemsToRegister(configs, entries, LootNExplore.GROUP_KEY);
+    }
+
+    public static void register(Map<String, WeaponConfig> configs) {
+        createConditionalEntries();
         Weapon.register(configs, entries, LootNExplore.GROUP_KEY);
     }
 }
