@@ -6,11 +6,19 @@ loom {
     accessWidenerPath = file("src/main/resources/lne_paladins.accesswidener")
 }
 
+// Dummy platform for common compile
+def platform = "fabric";
+
 repositories {
     maven { url 'https://maven.shedaniel.me/' }
+    maven {
+        name = 'Modrinth'
+        url = 'https://api.modrinth.com/maven'
+        content {
+            includeGroup 'maven.modrinth'
+        }
+    }
     maven { url 'https://maven.fabricmc.net' }
-
-    mavenLocal()
 }
 
 dependencies {
@@ -22,21 +30,25 @@ dependencies {
     // There is no Forgified Fabric API on the 1.20.1 line: common/ must stay Fabric-API-free.
     // Fabric-API-shaped call sites (datagen especially) live in the fabric/ module instead.
 
-    // Every ecosystem dependency here is the architectury **-common** (xplat) artifact from
-    // mavenLocal, never a platform one, and never the Modrinth coordinate `fabric/` and `forge/`
-    // use: Modrinth publishes no xplat flavour, and a Fabric platform jar remapped by this
-    // Fabric-API-free module comes out half-remapped (named classes, intermediary method names on
-    // everything inherited through a Fabric API supertype). There is a single shared Loom cache
-    // entry per coordinate, so the broken copy is the one `:fabric` runs - see the port notes.
-    // Sibling forks (Bards, Berserker) do take the `-fabric` flavour here and get away with it only
-    // because their `common` pins cloth-config without `{ transitive = false }`, which pulls the whole
-    // of fabric-api onto the remap classpath. Deliberately not copied: see gradle.properties.
-    modImplementation("net.tiny_config:tiny_config-common:${project.tiny_config_xplat_version}") { transitive = false }
-    modImplementation("net.spell_power:spell_power-common:${project.spell_power_xplat_version}") { transitive = false }
-    modImplementation("net.spell_engine:spell_engine-common:${project.spell_engine_xplat_version}") { transitive = false }
-    modImplementation("net.more_rpg_classes:more_rpg_library-common:${project.more_rpg_library_version}") { transitive = false }
-    modImplementation("net.rpg_series:paladins-common:${project.paladins_xplat_version}") { transitive = false }
-    modImplementation("net.fabric_extras:shield_api-common:${project.shield_api_version}") { transitive = false }
+    // LOAD-BEARING, do not add `{ transitive = false }`: nothing in this module uses cloth-config, but
+    // its POM pulls the fabric-api BOM onto this module's compile - and therefore Loom remap - classpath.
+    // Every ecosystem library below is a Modrinth `-fabric` jar (Modrinth publishes no xplat flavour),
+    // and there is ONE shared Loom cache entry per coordinate for `:common` and `:fabric`. Without
+    // Fabric API on this remap classpath, Minecraft methods inherited through a Fabric API supertype
+    // stay intermediary and `:fabric:runDatagen` dies with
+    // `NoSuchMethodError: FabricDataOutput.method_45973` (port notes 11.1 shape A). Same shape as the
+    // Bards / Berserker / More RPG Library forks. Fabric API is compile-visible here ONLY - this module
+    // is also compiled into the Forge jar, so it must still never call a Fabric API class.
+    modImplementation("me.shedaniel.cloth:cloth-config-${platform}:${project.cloth_config_version}")
+
+    // Ecosystem libraries: all resolved from the Modrinth maven, `-fabric` flavour (dummy platform).
+    modImplementation("maven.modrinth:tiny-config:${project.tiny_config_version}-${platform}") { transitive = false }
+    modImplementation("maven.modrinth:spell-power:${project.spell_power_version}-${platform}") { transitive = false }
+    modImplementation("maven.modrinth:spell-engine:${project.spell_engine_version}-${platform}") { transitive = false }
+    // More RPG Library: resolves once Fichte's release tier 1 publishes it.
+    modImplementation("maven.modrinth:more-rpg-library:${project.more_rpg_library_version}-${platform}") { transitive = false }
+    modImplementation("maven.modrinth:paladins-and-priests:${project.paladins_version}-${platform}") { transitive = false }
+    modImplementation("maven.modrinth:shield-api:${project.shield_api_version}-${platform}") { transitive = false }
 
     // Loot & Explore is deliberately NOT a compile dependency of any module: it is Fabric-only
     // (no Forge build on any game version) and it implements Fabric API interfaces, so putting it
