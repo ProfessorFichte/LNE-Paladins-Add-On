@@ -15,7 +15,7 @@ import net.spell_engine.api.render.LightEmission;
 public class TemplarsSkySplitterProjectileRenderer<T extends TemplarsSkySplitterProjectile> extends EntityRenderer<T> {
     private final ItemRenderer itemRenderer;
 
-    public static final Identifier MODEL_ID = Identifier.of("lne_paladins", "spell_projectile/sky_splitter");
+    public static final Identifier MODEL_ID = new Identifier("lne_paladins", "spell_projectile/sky_splitter");
     private static final RenderLayer RENDER_LAYER = CustomLayers.projectile(LightEmission.RADIATE);
 
     public TemplarsSkySplitterProjectileRenderer(EntityRendererFactory.Context context) {

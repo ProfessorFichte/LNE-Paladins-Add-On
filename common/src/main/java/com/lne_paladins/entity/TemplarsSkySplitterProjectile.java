@@ -11,6 +11,7 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
@@ -67,9 +68,9 @@ public class TemplarsSkySplitterProjectile extends ProjectileEntity {
     }
 
     @Override
-    protected void initDataTracker(DataTracker.Builder builder) {
-        builder.add(TRACKER_SPELL_ID, "");
-        builder.add(TRACKER_SCALE, 1F);
+    protected void initDataTracker() {
+        this.dataTracker.startTracking(TRACKER_SPELL_ID, "");
+        this.dataTracker.startTracking(TRACKER_SCALE, 1F);
     }
 
     @Override
@@ -80,7 +81,8 @@ public class TemplarsSkySplitterProjectile extends ProjectileEntity {
         } else if (this.getWorld().isClient && data.equals(TRACKER_SPELL_ID)) {
             var spellId = this.getDataTracker().get(TRACKER_SPELL_ID);
             if (spellId != null && !spellId.isEmpty()) {
-                this.spellEntry = SpellRegistry.from(this.getWorld()).getEntry(Identifier.of(spellId)).orElse(null);
+                this.spellEntry = SpellRegistry.from(this.getWorld())
+                        .getEntry(RegistryKey.of(SpellRegistry.KEY, new Identifier(spellId))).orElse(null);
             }
         }
     }
@@ -194,8 +196,9 @@ public class TemplarsSkySplitterProjectile extends ProjectileEntity {
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
         if (nbt.contains(NBT_SPELL_ID)) {
-            var spellId = Identifier.of(nbt.getString(NBT_SPELL_ID));
-            this.spellEntry = SpellRegistry.from(this.getWorld()).getEntry(spellId).orElse(null);
+            var spellId = new Identifier(nbt.getString(NBT_SPELL_ID));
+            this.spellEntry = SpellRegistry.from(this.getWorld())
+                    .getEntry(RegistryKey.of(SpellRegistry.KEY, spellId)).orElse(null);
         }
         if (nbt.contains(NBT_SCALE)) {
             this.scale = nbt.getFloat(NBT_SCALE);

@@ -2,6 +2,8 @@ package com.lne_paladins.effect;
 
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.registry.Registries;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.util.Identifier;
 import net.spell_engine.rpg_series.config.AttributeModifier;
@@ -11,6 +13,7 @@ import net.spell_engine.api.effect.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static com.lne_paladins.LNE_Paladins_Mod.MOD_ID;
 
@@ -21,7 +24,7 @@ public class LNE_PaladinsEffects {
         return entry;
     }
 
-    public static Effects.Entry SIRENS_SONG = add(new Effects.Entry(Identifier.of(MOD_ID, "sirens_song"),
+    public static Effects.Entry SIRENS_SONG = add(new Effects.Entry(new Identifier(MOD_ID, "sirens_song"),
             "Siren's Song",
             "Stun's the target.",
             new CustomStatusEffect(StatusEffectCategory.HARMFUL, 0x01d9cf),
@@ -30,7 +33,7 @@ public class LNE_PaladinsEffects {
                     )
             )
     ));
-    public static Effects.Entry PREVENTION = add(new Effects.Entry(Identifier.of(MOD_ID, "holy_prevention"),
+    public static Effects.Entry PREVENTION = add(new Effects.Entry(new Identifier(MOD_ID, "holy_prevention"),
             "Prevention",
             "Heals you when you fall below 20% max health, the heal amount enhances with effect amplifier. If you´re already under 20% when the effect is applied, the healing is reduced.",
             new PreventionStatusEffect(StatusEffectCategory.BENEFICIAL, 0xffffcc),
@@ -39,26 +42,35 @@ public class LNE_PaladinsEffects {
                     )
             )
     ));
-    public static Effects.Entry TEMPLARS_RETRIBUTION = add(new Effects.Entry(Identifier.of(MOD_ID, "templars_retribution"),
+    public static Effects.Entry TEMPLARS_RETRIBUTION = add(new Effects.Entry(new Identifier(MOD_ID, "templars_retribution"),
             "Templars Retribution",
             "Increases melee damage.",
             new CustomStatusEffect(StatusEffectCategory.BENEFICIAL, 0xffd700),
             new EffectConfig(
                     List.of(
                             new AttributeModifier(
-                                    EntityAttributes.GENERIC_ATTACK_DAMAGE.getIdAsString(),
+                                    Registries.ATTRIBUTE.getId(EntityAttributes.GENERIC_ATTACK_DAMAGE).toString(),
                                     0.2F,
-                                    EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                                    EntityAttributeModifier.Operation.MULTIPLY_BASE
                             )
                     )
             )
     ));
 
-    public static void register(ConfigFile.Effects config) {
+    public static void configureBehaviours() {
         ActionImpairing.configure(SIRENS_SONG.effect, EntityActionsAllowed.STUN);
         for (var entry: entries) {
             Synchronized.configure(entry.effect, true);
         }
+    }
+
+    public static Map<Identifier, StatusEffect> effectsToRegister(ConfigFile.Effects config) {
+        configureBehaviours();
+        return Effects.effectsToRegister(entries, config.effects);
+    }
+
+    public static void register(ConfigFile.Effects config) {
+        configureBehaviours();
 
         Effects.register(entries, config.effects);
     }

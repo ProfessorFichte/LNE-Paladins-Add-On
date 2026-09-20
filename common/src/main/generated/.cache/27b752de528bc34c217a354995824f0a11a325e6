@@ -1,6 +1,6 @@
-// 1.21.1	2026-08-23T02:00:07.370939	L&E Paladins-Add On/Tags for minecraft:item
-a2fc8991425035b66ad907fddfcccc52385ce543 data\rpg_series\tags\item\weapon_type\healing_staff.json
-388df6f0eacfcb90816fb1eadd1a080f429d0bc8 data\rpg_series\tags\item\weapon_type\claymore.json
-23a6e207ac31160a4b2dfa6f432233ae81bbc7b0 data\rpg_series\tags\item\weapon_type\shield.json
-5904bf7be85029c67ea71a85701075e4a11ae45f data\rpg_series\tags\item\weapon_type\hammer.json
-19e62bfe554a52fc25cf20ce687abf022db06578 data\rpg_series\tags\item\weapon_type\mace.json
+// 1.20.1	2026-09-08T23:19:01.793532	L&E Paladins-Add On/Tags for minecraft:item
+5ea71d6fc321b1b60b2cc31cad779ba8583524e8 data/rpg_series/tags/items/weapon_type/healing_staff.json
+d879ad074c31ad0d050c8e4c216c6fb9660ad77f data/rpg_series/tags/items/weapon_type/mace.json
+e3266d879b420b9e9e363b55bf152842674f3c52 data/rpg_series/tags/items/weapon_type/shield.json
+87c948ff6f8a5b408d41a10d9a66222a9c731b72 data/rpg_series/tags/items/weapon_type/hammer.json
+03171b7387e1a016590db21fbd84c4c3c95c25de data/rpg_series/tags/items/weapon_type/claymore.json

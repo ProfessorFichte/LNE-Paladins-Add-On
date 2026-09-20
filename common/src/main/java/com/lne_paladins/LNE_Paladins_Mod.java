@@ -1,5 +1,6 @@
 package com.lne_paladins;
 
+import com.lne_paladins.compat.LootNExplore;
 import com.lne_paladins.config.Default;
 import com.lne_paladins.effect.LNE_PaladinsEffects;
 import com.lne_paladins.entity.ModEntitiesRegistry;
@@ -50,7 +51,7 @@ public class LNE_Paladins_Mod {
 		ModEntitiesRegistry.registerEntities();
 	}
 	public static void registerItems(){
-		if(Platform.util().isModLoaded("loot_n_explore")) {
+		if(Platform.util().isModLoaded(LootNExplore.MOD_ID)) {
 			itemConfig.refresh();
 			shieldConfig.refresh();
 			effectConfig.refresh();

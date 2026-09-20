@@ -1,0 +1,56 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+#issueTrackerURL = ""
+license = "ARR"
+
+[[mods]]
+modId = "lne_paladins"
+version = "${version}"
+displayName = "LNE Paladins"
+authors = "Fichte"
+description = '''
+Loot & Explore Add-On with Paladins RPG-Series Content.
+'''
+logoFile = "icon.png"
+
+[[dependencies.lne_paladins]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.lne_paladins]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.lne_paladins]]
+modId = "armor_model_api"
+mandatory = true
+versionRange = "[1.0.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.lne_paladins]]
+modId = "spell_engine"
+mandatory = true
+versionRange = "[1.10.5,)"
+ordering = "BEFORE"
+side = "BOTH"
+
+[[dependencies.lne_paladins]]
+modId = "paladins"
+mandatory = true
+versionRange = "[3.1.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.lne_paladins]]
+modId = "more_rpg_classes"
+mandatory = true
+versionRange = "[2.7.2,)"
+ordering = "NONE"
+side = "BOTH"

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "name": "lne_paladins:chests/paladins/tier1",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "lne_paladins:chests/priests/tier1",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

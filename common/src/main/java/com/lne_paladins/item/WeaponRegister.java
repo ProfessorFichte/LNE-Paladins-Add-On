@@ -1,6 +1,6 @@
 package com.lne_paladins.item;
 
-import more_rpg_loot.item.Group;
+import com.lne_paladins.compat.LootNExplore;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterials;
@@ -38,7 +38,7 @@ public class WeaponRegister {
     }
 
     private static Supplier<Ingredient> ingredient(String idString, boolean requirement, Item fallback) {
-        var id = Identifier.of(idString);
+        var id = new Identifier(idString);
         if (requirement) {
             return () -> {
                 return Ingredient.ofItems(fallback);
@@ -90,7 +90,13 @@ public class WeaponRegister {
         return entry;
     }
 
-    public static void register(Map<String, WeaponConfig> configs) {
+    private static boolean conditionalEntriesCreated = false;
+
+    public static void createConditionalEntries() {
+        if (conditionalEntriesCreated) {
+            return;
+        }
+        conditionalEntriesCreated = true;
         if (!tweaksConfig.value.disable_special_lne_weapons) {
             ///ENDER DRAGON WEAPON THEMES
             claymore("ender_dragon_claymore",
@@ -166,6 +172,15 @@ public class WeaponRegister {
         }
 
         entries.forEach(entry -> entry.rarity = Rarity.RARE);
-        Weapon.register(configs, entries, Group.RPG_LOOT_KEY);
+    }
+
+    public static Map<Identifier, Item> itemsToRegister(Map<String, WeaponConfig> configs) {
+        createConditionalEntries();
+        return Weapon.itemsToRegister(configs, entries, LootNExplore.GROUP_KEY);
+    }
+
+    public static void register(Map<String, WeaponConfig> configs) {
+        createConditionalEntries();
+        Weapon.register(configs, entries, LootNExplore.GROUP_KEY);
     }
 }
