@@ -1,7 +1,7 @@
 {
   "processors": [
     {
-      "processor_type": "more_rpg_classes:path_adaptation",
+      "processor_type": "mrpg_lib:path_adaptation",
       "filler_block": "minecraft:pink_stained_glass",
       "terrain_mappings": [
         { "terrain": "#minecraft:dirt", "output": "minecraft:dirt_path" },
@@ -19,7 +19,7 @@
       "remove_floating_blocks": true
     },
     {
-      "processor_type": "more_rpg_classes:water_pillar",
+      "processor_type": "mrpg_lib:water_pillar",
       "corner_block": "minecraft:yellow_stained_glass",
       "pillar_block": "minecraft:oak_log",
       "fence_block": "minecraft:oak_fence",
@@ -34,7 +34,7 @@
       "blend_with_terrain": true
     },
     {
-      "processor_type": "more_rpg_classes:terrain_blending",
+      "processor_type": "mrpg_lib:terrain_blending",
       "blend_block": "minecraft:lime_stained_glass",
       "sample_radius": 2,
       "fallback_block": "minecraft:grass_block",

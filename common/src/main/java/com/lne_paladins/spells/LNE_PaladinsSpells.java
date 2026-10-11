@@ -48,7 +48,7 @@ public class LNE_PaladinsSpells {
         spell.tier = 5;
 
         spell.active.cast.duration = 0.75F;
-        spell.active.cast.animation = PlayerAnimation.of("more_rpg_classes:kneeing_uprising_charge");
+        spell.active.cast.animation = PlayerAnimation.of("mrpg_lib:kneeing_uprising_charge");
         spell.active.cast.particles = List.of(
                 ParticleGroupBuilder.magic(SpellEngineParticles.magic_spark, ParticleGroup.Motion.FLOAT, Color.HOLY)
                         .batch(b -> b.shape(ParticleGroup.Shape.PIPE)
@@ -57,7 +57,7 @@ public class LNE_PaladinsSpells {
                                 .extent(1.5F)));
 
         spell.release.animation = PlayerAnimation.of("spell_engine:one_handed_area_release");
-        spell.release.sound = new Sound(Identifier.of("more_rpg_classes:holy_release"));
+        spell.release.sound = new Sound(Identifier.of("mrpg_lib:holy_release"));
         spell.release.visuals = Fx.Visuals.of(
                 ParticleGroupBuilder.electricArc(SpellEngineParticles.lightning_arc_A)
                         .batch(b -> b.shape(ParticleGroup.Shape.PILLAR)

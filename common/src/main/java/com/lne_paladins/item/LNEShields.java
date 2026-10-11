@@ -17,7 +17,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.Util;
-import net.more_rpg_classes.custom.MrpgLibSpells;
+import com.mrpg_lib.compat.spell_engine.MrpgLibSpells;
 import net.spell_engine.rpg_series.config.AttributeModifier;
 import net.spell_engine.rpg_series.config.ShieldConfig;
 import net.spell_engine.rpg_series.item.Equipment;
@@ -121,7 +121,7 @@ public class LNEShields {
     private static final String GENERIC_MAX_HEALTH = "generic.max_health";
     private static final String GENERIC_ATTACK_DAMAGE = "generic.attack_damage";
     private static final String GENERIC_ATTACK_SPEED = "generic.attack_speed";
-    public static final String DAMAGE_REFLECT = "more_rpg_classes:damage_reflect_modifier";
+    public static final String DAMAGE_REFLECT = "mrpg_lib:damage_reflect_modifier";
 
     private static final int durability = 4032;
 

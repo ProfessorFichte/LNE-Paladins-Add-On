@@ -449,7 +449,7 @@
           "name": "spell_engine:spell_scroll",
           "functions": [
             {
-              "function": "more_rpg_classes:specific_spell_scroll_pool",
+              "function": "mrpg_lib:specific_spell_scroll_pool",
               "spell_pools": ["#paladins:spell_scroll/paladin"],
               "spell_tier_min": 2,
               "spell_tier_max": 3,
@@ -471,43 +471,43 @@
           "weight": 8
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "jewelry:sapphire_ring"
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "jewelry:sapphire_necklace"
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "jewelry:citrine_ring"
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "jewelry:citrine_necklace"
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "relics_rpgs:lesser_use_spell_power"
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "relics_rpgs:lesser_use_health"
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "relics_rpgs:lesser_melee_crit_chance"
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "loot_n_explore:malt_extract"
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "loot_n_explore:beet_rootbeer"
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "loot_n_explore:holy_water"
         }
       ]
@@ -529,7 +529,7 @@
           "name": "spell_engine:spell_scroll",
           "functions": [
             {
-              "function": "more_rpg_classes:specific_spell_scroll_pool",
+              "function": "mrpg_lib:specific_spell_scroll_pool",
               "spell_pools": ["#oathswornpaladins:spell_scroll/vengeance","#oathswornpaladins:spell_scroll/defiance","#oathswornpaladins:spell_scroll/glory"],
               "spell_tier_min": 2,
               "spell_tier_max": 3,
@@ -538,7 +538,7 @@
           ]
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "oathswornpaladins:iron_forge_mace",
           "weight": 3,
           "functions": [
@@ -559,7 +559,7 @@
           ]
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "oathswornpaladins:iron_longsword",
           "weight": 3,
           "functions": [
@@ -580,7 +580,7 @@
           ]
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "oathswornpaladins:diamond_forge_mace",
           "weight": 1,
           "functions": [
@@ -601,7 +601,7 @@
           ]
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "oathswornpaladins:diamond_longsword",
           "weight": 1,
           "functions": [
@@ -622,7 +622,7 @@
           ]
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "oathswornpaladins:bastion_guardian_head",
           "weight": 1,
           "functions": [
@@ -643,7 +643,7 @@
           ]
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "oathswornpaladins:bastion_guardian_chest",
           "weight": 1,
           "functions": [
@@ -664,7 +664,7 @@
           ]
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "oathswornpaladins:bastion_guardian_legs",
           "weight": 1,
           "functions": [
@@ -685,7 +685,7 @@
           ]
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "oathswornpaladins:bastion_guardian_feet",
           "weight": 1,
           "functions": [
@@ -706,7 +706,7 @@
           ]
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "oathswornpaladins:end_city_guardian_head",
           "weight": 1,
           "functions": [
@@ -727,7 +727,7 @@
           ]
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "oathswornpaladins:end_city_guardian_chest",
           "weight": 1,
           "functions": [
@@ -748,7 +748,7 @@
           ]
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "oathswornpaladins:end_city_guardian_legs",
           "weight": 1,
           "functions": [
@@ -769,7 +769,7 @@
           ]
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "oathswornpaladins:end_city_guardian_feet",
           "weight": 1,
           "functions": [
@@ -790,7 +790,7 @@
           ]
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "oathswornpaladins:temple_guardian_head",
           "weight": 1,
           "functions": [
@@ -811,7 +811,7 @@
           ]
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "oathswornpaladins:temple_guardian_chest",
           "weight": 1,
           "functions": [
@@ -832,7 +832,7 @@
           ]
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "oathswornpaladins:temple_guardian_legs",
           "weight": 1,
           "functions": [
@@ -853,7 +853,7 @@
           ]
         },
         {
-          "type": "more_rpg_classes:conditional_item",
+          "type": "mrpg_lib:conditional_item",
           "item": "oathswornpaladins:temple_guardian_feet",
           "weight": 1,
           "functions": [

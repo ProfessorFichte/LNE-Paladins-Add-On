@@ -3,7 +3,7 @@ package com.lne_paladins.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
-import net.more_rpg_classes.datagen.SmithingRecipeGenerator;
+import com.mrpg_lib.datagen.SmithingRecipeGenerator;
 
 public class ModRecipeProvider extends SmithingRecipeGenerator {
     public ModRecipeProvider(FabricDataOutput output) {

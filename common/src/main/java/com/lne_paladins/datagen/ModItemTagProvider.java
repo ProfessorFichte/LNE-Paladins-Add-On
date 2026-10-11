@@ -2,7 +2,6 @@ package com.lne_paladins.datagen;
 
 import com.lne_paladins.item.LNEShields;
 import com.lne_paladins.item.WeaponRegister;
-import more_rpg_loot.compat.spell_engine.LNE_Weapons;
 import more_rpg_loot.util.LneItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
