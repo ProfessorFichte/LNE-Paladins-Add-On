@@ -1,6 +1,6 @@
 package com.lne_paladins.item;
 
-import more_rpg_loot.item.Group;
+import net.minecraft.registry.RegistryKeys;
 import net.fabric_extras.shield_api.item.CustomShieldItem;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -87,7 +87,7 @@ public class LNEShields {
 
     public static final ArrayList<Entry> entries = new ArrayList<>();
     public static final ArrayList<Item> shields = new ArrayList<>();
-    public static final RegistryKey<ItemGroup> tabKey = Group.RPG_LOOT_KEY;
+    public static final RegistryKey<ItemGroup> tabKey = RegistryKey.of(RegistryKeys.ITEM_GROUP, Identifier.of("loot_n_explore", "loot.general"));
 
     private static Supplier<Ingredient> ingredient(String idString, boolean requirement, Item fallback) {
         var id = Identifier.of(idString);
@@ -132,13 +132,13 @@ public class LNEShields {
                     new AttributeModifier(GENERIC_ATTACK_SPEED,  0.05F,  EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE),
                     new AttributeModifier(GENERIC_MAX_HEALTH,  6.0f,  EntityAttributeModifier.Operation.ADD_VALUE)
             ), durability)
-                    .translatedName("Coral Reef Guardian")
+                    .translatedName("Dragon Bulwark")
                     .spell(ender_dragon_shield_spell);
             shield("elder_guardian_shield",() -> Ingredient.ofItems(Items.PRISMARINE_SHARD), List.of(
                     new AttributeModifier(DAMAGE_REFLECT,  0.35F,  EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE),
                     new AttributeModifier(GENERIC_MAX_HEALTH,  6.0f,  EntityAttributeModifier.Operation.ADD_VALUE)
             ), durability)
-                    .translatedName("Dragon Bulwark")
+                    .translatedName("Coral Reef Guardian")
                     .spell(elder_guardian_shield_spell);
             shield("glacial_shield",() -> Ingredient.ofItems(Items.ICE), List.of(
                     new AttributeModifier(GENERIC_ARMOR_TOUGHNESS,  1.0F,  EntityAttributeModifier.Operation.ADD_VALUE),

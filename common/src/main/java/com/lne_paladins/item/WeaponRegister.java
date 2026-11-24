@@ -1,6 +1,8 @@
 package com.lne_paladins.item;
 
-import more_rpg_loot.item.Group;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterials;
@@ -30,6 +32,7 @@ import static com.lne_paladins.LNE_Paladins_Mod.MOD_ID;
 import static com.lne_paladins.LNE_Paladins_Mod.tweaksConfig;
 
 public class WeaponRegister {
+    private static final RegistryKey<ItemGroup> LNE_LOOT_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, Identifier.of("loot_n_explore", "loot.general"));
     public static final ArrayList<Weapon.Entry> entries = new ArrayList<>();
     private static Weapon.Entry entry(String name, Weapon.CustomMaterial material, Weapon.Factory factory, WeaponConfig defaults, Equipment.WeaponType weaponType) {
         var entry = new Weapon.Entry(MOD_ID, name, material, factory, defaults, weaponType);
@@ -166,6 +169,6 @@ public class WeaponRegister {
         }
 
         entries.forEach(entry -> entry.rarity = Rarity.RARE);
-        Weapon.register(configs, entries, Group.RPG_LOOT_KEY);
+        Weapon.register(configs, entries, LNE_LOOT_GROUP);
     }
 }

@@ -2,11 +2,11 @@ package com.lne_paladins.datagen;
 
 import com.lne_paladins.item.LNEShields;
 import com.lne_paladins.item.WeaponRegister;
-import more_rpg_loot.util.LneItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.spell_engine.Platform;
 import net.minecraft.item.Item;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
@@ -20,6 +20,11 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 public class ModItemTagProvider extends RPGSeriesDataGen.ItemTagGenerator {
+    private static final TagKey<Item> WEAPON_THEME_ENDER_DRAGON = TagKey.of(RegistryKeys.ITEM, Identifier.of("loot_n_explore", "weapon_themes/ender_dragon"));
+    private static final TagKey<Item> WEAPON_THEME_WITHER = TagKey.of(RegistryKeys.ITEM, Identifier.of("loot_n_explore", "weapon_themes/wither"));
+    private static final TagKey<Item> WEAPON_THEME_GLACIAL = TagKey.of(RegistryKeys.ITEM, Identifier.of("loot_n_explore", "weapon_themes/glacial"));
+    private static final TagKey<Item> WEAPON_THEME_ELDER_GUARDIAN = TagKey.of(RegistryKeys.ITEM, Identifier.of("loot_n_explore", "weapon_themes/elder_guardian"));
+
     public ModItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
         super(output, completableFuture);
     }
@@ -59,32 +64,32 @@ public class ModItemTagProvider extends RPGSeriesDataGen.ItemTagGenerator {
         for (var entry : WeaponRegister.entries) {
             String name = entry.id().getPath();
             if (name.contains("ender_dragon")) {
-                getOrCreateTagBuilder(LneItemTags.WEAPON_THEME_ENDER_DRAGON)
+                getOrCreateTagBuilder(WEAPON_THEME_ENDER_DRAGON)
                         .addOptional(entry.id());
             } else if (name.contains("wither")) {
-                getOrCreateTagBuilder(LneItemTags.WEAPON_THEME_WITHER)
+                getOrCreateTagBuilder(WEAPON_THEME_WITHER)
                         .addOptional(entry.id());
             } else if (name.contains("glacial")) {
-                getOrCreateTagBuilder(LneItemTags.WEAPON_THEME_GLACIAL)
+                getOrCreateTagBuilder(WEAPON_THEME_GLACIAL)
                         .addOptional(entry.id());
             } else if (name.contains("elder_guardian")) {
-                getOrCreateTagBuilder(LneItemTags.WEAPON_THEME_ELDER_GUARDIAN)
+                getOrCreateTagBuilder(WEAPON_THEME_ELDER_GUARDIAN)
                         .addOptional(entry.id());
             }
         }
         for (var entry : LNEShields.entries) {
             String name = entry.id().getPath();
             if (name.contains("ender_dragon")) {
-                getOrCreateTagBuilder(LneItemTags.WEAPON_THEME_ENDER_DRAGON)
+                getOrCreateTagBuilder(WEAPON_THEME_ENDER_DRAGON)
                         .addOptional(entry.id());
             } else if (name.contains("wither")) {
-                getOrCreateTagBuilder(LneItemTags.WEAPON_THEME_WITHER)
+                getOrCreateTagBuilder(WEAPON_THEME_WITHER)
                         .addOptional(entry.id());
             } else if (name.contains("glacial")) {
-                getOrCreateTagBuilder(LneItemTags.WEAPON_THEME_GLACIAL)
+                getOrCreateTagBuilder(WEAPON_THEME_GLACIAL)
                         .addOptional(entry.id());
             } else if (name.contains("elder_guardian")) {
-                getOrCreateTagBuilder(LneItemTags.WEAPON_THEME_ELDER_GUARDIAN)
+                getOrCreateTagBuilder(WEAPON_THEME_ELDER_GUARDIAN)
                         .addOptional(entry.id());
             }
         }
