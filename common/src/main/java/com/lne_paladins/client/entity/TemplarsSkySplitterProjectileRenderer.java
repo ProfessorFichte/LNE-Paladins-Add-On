@@ -8,6 +8,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.RotationAxis;
 import net.spell_engine.api.render.CustomLayers;
 import net.spell_engine.api.render.CustomModels;
 import net.spell_engine.api.render.LightEmission;
@@ -16,7 +17,8 @@ public class TemplarsSkySplitterProjectileRenderer<T extends TemplarsSkySplitter
     private final ItemRenderer itemRenderer;
 
     public static final Identifier MODEL_ID = Identifier.of("lne_paladins", "spell_projectile/sky_splitter");
-    private static final RenderLayer RENDER_LAYER = CustomLayers.projectile(LightEmission.RADIATE);
+    private static final RenderLayer RENDER_LAYER = CustomLayers.spellObject(LightEmission.NONE);
+    private static final float MODEL_LIFT = 1.27F;
 
     public TemplarsSkySplitterProjectileRenderer(EntityRendererFactory.Context context) {
         super(context);
@@ -36,6 +38,8 @@ public class TemplarsSkySplitterProjectileRenderer<T extends TemplarsSkySplitter
         matrixStack.push();
         var scale = entity.getRenderScale();
         matrixStack.scale(scale, scale, scale);
+        matrixStack.translate(0, MODEL_LIFT, 0);
+        matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(180));
 
         CustomModels.render(
             RENDER_LAYER,

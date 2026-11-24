@@ -20,12 +20,19 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.spell_engine.api.spell.Spell;
+import net.spell_engine.api.spell.fx.Easing;
+import net.spell_engine.api.spell.fx.ParticleGroup;
+import net.spell_engine.api.spell.fx.ParticleGroupBuilder;
 import net.spell_engine.api.spell.registry.SpellRegistry;
+import net.spell_engine.client.util.Color;
+import net.spell_engine.fx.ParticleHelper;
+import net.spell_engine.fx.SpellEngineParticles;
 import net.spell_engine.internals.SpellExecution;
 import net.spell_engine.internals.impact.SpellImpacts;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class TemplarsSkySplitterProjectile extends ProjectileEntity {
@@ -34,7 +41,16 @@ public class TemplarsSkySplitterProjectile extends ProjectileEntity {
     private static final float BASE_HITBOX = 0.6F;
     private static final double IMPACT_SEARCH_RADIUS = 2.0;
     private static final int MAX_AGE = 100;
-    private static final int GROUND_LINGER_TICKS = 20;
+    private static final int GROUND_LINGER_TICKS = 100;
+    private static final int GROUND_PULSE_INTERVAL = 20;
+    private static final float VISIBILITY_HEIGHT = 2.0F;
+    private static final List<ParticleGroup> GROUND_PULSE = List.of(
+            ParticleGroupBuilder.of(SpellEngineParticles.area_circle_1)
+                    .color(Color.HOLY.toRGBA())
+                    .scale(0.75F)
+                    .scaleTo(3.0F, Easing.EASE_OUT_QUAD)
+                    .fadeOut(0.6F, Easing.EASE_IN_QUAD)
+                    .batch(ParticleGroupBuilder.Batches.ground(1F)));
 
     public static final float INITIAL_FALL_SPEED = 0.05F;
     private static final float FALL_ACCELERATION = 0.05F;
@@ -96,11 +112,22 @@ public class TemplarsSkySplitterProjectile extends ProjectileEntity {
     }
 
     @Override
+    public Box getVisibilityBoundingBox() {
+        return this.getBoundingBox().stretch(0, VISIBILITY_HEIGHT * scale, 0);
+    }
+
+    @Override
     public void tick() {
         super.tick();
 
         if (landed) {
             if (!this.getWorld().isClient) {
+                if (groundTicks % GROUND_PULSE_INTERVAL == 0) {
+                    ParticleHelper.sendBatches(this, GROUND_PULSE);
+                    if (groundTicks > 0) {
+                        applyImpact(nearestEnemy(this.getPos(), false));
+                    }
+                }
                 groundTicks++;
                 if (groundTicks >= GROUND_LINGER_TICKS) {
                     this.discard();
@@ -142,17 +169,20 @@ public class TemplarsSkySplitterProjectile extends ProjectileEntity {
     @Override
     protected void onBlockHit(BlockHitResult blockHitResult) {
         super.onBlockHit(blockHitResult);
-        land(nearestEnemy(blockHitResult.getPos()));
+        if (!landed) {
+            this.setPosition(blockHitResult.getPos());
+        }
+        land(nearestEnemy(blockHitResult.getPos(), true));
     }
 
     @Nullable
-    private Entity nearestEnemy(Vec3d position) {
+    private Entity nearestEnemy(Vec3d position, boolean skipStruck) {
         var owner = this.getOwner();
         var box = new Box(position, position).expand(IMPACT_SEARCH_RADIUS);
         Entity nearest = null;
         var nearestDistance = Double.MAX_VALUE;
         for (var candidate : this.getWorld().getOtherEntities(this, box,
-                e -> e != owner && e.isAttackable() && !struckEntityIds.contains(e.getId()))) {
+                e -> e != owner && e.isAttackable() && !(skipStruck && struckEntityIds.contains(e.getId())))) {
             var distance = candidate.getPos().squaredDistanceTo(position);
             if (distance < nearestDistance) {
                 nearestDistance = distance;
