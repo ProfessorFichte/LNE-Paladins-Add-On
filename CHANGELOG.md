@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - The Loot & Explore themed Maces are in the `paladins:maces` tag again, the tag listed item ids that don't exist
 - A few chests in the Holy Church and Holy Mosque now roll loot instead of having fixed items and get converted by Lootr (GH Issue #4)
 - Evokers, Pillagers, Vindicators, Witches and Villagers placed by the Paladins structures no longer despawn
+- The Pillager in the Paladins structures spawns again, its jigsaw pointed at a pool that doesn't exist
 - Old structure backup files are no longer packed into the mod
 - One Pillager in the Holy Mosque spawns again, its spawn point still pointed at the old Loot & Explore location
 - The Holy Mosque now also generates in modded desert biomes from the `c:is_desert` biome tag (the old `c:desert` tag no longer exists in 1.21.1)
