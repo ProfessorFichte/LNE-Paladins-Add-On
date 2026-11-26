@@ -15,6 +15,8 @@ import net.spell_engine.api.spell.fx.Sound;
 import net.spell_engine.api.spell.tooltip.TooltipTokens;
 import net.spell_engine.client.util.Color;
 import net.spell_engine.fx.SpellEngineParticles;
+import net.spell_engine.fx.SpellEngineSounds;
+import com.mrpg_lib.sounds.MRPGLibSounds;
 import net.spell_power.api.SpellSchools;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +38,6 @@ public class LNE_PaladinsSpells {
         var id = Identifier.of(MOD_ID, "paladin_sky_splitter");
         var title = "Templar's Sky Splitter";
         var effect = LNE_PaladinsEffects.TEMPLARS_RETRIBUTION;
-        // Templar's Retribution carries a single modifier (attack damage), so the token's
-        // blank-attribute fallback is unambiguous. `ABS` matches the "Increasing ... by" prose.
         var description = "Call down a ring of falling templar swords around you, dealing {damage} damage."
                 + " Increasing the attack damage of the caster by "
                 + TooltipTokens.effect(effect.id, 0, null, TooltipTokens.Format.ABS) + ".";
@@ -57,7 +57,7 @@ public class LNE_PaladinsSpells {
                                 .extent(1.5F)));
 
         spell.release.animation = PlayerAnimation.of("spell_engine:one_handed_area_release");
-        spell.release.sound = new Sound(Identifier.of("mrpg_lib:holy_release"));
+        spell.release.sound = new Sound(MRPGLibSounds.HOLY_RELEASE.id());
         spell.release.visuals = Fx.Visuals.of(
                 ParticleGroupBuilder.electricArc(SpellEngineParticles.lightning_arc_A)
                         .batch(b -> b.shape(ParticleGroup.Shape.PILLAR)
@@ -84,7 +84,7 @@ public class LNE_PaladinsSpells {
                 ParticleGroupBuilder.magic(SpellEngineParticles.magic_spell, ParticleGroup.Motion.BURST, Color.HOLY)
                         .batch(b -> b.shape(ParticleGroup.Shape.SPHERE)
                                 .count(15F).speed(0.2F, 0.7F)));
-        damage.sound = new Sound(Identifier.of("paladins:holy_shock_damage"));
+        damage.sound = new Sound(PaladinSounds.holy_shock_damage.id());
 
         var templarsRetribution = SpellBuilder.Impacts.effectSet(
                 LNE_PaladinsEffects.TEMPLARS_RETRIBUTION.id.toString(), 8, 0);
@@ -125,7 +125,7 @@ public class LNE_PaladinsSpells {
         spell.active.cast = new Spell.Active.Cast();
         spell.active.cast.duration = 1.0F;
         spell.active.cast.animation = PlayerAnimation.of("spell_engine:one_handed_healing_charge");
-        spell.active.cast.sound = new Sound(Identifier.of("spell_engine:generic_healing_casting"), 0);
+        spell.active.cast.sound = new Sound(SpellEngineSounds.GENERIC_HEALING_CASTING.id(), 0);
         spell.active.cast.particles = List.of(
                 ParticleGroupBuilder.magic(SpellEngineParticles.magic_spark, ParticleGroup.Motion.FLOAT, Color.HOLY)
                         .batch(b -> b.shape(ParticleGroup.Shape.PIPE)
@@ -133,13 +133,13 @@ public class LNE_PaladinsSpells {
                                 .verticalOrigin(Batches.FEET)));
 
         spell.release.animation = PlayerAnimation.of("spell_engine:one_handed_healing_release");
-        spell.release.sound = new Sound(Identifier.of("spell_engine:generic_healing_release"));
+        spell.release.sound = new Sound(SpellEngineSounds.GENERIC_HEALING_RELEASE.id());
 
         spell.target.type = Spell.Target.Type.AIM;
         spell.target.aim = new Spell.Target.Aim();
         spell.target.aim.use_caster_as_fallback = true;
 
-        var preventionEffect = SpellBuilder.Impacts.effectSet("lne_paladins:holy_prevention",10,0);
+        var preventionEffect = SpellBuilder.Impacts.effectSet(LNE_PaladinsEffects.PREVENTION.id.toString(),10,0);
         preventionEffect.action.status_effect.amplifier_power_multiplier = 0.25F;
         preventionEffect.action.status_effect.show_particles = false;
         preventionEffect.visuals = Fx.Visuals.of(
@@ -147,7 +147,7 @@ public class LNE_PaladinsSpells {
                         .batch(b -> b.shape(ParticleGroup.Shape.PILLAR)
                                 .count(25F).speed(0.02F, 0.15F)
                                 .verticalOrigin(Batches.FEET)));
-        preventionEffect.sound = new Sound(Identifier.of("spell_engine:generic_healing_impact_1"));
+        preventionEffect.sound = new Sound(SpellEngineSounds.GENERIC_HEALING_IMPACT_1.id());
 
         spell.impacts = List.of(preventionEffect);
 

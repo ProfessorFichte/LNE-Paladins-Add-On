@@ -1,12 +1,13 @@
 modLoader = "javafml"
 loaderVersion = "[4,)"
-#issueTrackerURL = ""
+issueTrackerURL = "https://github.com/ProfessorFichte/LNE-Paladins-Add-On/issues"
 license = "ARR"
 
 [[mods]]
 modId = "lne_paladins"
 version = "${version}"
-displayName = "LNE Paladins"
+displayName = "LNE Paladins & Priests Add-On"
+displayURL = "https://modrinth.com/mod/lne-paladins"
 authors = "Fichte"
 description = '''
 Loot & Explore Add-On with Paladins RPG-Series Content.
@@ -38,7 +39,7 @@ side = "BOTH"
 modId = "spell_engine"
 type = "required"
 versionRange = "[${spell_engine_version},)"
-ordering = "BEFORE"
+ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.lne_paladins]]
@@ -57,3 +58,10 @@ side = "BOTH"
 
 [[mixins]]
 config = "lne_paladins.mixins.json"
+
+[[dependencies.lne_paladins]]
+modId = "loot_n_explore"
+type = "optional"
+versionRange = "[${loot_n_explore_version},)"
+ordering = "NONE"
+side = "BOTH"

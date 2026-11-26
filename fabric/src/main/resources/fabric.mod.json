@@ -2,13 +2,15 @@
 	"schemaVersion": 1,
 	"id": "lne_paladins",
 	"version": "${version}",
-	"name": "L&E Paladins-Add On",
+	"name": "LNE Paladins & Priests Add-On",
 	"description": "Loot & Explore Add-On with Paladins RPG-Series Content.",
 	"authors": [
 		"Fichte"
 	],
 	"contact": {
-		"sources": "https://github.com/ProfessorFichte/LNE-Paladins-Add-On"
+		"homepage": "https://modrinth.com/mod/lne-paladins",
+		"sources": "https://github.com/ProfessorFichte/LNE-Paladins-Add-On",
+		"issues": "https://github.com/ProfessorFichte/LNE-Paladins-Add-On/issues"
 	},
 	"license": "ARR",
 	"icon": "icon.png",
@@ -30,7 +32,7 @@
 	"depends": {
 		"fabricloader": ">=${fabric_loader_compat_version}",
 		"minecraft": ">=${minecraft_compat_version}",
-		"java": ">=17",
+		"java": ">=21",
 		"fabric-api": "*",
 		"armor_model_api": ">=${armor_model_api_version}",
 		"spell_engine": ">=${spell_engine_version}",
@@ -38,6 +40,15 @@
 		"mrpg_lib": ">=${more_rpg_library_version}"
 	},
 	"suggests": {
-		"loot_n_explore": ">=1.0.24-1.21.1"
+		"loot_n_explore": ">=${loot_n_explore_version}"
+	},
+	"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.discord": "https://discord.gg/AShKd5XrTu",
+				"modmenu.kofi": "https://ko-fi.com/fichteee",
+				"modmenu.modrinth": "https://modrinth.com/mod/lne-paladins"
+			}
+		}
 	}
 }

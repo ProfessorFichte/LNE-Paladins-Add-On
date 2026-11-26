@@ -50,7 +50,7 @@ public class LNE_Paladins_Mod {
 		ModEntitiesRegistry.registerEntities();
 	}
 	public static void registerItems(){
-		if(Platform.util().isModLoaded("loot_n_explore")) {
+		if(Platform.util().isModLoaded("loot_n_explore") || System.getProperty("fabric-api.datagen") != null) {
 			itemConfig.refresh();
 			shieldConfig.refresh();
 			effectConfig.refresh();
