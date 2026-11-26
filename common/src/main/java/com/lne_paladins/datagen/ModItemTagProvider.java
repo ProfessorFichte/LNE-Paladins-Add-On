@@ -11,6 +11,7 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.spell_engine.rpg_series.datagen.RPGSeriesDataGen;
+import net.spell_engine.rpg_series.item.Equipment;
 import net.spell_engine.rpg_series.tags.RPGSeriesItemTags;
 
 import java.util.Iterator;
@@ -20,6 +21,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 public class ModItemTagProvider extends RPGSeriesDataGen.ItemTagGenerator {
+    private static final TagKey<Item> PALADINS_MACES = TagKey.of(RegistryKeys.ITEM, Identifier.of("paladins", "maces"));
     private static final TagKey<Item> WEAPON_THEME_ENDER_DRAGON = TagKey.of(RegistryKeys.ITEM, Identifier.of("loot_n_explore", "weapon_themes/ender_dragon"));
     private static final TagKey<Item> WEAPON_THEME_WITHER = TagKey.of(RegistryKeys.ITEM, Identifier.of("loot_n_explore", "weapon_themes/wither"));
     private static final TagKey<Item> WEAPON_THEME_GLACIAL = TagKey.of(RegistryKeys.ITEM, Identifier.of("loot_n_explore", "weapon_themes/glacial"));
@@ -53,14 +55,16 @@ public class ModItemTagProvider extends RPGSeriesDataGen.ItemTagGenerator {
                     .addOptional(entry.id());
             }
         }
+        var maces = getOrCreateTagBuilder(PALADINS_MACES);
+        WeaponRegister.entries.stream()
+                .filter(entry -> entry.category() == Equipment.WeaponType.MACE)
+                .forEach(entry -> maces.addOptional(entry.id()));
+
         var shieldEntries = LNEShields.entries.stream().map(entry ->
                 new RPGSeriesDataGen.ShieldEntry(entry.id(), entry.lootProperties)
         ).toList();
         generateShieldTags(shieldEntries);
 
-       ///WAIT FOR LNE UPDATE THAN ENABLE THIS
-
-        /*
         for (var entry : WeaponRegister.entries) {
             String name = entry.id().getPath();
             if (name.contains("ender_dragon")) {
@@ -93,6 +97,5 @@ public class ModItemTagProvider extends RPGSeriesDataGen.ItemTagGenerator {
                         .addOptional(entry.id());
             }
         }
-         */
     }
 }

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "lne_paladins:chests/paladins/tier5"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "lne_paladins:chests/priests/tier5"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

@@ -15,6 +15,7 @@ public class Lne_paladinsDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(PaladinsAbilityDatagen::new);
 		pack.addProvider(ModItemTagProvider::new);
 		pack.addProvider(WeaponAttributesGenerator::new);
+		pack.addProvider(ModLootTableProvider.Chests::new);
 
 	}
 }
