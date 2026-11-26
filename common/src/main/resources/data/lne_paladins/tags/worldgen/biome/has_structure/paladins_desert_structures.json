@@ -3,7 +3,7 @@
   "values": [
     "minecraft:desert",
     {
-      "id": "#c:desert",
+      "id": "#c:is_desert",
       "required": false
     },
     {
